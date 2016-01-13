@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ArticlesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../bower_components/ng-prettyjson/dist/ng-prettyjson.min.css" />
+</head>
+<body ng-controller="ArticlesCtrl">
+	<pretty-json json="articles"></pretty-json>
+
+	<button ng-click="testData()">test</button>
+
+	<script src="../bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/shared/JsonApiRest/_JsonApiRest.js"></script>
+	<script src="js/shared/JsonApiRest/JsonApiRestReal.js"></script>
+	<script src="js/shared/Resource/_Resource.js"></script>
+	<script src="js/shared/Resource/Resource.js"></script>
+	<!--<script src="js/shared/JsonApiRest/JsonApiRestExceptionHandler.js"></script>-->
+	<script src="js/controllers/ArticlesCtrl.js"></script>
+	<!-- dev -->
+	<script src="../bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
+</body>
+</html>
