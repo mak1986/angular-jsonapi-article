@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('Resource', []);
+	angular.module('Manager', []);
 })();

@@ -1,15 +1,21 @@
+// Inject Modules in ArticlesApp
 (function() {
-
 	'use strict';
 
 	angular.module('ArticlesApp', [
 		'Rest',
 		'DataConverter',
-		'Resource',
+		'Manager',
 		'config',
 		// dev
 		'ngPrettyJson'
 	]);
+
+})();
+
+// Manual Bootstrap
+(function() {
+	'use strict';
 
 	var initInjector = angular.injector(['ng']);
 	var $http = initInjector.get('$http');
@@ -25,5 +31,17 @@
 			});
 		}
 	);
+
+})();
+
+// Provider configurations
+(function() {
+	'use strict';
+
+	angular.module('ArticlesApp')
+		.config(function(ResourceManagerProvider) {
+			ResourceManagerProvider.setConverter('JsonApiResourceConverter');
+			ResourceManagerProvider.setRest('JsonApiRest');
+		});
 
 })();
