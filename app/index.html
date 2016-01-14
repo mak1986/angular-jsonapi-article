@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ArticlesApp">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/ng-prettyjson/dist/ng-prettyjson.min.css" />
 </head>
 <body ng-controller="ArticlesCtrl">
+	Articles:
 	<pretty-json json="articles"></pretty-json>
-
+	Config:
+	<pretty-json json="config"></pretty-json>
 	<button ng-click="testData()">test</button>
 
 	<script src="../bower_components/angular/angular.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/shared/JsonApiRest/_JsonApiRest.js"></script>
-	<script src="js/shared/JsonApiRest/JsonApiRestReal.js"></script>
+
+	<script src="js/shared/Rest/_Rest.js"></script>
+	<script src="js/shared/Rest/JsonApiRest.js"></script>
+	<script src="js/shared/DataConverter/_DataConverter.js"></script>
+	<script src="js/shared/DataConverter/JsonApiResourceConverter.js"></script>
 	<script src="js/shared/Resource/_Resource.js"></script>
-	<script src="js/shared/Resource/Resource.js"></script>
+	<script src="js/shared/Resource/ResourceManager.js"></script>
 	<!--<script src="js/shared/JsonApiRest/JsonApiRestExceptionHandler.js"></script>-->
 	<script src="js/controllers/ArticlesCtrl.js"></script>
 	<!-- dev -->
