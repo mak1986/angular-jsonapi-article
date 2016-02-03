@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../bower_components/ng-prettyjson/dist/ng-prettyjson.min.css" />
 </head>
-<body ng-controller="ArticlesCtrl">
-	Articles:
-	<pretty-json json="articles"></pretty-json>
-	Config:
-	<pretty-json json="config"></pretty-json>
-	<button ng-click="testData()">test</button>
+<body>
+	<div ng-view></div>
+<!-- 	<pretty-json json="config"></pretty-json>
+	<button ng-click="testData()">test</button> -->
 
 	<script src="../bower_components/angular/angular.js"></script>
+	<script src="../bower_components/angular-route/angular-route.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/route.js"></script>
+	<!--<script src="../tests/fakeAspp.js"></script>-->
 
 	<script src="js/shared/services/Rest/_Rest.js"></script>
 	<script src="js/shared/services/Rest/JsonApiRest.js"></script>
 	<script src="js/shared/services/DataConverter/_DataConverter.js"></script>
 	<script src="js/shared/services/DataConverter/JsonApiResourceConverter.js"></script>
+	<script src="js/shared/services/Storage/_Storage.js"></script>
+	<script src="js/shared/services/Storage/ResourceStorage.js"></script>
 	<script src="js/shared/providers/Manager/_Manager.js"></script>
 	<script src="js/shared/providers/Manager/ResourceManager.js"></script>
 	<!--<script src="js/shared/JsonApiRest/JsonApiRestExceptionHandler.js"></script>-->
-	<script src="js/controllers/ArticlesCtrl.js"></script>
+	<script src="components/article/controllers/_Controllers.js"></script>
+	<script src="components/article/controllers/ArticleCtrl.js"></script>
 	<!-- dev -->
 	<script src="../bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
 </body>

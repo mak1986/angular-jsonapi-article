@@ -1,0 +1,42 @@
+{
+	"models": {
+		"article": {
+			"api": {
+				"get": {
+					"all": "/article?include=comments",
+					"one": "/article/:id?include=comments"
+				},
+				"post": "/article",
+				"patch": "/article/:id",
+				"delete": "/article/:id"
+			},
+			"relationships": {
+				"comments": {
+					"type": "comment",
+					"isArray": true,
+					"cascadeDelete": false
+				}
+			}
+		},
+		"comment": {
+			"api": "/comment",
+			"relationships": {
+				"article": {
+					"type": "article",
+					"isArray": false,
+					"cascadeDelete": true
+				}
+			}
+		}
+	},
+	"providers": {
+		"ResourceManager": {
+			"storage": "ResourceStorage",
+			"rest": "JsonApiRest",
+			"converter": "JsonApiResourceConverter"
+		}
+	},
+	"url": {
+		"api": "http://localhost:3000/api"
+	}
+}

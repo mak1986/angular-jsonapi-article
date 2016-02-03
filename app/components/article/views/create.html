@@ -1,0 +1,24 @@
+<div class="container-fluid" ng-init="ArticleCtrl.create()">
+	<div class="row">
+		<div class="col-md-12">
+			<strong>Actions: </strong>
+			<a href="#/articles" class="btn btn-primary">To articles</a>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Create article</h1>
+			<form novalidate>
+				<div class="form-group">
+				<label for="Title">Title</label>
+					<input type="title" class="form-control" id="title" placeholder="Title" ng-model="article.title">
+				</div>
+				<div class="form-group">
+					<label for="body">Body</label>
+					<textarea class="form-control" id="body" placeholder="Body" ng-model="article.body" rows="3"></textarea>
+				</div>
+				<button type="submit" class="btn btn-success" ng-click="store(article)">Create</button>
+			</form>
+		</div>		
+	</div>
+</div>

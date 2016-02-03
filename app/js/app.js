@@ -3,26 +3,26 @@
 	'use strict';
 
 	angular.module('ArticlesApp', [
+		'ngRoute',
 		'Rest',
 		'DataConverter',
+		'Storage',
 		'Manager',
-		'config',
+		'Controllers',
 		// dev
 		'ngPrettyJson'
 	]);
 
-})();
 
-// Manual Bootstrap
-(function() {
-	'use strict';
+
+	// Manual Bootstrap
+
 
 	var initInjector = angular.injector(['ng']);
 	var $http = initInjector.get('$http');
-	$http.get('/app/config/models.json').then(
+	$http.get('http://localhost:8080/app/config/configurations.json').then(
 		function(res) {
-
-			angular.module('config', []).constant('CONFIG', res.data);
+			angular.module('ArticlesApp').constant('CONFIG', res.data);
 
 			// Manual Initialization. Ref: https://docs.angularjs.org/guide/bootstrap#manual-initialization
 			// Note: Do not use ng-app directive
@@ -32,16 +32,22 @@
 		}
 	);
 
-})();
+	// Provider configurations
 
-// Provider configurations
-(function() {
-	'use strict';
 
 	angular.module('ArticlesApp')
-		.config(function(ResourceManagerProvider) {
-			ResourceManagerProvider.setConverter('JsonApiResourceConverter');
-			ResourceManagerProvider.setRest('JsonApiRest');
-		});
+		.config(function(ResourceManagerProvider, CONFIG) {
 
+			ResourceManagerProvider.setConverter(CONFIG.providers.ResourceManager.converter);
+			ResourceManagerProvider.setRest(CONFIG.providers.ResourceManager.rest);
+			ResourceManagerProvider.setStorage(CONFIG.providers.ResourceManager.storage);
+		});
+	angular.module('ArticlesApp')
+		.config(['$httpProvider', function($httpProvider) {
+			//Reset headers to avoid OPTIONS request (aka preflight)
+			$httpProvider.defaults.headers.common = {};
+			$httpProvider.defaults.headers.post = {};
+			$httpProvider.defaults.headers.put = {};
+			$httpProvider.defaults.headers.patch = {};
+		}]);
 })();
