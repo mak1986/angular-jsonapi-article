@@ -29,6 +29,27 @@
 	</div><!-- /.box-body -->
 	
 
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">Preference</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>Admin Skin</dt><dd>{{ UserController.user.preference | fieldValue: 'admin_skin' }}</dd>
+			
+			<dt>Language</dt><dd>{{ UserController.user.preference | fieldValue: 'language' }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+
+
 
 
 

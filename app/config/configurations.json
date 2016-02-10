@@ -16,8 +16,14 @@
 					"type": "group",
 					"isArray": true,
 					"cascadeDelete": false
+				},
+				"preference": {
+					"type": "user_preference",
+					"isArray": false,
+					"cascadeDelete": false
 				}
 			},
+			"singular": "user",
 			"plural": "users",
 			"structure": {
 				"first_name": {
@@ -33,6 +39,36 @@
 					"mode": ["list", "show", "create", "edit"]
 				},
 				"email": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				}
+			}
+		},
+		"user_preference":{
+			"api": {
+				"get": {
+					"all": "/user_preference",
+					"one": "/user_preference/:id"
+				},
+				"post": "/user_preference",
+				"patch": "/user_preference/:id",
+				"delete": "/user_preference/:id"
+			},
+			"relationships": {
+				"user": {
+					"type": "user",
+					"isArray": false,
+					"cascadeDelete": true
+				}
+			},
+			"singular": "preference",
+			"plural": "preferences",
+			"structure": {
+				"language": {
+					"type":"text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"admin_skin": {
 					"type": "text",
 					"mode": ["list", "show", "create", "edit"]
 				}
@@ -55,6 +91,7 @@
 					"cascadeDelete": false
 				}
 			},
+			"singular": "group",
 			"plural": "groups",
 			"structure": {
 				"name": {

@@ -3,7 +3,7 @@
 
 	function AuthenticationService(ResourceManager) {
 
-		this.isLoggedIn = false;
+		this.isLoggedIn = true;
 
 		this.login = function(login){
 			if(login.username=="admin" && login.password == "1234"){

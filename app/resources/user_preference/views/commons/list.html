@@ -1,0 +1,62 @@
+<div class="box" 
+	ng-controller="UserPreferenceController as UserPreferenceController" 
+	ng-init="UserPreferenceController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">User Preference list</h3>
+		
+		<div class="box-tools" 
+			action-buttons-resource 
+			bind-controller="UserPreferenceController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>Admin Skin</th>
+					
+					<th>Language</th>
+					
+					<th class="table-action-column-width">Actions</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, preference) in UserPreferenceController.preferences">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ preference.admin_skin }}</td>
+					
+					<td>{{ preference.language }}</td>
+					
+					<td action-buttons-list bind-buttons-type="list" 
+						bind-resource="preference" 
+						bind-controller="UserPreferenceController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

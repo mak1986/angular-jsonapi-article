@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function UserController(CONFIG, CrudUtility, $routeParams, ResourceManager) {
+	function UserController($routeParams, CONFIG, CrudUtility, ResourceManager) {
 
 		var vm = CrudUtility.init(this, 'user');
 
@@ -32,9 +32,9 @@
 	}
 
 	UserController.$inject = [
+		'$routeParams',
 		'CONFIG',
 		'CrudUtility',
-		'$routeParams',
 		'ResourceManager'
 	];
 

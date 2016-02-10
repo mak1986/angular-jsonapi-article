@@ -1,6 +1,6 @@
 <!-- List button OK for type: resource-->
 <a class="btn btn-sm btn-default" 
-href="#/{{ controller.type }}/list" 
+href="#/{{ controller['type_dash'] }}/list" 
 ng-show="
 controller.mode == 'show' ||
 controller.mode == 'create' ||
@@ -9,28 +9,28 @@ controller.mode == 'edit'
 
 <!-- Show button -->
 <a class="btn btn-sm btn-primary" 
-href="#/{{ controller.type }}/show/{{controller[controller.type].id}}" 
+href="#/{{ controller['type_dash'] }}/show/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'edit'
 ">Show</a>
 
 <!-- Create button -->
 <a class="btn btn-sm btn-success" 
-href="#/{{ controller.type }}/create" 
+href="#/{{ controller['type_dash'] }}/create" 
 ng-show="
 controller.mode == 'list'
 ">Create</a>
 
 <!-- Edit button -->
 <a class="btn btn-sm btn-warning" 
-href="#/{{ controller.type }}/edit/{{controller[controller.type].id}}" 
+href="#/{{ controller['type_dash'] }}/edit/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'show'
 ">Edit</a>
 
 <!-- Delete button -->
 <button class="btn btn-sm btn-danger"  
-ng-click="controller.destroy(controller[controller.type])" 
+ng-click="controller.destroy(controller[controller['type_singular']])" 
 ng-show="
 controller.mode == 'show' ||
 controller.mode == 'edit'

@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	function GroupController($routeParams, CONFIG, CrudUtility, ResourceManager) {
+	function UserPreferenceController($routeParams, CONFIG, CrudUtility, ResourceManager) {
 
-		var vm = CrudUtility.init(this, 'group');
+		var vm = CrudUtility.init(this, 'user_preference');
 
 		this.list = function() {
 			CrudUtility.list(vm, vm["type"]);
@@ -31,7 +31,7 @@
 
 	}
 
-	GroupController.$inject = [
+	UserPreferenceController.$inject = [
 		'$routeParams',
 		'CONFIG',
 		'CrudUtility',
@@ -40,5 +40,5 @@
 
 	angular
 		.module('Controllers')
-		.controller('GroupController', GroupController);
+		.controller('UserPreferenceController', UserPreferenceController);
 })();

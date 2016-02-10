@@ -69,6 +69,17 @@
 					</div><!-- /.form-group -->
 
 					
+					<div class="form-group" 
+						ng-controller="UserPreferenceController as UserPreferenceController" >
+						
+						<label for="select-user-user-preference">User Preference</label>
+						
+						<select id="select-user-user-preference" 
+								class="form-control" 
+								ng-model="UserController.user.preference"
+								ng-options="preference.id as preference.name for preference in UserPreferenceController.preferences track by preference.id"></select>
+					
+					</div><!-- /.form-group -->
 
 					
 					<div class="form-group" 
@@ -102,10 +113,12 @@
 							ng-click="UserController.store(UserController.user)"
 							ng-if="UserController.mode == 'create'">Create</button>
 					
-					<button class="btn btn-warning"
+					<button class="btn btn-success"
 							type="submit"
 							ng-click="UserController.update(UserController.user)"
-							ng-if="UserController.mode == 'edit'"   >Edit</button>
+							ng-if="UserController.mode == 'edit'"   >Save</button>
+
+					<button class="btn btn-warning">Cancel</button>
 				
 				</div><!-- /.box-footer -->
 			

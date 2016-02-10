@@ -9,10 +9,8 @@
 		this.create = function(resource) {
 			var promise;
 			var resources;
-			// console.log(resource);
 			var jsonApi = converter.toJsonApi(resource);
 			// console.log('in Manager create');
-			//console.log(jsonApi);
 			return $q(function(resolve, reject) {
 
 				var apiUrl = CONFIG.url.api + CONFIG.models[resource.type].api.post;
@@ -49,12 +47,9 @@
 					var apiUrl = CONFIG.url.api + CONFIG.models[type].api.get.all
 					promise = rest.get(apiUrl);
 					promise.then(function(data) {
-						//console.log(data);
+
 						resources = converter.toResourceArray(data);
-						//console.log(data);
-						//resolve(resources);
 						storage.insert(resources);
-						
 						resolve(storage.get(type));
 
 					}, function(reason) {
@@ -104,7 +99,6 @@
 				var apiUrl = CONFIG.url.api + CONFIG.models[resource.type].api.patch.replace(':id', resource.id);
 				promise = rest.patch(apiUrl, jsonApi);
 				promise.then(function(data) {
-					//console.log(resource);
 					storage.update(resource);
 					resolve(storage.get(resource.type)[resource.id]);
 
@@ -156,7 +150,6 @@
 					obj[attr] = resource[attr];
 					
 				}else{
-					console.log(resource[attr]);
 					if(CONFIG.models[resource.type].relationships[attr].isArray){
 						for(relationshipResourceId in resource[attr]){
 							if(!obj[attr]){
@@ -166,7 +159,7 @@
 						}
 					}else{
 						for(relationshipResourceId in resource[attr]){
-							obj[attr] = relationshipResourceId;
+							obj[attr] = {id : relationshipResourceId };
 						}
 					}
 				}

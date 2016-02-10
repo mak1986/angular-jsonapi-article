@@ -48,7 +48,26 @@
 				//controller: 'UserController',
 				//controllerAs: 'UserController'
 			}).
-
+			when('/user-preference/list', {
+				templateUrl: 'app/resources/user_preference/views/list.html',
+				//controller: 'GroupController',
+				//controllerAs: 'GroupController'
+			}).
+			when('/user-preference/show/:id', {
+				templateUrl: 'app/resources/user_preference/views/show.html',
+				//controller: 'GroupController',
+				//controllerAs: 'GroupController'
+			}).
+			when('/user-preference/:mode', {
+				templateUrl: 'app/resources/user_preference/views/form.html',
+				//controller: 'GroupController',
+				//controllerAs: 'GroupController'
+			}).
+			when('/user-preference/:mode/:id', {
+				templateUrl: 'app/resources/user_preference/views/form.html',
+				//controller: 'GroupController',
+				//controllerAs: 'GroupController'
+			}).
 			otherwise({
 				redirectTo: '/login'
 			});
