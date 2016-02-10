@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('Filters', []);
+	angular.module('_Filters', []);
 })();

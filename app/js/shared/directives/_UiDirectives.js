@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('UiDirectives', []);
+	angular.module('_UiDirectives', []);
 })();

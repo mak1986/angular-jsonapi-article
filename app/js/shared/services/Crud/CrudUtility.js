@@ -148,6 +148,6 @@
 	];
 
 	angular
-		.module('Crud')
+		.module('_Crud')
 		.service('CrudUtility', CrudUtility);
 })();

@@ -38,6 +38,6 @@
 	];
 
 	angular
-		.module('Rest')
+		.module('_Rest')
 		.service('JsonApiRest', JsonApiRest);
 })();

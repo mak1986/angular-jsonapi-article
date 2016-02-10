@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('Crud', []);
+	angular.module('_Crud', []);
 })();

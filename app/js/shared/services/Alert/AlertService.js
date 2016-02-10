@@ -66,6 +66,6 @@
 	];
 
 	angular
-		.module('Alert')
+		.module('_Alert')
 		.service('AlertService', AlertService);
 })();

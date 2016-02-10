@@ -5,15 +5,15 @@
 	angular.module('ArticlesApp', [
 		'ngRoute',
 		'_Authentication', //Service
-		'Rest', //Service
-		'DataConverter', //Service
-		'Storage', //Service
-		'Crud', //Service
-		'Alert', //Service
-		'Manager', //Provider
-		'Controllers',
-		'Filters',
-		'UiDirectives',
+		'_Rest', //Service
+		'_DataConverter', //Service
+		'_Storage', //Service
+		'_Crud', //Service
+		'_Alert', //Service
+		'_Manager', //Provider
+		'_Controllers', //Controller
+		'_Filters',	//Filter
+		'_UiDirectives', //Directive
 		// dev
 		'ngPrettyJson'
 	]);
@@ -39,8 +39,8 @@
 	);
 
 	angular.module('ArticlesApp').constant('BASEURL', 'http://localhost:8080/app/#/');
+	
 	// Provider configurations
-
 
 	angular.module('ArticlesApp')
 		.config(function(ResourceManagerProvider, CONFIG) {

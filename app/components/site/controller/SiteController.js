@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function SiteController($rootScope, $location, CONFIG, AlertService, AuthenticationService, ResourceManager) {
+	function SiteController($location, $rootScope, CONFIG, AlertService, AuthenticationService, ResourceManager) {
 
 		var uriSegment = {};
 
@@ -34,12 +34,20 @@
 
 		this.init();
 
-		this.retrieveData = function(){
+		this.retrieveData = function() {
 			// Retrieve all data from server
+			var count = 0;
+			var modelsCount = Object.keys(CONFIG.models).length;
 			var type;
 			for (type in CONFIG.models) {
 				ResourceManager.read(type).then(function(data) {
-					console.log("get a model success.")
+					//console.log("get a model success.")
+					count++;
+
+					if(count==modelsCount){
+						$rootScope.$broadcast('SiteControllerRetrieveData');
+					}
+				
 				}, function(errorData) {
 					console.log("get a model fail.", errorData);
 				});
@@ -61,8 +69,8 @@
 	}
 
 	SiteController.$inject = [
-		'$rootScope',
 		'$location',
+		'$rootScope',
 		'CONFIG',
 		'AlertService',
 		'AuthenticationService',
@@ -70,6 +78,6 @@
 	];
 
 	angular
-		.module('Controllers')
+		.module('_Controllers')
 		.controller('SiteController', SiteController);
 })();

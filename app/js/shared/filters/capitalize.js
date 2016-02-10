@@ -5,7 +5,7 @@
 			return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     	}
 	};
-	angular.module('Filters')
+	angular.module('_Filters')
 	.filter('capitalize', capitalize);
 
 })();

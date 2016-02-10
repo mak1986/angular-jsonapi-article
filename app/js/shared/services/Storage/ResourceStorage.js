@@ -245,7 +245,7 @@
 	];
 
 	angular
-		.module('Storage')
+		.module('_Storage')
 		.service('ResourceStorage', ResourceStorage);
 })();
 

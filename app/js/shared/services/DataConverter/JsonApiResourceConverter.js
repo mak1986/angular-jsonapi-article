@@ -136,6 +136,6 @@
 	];
 
 	angular
-		.module('DataConverter')
+		.module('_DataConverter')
 		.service('JsonApiResourceConverter', JsonApiResourceConverter);
 })();

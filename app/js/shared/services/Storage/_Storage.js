@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('Storage', []);
+	angular.module('_Storage', []);
 })();

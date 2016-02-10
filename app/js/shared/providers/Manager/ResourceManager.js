@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function ResourceManager(CONFIG, $q, converterService, restService, storageService) {
+	function ResourceManager($q, CONFIG, converterService, restService, storageService) {
 		var converter = converterService;
 		var rest = restService;
 		var storage = storageService;
@@ -132,43 +132,45 @@
 			});
 		};
 
-		this.readFromStorage = function(type, id){
-			if(!id){
+		this.readFromStorage = function(type, id) {
+			if (!id) {
 				return storage.get(type);
-			}else{
+			} else {
 				return storage.get(type)[id];
 			}
 		}
 
-		this.shallowCopy = function(resource){
+		this.shallowCopy = function(resource) {
 			var obj = {};
 			var attr;
 			var relationshipResourceId;
 
-			for(attr in resource){
-				if(!(attr  in CONFIG.models[resource.type].relationships)){
+			for (attr in resource) {
+				if (!(attr in CONFIG.models[resource.type].relationships)) {
 					obj[attr] = resource[attr];
-					
-				}else{
-					if(CONFIG.models[resource.type].relationships[attr].isArray){
-						for(relationshipResourceId in resource[attr]){
-							if(!obj[attr]){
+
+				} else {
+					if (CONFIG.models[resource.type].relationships[attr].isArray) {
+						for (relationshipResourceId in resource[attr]) {
+							if (!obj[attr]) {
 								obj[attr] = {};
 							}
 							obj[attr][relationshipResourceId] = true;
 						}
-					}else{
-						for(relationshipResourceId in resource[attr]){
-							obj[attr] = {id : relationshipResourceId };
+					} else {
+						for (relationshipResourceId in resource[attr]) {
+							obj[attr] = {
+								id: relationshipResourceId
+							};
 						}
 					}
 				}
 			}
-			
+
 			return obj;
 		}
-		
-		this.deepCopy = function(resource){
+
+		this.deepCopy = function(resource) {
 			return angular.copy(resource);
 		}
 	}
@@ -187,17 +189,17 @@
 			storage = storageService;
 		};
 
-		var Manager = function($injector, CONFIG, $q) {
-			return new ResourceManager(CONFIG, $q, $injector.get(converter), $injector.get(rest), $injector.get(storage));
+		var Manager = function($injector, $q, CONFIG) {
+			return new ResourceManager($q, CONFIG, $injector.get(converter), $injector.get(rest), $injector.get(storage));
 		};
 
-		this.$get = ['$injector', 'CONFIG', '$q', Manager];
+		this.$get = ['$injector', '$q', 'CONFIG', Manager];
 	}
 
 
 
 	angular
-		.module('Manager')
+		.module('_Manager')
 		.provider('ResourceManager', ResourceManagerProvider);
 
 })();

@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('Rest', []);
+	angular.module('_Rest', []);
 })();

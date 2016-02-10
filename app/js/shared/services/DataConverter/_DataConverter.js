@@ -1,4 +1,4 @@
 (function(){
 	'use strict';
-	angular.module('DataConverter', []);
+	angular.module('_DataConverter', []);
 })();

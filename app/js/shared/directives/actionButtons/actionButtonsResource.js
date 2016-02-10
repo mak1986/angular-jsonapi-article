@@ -11,6 +11,6 @@
 		};
 	};
 
-	angular.module('UiDirectives')
+	angular.module('_UiDirectives')
 	.directive('actionButtonsResource', actionButtonsResource);
 })();

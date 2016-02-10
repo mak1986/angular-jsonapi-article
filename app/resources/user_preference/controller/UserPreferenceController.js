@@ -13,7 +13,7 @@
 			CrudUtility.show(vm, vm["type"]);
 		};
 
-		this.form = function(){
+		this.form = function() {
 			CrudUtility.form(vm, vm["type"]);
 		};
 
@@ -39,6 +39,6 @@
 	];
 
 	angular
-		.module('Controllers')
+		.module('_Controllers')
 		.controller('UserPreferenceController', UserPreferenceController);
 })();

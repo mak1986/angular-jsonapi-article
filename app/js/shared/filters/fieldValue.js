@@ -7,7 +7,7 @@
 			}
     	}
 	};
-	angular.module('Filters')
+	angular.module('_Filters')
 	.filter('fieldValue', fieldValue);
 
 })();

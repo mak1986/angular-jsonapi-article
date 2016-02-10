@@ -12,6 +12,6 @@
 		};
 	};
 
-	angular.module('UiDirectives')
+	angular.module('_UiDirectives')
 	.directive('actionButtonsList', actionButtonsList);
 })();

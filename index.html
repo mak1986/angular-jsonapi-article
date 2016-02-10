@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="bower_components/AdminLTE/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
@@ -22,7 +22,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-black.min.css">
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-purple.min.css">
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-yellow.min.css">
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-red.min.css">
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-green.min.css">
   
   <!-- Custom stylesheet -->
   <link rel="stylesheet" href="app/css/custom.css">
@@ -54,8 +59,8 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-purple" 
-      ng-class="{'sidebar-mini': SiteController.isLoggedIn, 'login-page': !SiteController.isLoggedIn}">
+<body class="hold-transition {{'skin-' + (SiteController.auth.user.preference | fieldValue: 'admin_skin')}}" 
+      ng-class="{'sidebar-mini': SiteController.auth.isLoggedIn, 'login-page': !SiteController.auth.isLoggedIn}">
 
 <div class="login-box"
     ng-if="!SiteController.auth.isLoggedIn" 
