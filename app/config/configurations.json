@@ -1,30 +1,69 @@
 {
 	"models": {
-		"article": {
+
+		"user": {
 			"api": {
 				"get": {
-					"all": "/article?include=comments",
-					"one": "/article/:id?include=comments"
+					"all": "/user",
+					"one": "/user/:id"
 				},
-				"post": "/article",
-				"patch": "/article/:id",
-				"delete": "/article/:id"
+				"post": "/user",
+				"patch": "/user/:id",
+				"delete": "/user/:id"
 			},
 			"relationships": {
-				"comments": {
-					"type": "comment",
+				"groups": {
+					"type": "group",
 					"isArray": true,
 					"cascadeDelete": false
 				}
+			},
+			"plural": "users",
+			"structure": {
+				"first_name": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"last_name": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"username": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"email": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				}
 			}
 		},
-		"comment": {
-			"api": "/comment",
+		"group": {
+			"api": {
+				"get": {
+					"all": "/group",
+					"one": "/group/:id"
+				},
+				"post": "/group",
+				"patch": "/group/:id",
+				"delete": "/group/:id"
+			},
 			"relationships": {
-				"article": {
-					"type": "article",
-					"isArray": false,
-					"cascadeDelete": true
+				"users": {
+					"type": "user",
+					"isArray": true,
+					"cascadeDelete": false
+				}
+			},
+			"plural": "groups",
+			"structure": {
+				"name": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"order": {
+					"type": "number",
+					"mode": ["list", "show", "create", "edit"]
 				}
 			}
 		}

@@ -1,0 +1,116 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="UserController as UserController" 
+			ng-init="UserController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ UserController.mode | capitalize }} user</h3>
+				
+				<div class="box-tools" 
+					action-buttons-resource 
+					bind-controller="UserController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form novalidate role="form">
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-user-username">Username</label>
+						
+						<input class="form-control" 
+							id="text-user-username" 
+							placeholder="Username" 
+							type="text" 
+							ng-model="UserController.user.username">
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-first-name">First Name</label>
+						
+						<input class="form-control" 
+							id="text-user-first-name" 
+							placeholder="First Name" 
+							type="text" 
+							ng-model="UserController.user.first_name">
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-last-name">Last Name</label>
+						
+						<input class="form-control" 
+							id="text-user-last-name" 
+							placeholder="Last Name" 
+							type="text" 
+							ng-model="UserController.user.last_name">
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-email">Email</label>
+						
+						<input class="form-control" 
+							id="text-user-email" 
+							placeholder="Email" 
+							type="text" 
+							ng-model="UserController.user.email">
+					
+					</div><!-- /.form-group -->
+
+					
+
+					
+					<div class="form-group" 
+						ng-controller="GroupController as GroupController" >
+						
+						<label for="checkbox-user-group">Group</label>
+						
+						<div class="checkbox"
+							ng-repeat="group in GroupController.groups">
+							
+							<label for="checkbox-user-group-{{ group.id }}">
+								
+								<input id="checkbox-user-group-{{ group.id }}" 
+									type="checkbox"
+									ng-model="UserController.user.groups[group.id]">{{ group.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer">
+
+					<button class="btn btn-success"
+							type="submit"
+							ng-click="UserController.store(UserController.user)"
+							ng-if="UserController.mode == 'create'">Create</button>
+					
+					<button class="btn btn-warning"
+							type="submit"
+							ng-click="UserController.update(UserController.user)"
+							ng-if="UserController.mode == 'edit'"   >Edit</button>
+				
+				</div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

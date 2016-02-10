@@ -14,23 +14,22 @@
 			for (resourceKey in resource) {
 				if (resourceKey === 'id' || resourceKey === 'type') {
 					jsonApi.data[resourceKey] = resource[resourceKey];
-				} else if (resourceKey in CONFIG.models[resource.type].relationships){
+				} else if (resourceKey in CONFIG.models[resource.type].relationships) {
 					if (!jsonApi.data.relationships) {
 						jsonApi.data['relationships'] = {};
 					}
-					if(!jsonApi.data.relationships[resourceKey]){
+					if (!jsonApi.data.relationships[resourceKey]) {
 						jsonApi.data.relationships[resourceKey] = {};
 						jsonApi.data.relationships[resourceKey]['data'] = [];
 					}
-					for (refKey in resource[resourceKey]){
+					for (refKey in resource[resourceKey]) {
 						jsonApi.data.relationships[resourceKey].data.push({
 							'type': CONFIG.models[resource.type].relationships[resourceKey].type,
 							'id': resource[resourceKey][refKey].id
 						});
 					}
 
-				}
-				else{
+				} else {
 					if (!jsonApi.data.attributes) {
 						jsonApi.data['attributes'] = {};
 					}
@@ -108,21 +107,22 @@
 		};
 
 		var attachRelationshipsKeys = function(resource, data) {
-
 			var relationName;
 			var relatedData;
 			var relationIndex;
 
 			if ('relationships' in data) {
 				for (relationName in data.relationships) {
-					relatedData = data.relationships[relationName].data;
-					resource[relationName] = {};
-					if (relatedData instanceof Array) {
-						for (relationIndex in relatedData) {
-							resource[relationName][relatedData[relationIndex].id] = null;
+					if (data["relationships"][relationName]["data"]) {
+						relatedData = data.relationships[relationName].data;
+						resource[relationName] = {};
+						if (relatedData instanceof Array) {
+							for (relationIndex in relatedData) {
+								resource[relationName][relatedData[relationIndex].id] = null;
+							}
+						} else {
+							resource[relationName][relatedData.id] = null;
 						}
-					} else {
-						resource[relationName][relatedData.id] = null;
 					}
 				}
 			}
@@ -134,7 +134,7 @@
 	JsonApiResourceConverter.$inject = [
 		'CONFIG'
 	];
-	
+
 	angular
 		.module('DataConverter')
 		.service('JsonApiResourceConverter', JsonApiResourceConverter);

@@ -1,0 +1,37 @@
+<!-- List button OK for type: resource-->
+<a class="btn btn-sm btn-default" 
+href="#/{{ controller.type }}/list" 
+ng-show="
+controller.mode == 'show' ||
+controller.mode == 'create' ||
+controller.mode == 'edit'
+">List</a>
+
+<!-- Show button -->
+<a class="btn btn-sm btn-primary" 
+href="#/{{ controller.type }}/show/{{controller[controller.type].id}}" 
+ng-show="
+controller.mode == 'edit'
+">Show</a>
+
+<!-- Create button -->
+<a class="btn btn-sm btn-success" 
+href="#/{{ controller.type }}/create" 
+ng-show="
+controller.mode == 'list'
+">Create</a>
+
+<!-- Edit button -->
+<a class="btn btn-sm btn-warning" 
+href="#/{{ controller.type }}/edit/{{controller[controller.type].id}}" 
+ng-show="
+controller.mode == 'show'
+">Edit</a>
+
+<!-- Delete button -->
+<button class="btn btn-sm btn-danger"  
+ng-click="controller.destroy(controller[controller.type])" 
+ng-show="
+controller.mode == 'show' ||
+controller.mode == 'edit'
+">Delete</button>

@@ -1,0 +1,62 @@
+<div class="box" 
+	ng-controller="GroupController as GroupController" 
+	ng-init="GroupController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">Group list</h3>
+		
+		<div class="box-tools" 
+			action-buttons-resource 
+			bind-controller="GroupController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>Name</th>
+					
+					<th>Order</th>
+					
+					<th class="table-action-column-width">Actions</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, group) in GroupController.groups">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ group.name }}</td>
+					
+					<td>{{ group.order }}</td>
+					
+					<td action-buttons-list bind-buttons-type="list" 
+						bind-resource="group" 
+						bind-controller="GroupController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

@@ -99,7 +99,12 @@
 
 
 		function attributeEqual(testObj, expectedObj) {
-			var relationshipsSet = ["articles", "article", "comments", "comment", "user"];
+			var relationshipsSet = ["article", "articles", 
+									"comment", "comments", 
+									"user", "users",
+									"group", "groups",
+									"products",
+									"kind"];
 			var key;
 			for (key in expectedObj) {
 				if (relationshipsSet.indexOf(key) < 0) {
@@ -486,6 +491,7 @@
 
 				attributeEqual(users["1"], models["user1"]);
 				relationshipsEqualConfig(users["1"], config);
+				
 				expect(Object.keys(users["1"]["articles"]).length).toEqual(0);
 				expect(Object.keys(users["1"]["comments"]).length).toEqual(0);
 			});
@@ -3178,7 +3184,7 @@
 		});
 
 
-		describe('Configuration 4 special', function() {
+		describe('Configuration 5 double insert sceneario 1', function() {
 			var config = {
 				"models": {
 					"user": {
@@ -3197,7 +3203,7 @@
 			};
 			build(config);
 
-			it('should insert the objects into the storage correctly, when storage is not empty(config 4 special)', function() {
+			it('should insert the objects into the storage correctly, when storage is not empty(config 5)', function() {
 
 				models["article1"]["user"] = {
 					"1": null
@@ -3247,6 +3253,67 @@
 
 		});
 
+		describe('Configuration 6 double insert sceneario 2', function() {
+			var config = {
+				"models": {
+					"user": {
+						"relationships": {
+							"groups": {
+								"type": "group",
+								"isArray": true,
+								"cascadeDelete": false
+							}
+						}
+					},
+					"group": {
+						"relationships": {}
+					}
+				}
+			};
+			build(config);
+
+			it('should insert the objects into the storage correctly, when storage is not empty(config 6)', function() {
+
+				models["user1"]["groups"] = {
+					"1": null,
+					"2": null
+				};
+				var list1 = [
+					models["user1"],
+				];
+				var list2 = [
+					models["group1"],
+					models["group2"]
+				]
+
+				ResourceStorage.insert(list1);
+				ResourceStorage.insert(list2);
+				var users = ResourceStorage.get('user');
+				var groups = ResourceStorage.get('group');
+
+				expect(Object.keys(users).length).toEqual(1);
+				expect(Object.keys(groups).length).toEqual(2);
+
+				attributeEqual(users["1"], models["user1"]);
+				relationshipsEqualConfig(users["1"], config);
+				expect(users["1"].groups).toBeDefined();
+				deepAttributeEqual(users, '1.groups.1', models["group1"]);
+				deepAttributeEqual(users, '1.groups.2', models["group2"]);
+
+				attributeEqual(groups["1"], models["group1"]);
+				relationshipsEqualConfig(groups["1"], config);
+				expect(groups["1"].user).toBeUndefined();
+				expect(groups["1"].users).toBeUndefined();
+
+
+				attributeEqual(groups["2"], models["group2"]);
+				relationshipsEqualConfig(groups["2"], config);
+				expect(groups["2"].user).toBeUndefined();
+				expect(groups["2"].users).toBeUndefined();
+				console.log();
+			});
+
+		});
 		describe('Updates', function() {
 			var config = {
 				"models": {
@@ -3271,8 +3338,8 @@
 					"kind": {
 						"relationships": {
 							"products": {
-								"type":"product",
-								"isArray":true,
+								"type": "product",
+								"isArray": true,
 								"cascadeDelete": false
 							}
 						}
@@ -3346,8 +3413,8 @@
 				var user1 = angular.copy(models["user1"]);
 				delete user1.name;
 				user1.groups = {
-					"1": null,
-					"2": null
+					"1": models["group1"],
+					"2": models["group2"]
 				};
 
 
@@ -3621,7 +3688,7 @@
 				expect(articles[1].comments[1]).toBeUndefined();
 				expect(users[1].comments[1]).toBeUndefined();
 			});
-			
+
 			it('should cascade delete the resource with 1 relationships from the storage', function() {
 
 				models["user1"]["articles"] = {

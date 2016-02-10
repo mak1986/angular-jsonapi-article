@@ -23,13 +23,16 @@
 		};
 
 		this.insert = function(resources) {
-			var distinctResourceTypes;
 
-			insertRaw(resources);
+			for (var i in resources) {
 
-			distinctResourceTypes = getDistinctResourceTypes(resources);
+				if (!storage.get(resources[i].type)[resources[i].id]) {
+					createStandardResource(resources[i].type, resources[i].id);
+				}
 
-			entangle(distinctResourceTypes);
+				this.update(resources[i]);
+
+			}
 		};
 
 		this.update = function(resource) {
@@ -39,39 +42,6 @@
 
 		this.delete = function(resource) {
 			deleteResource(resource);
-		};
-
-
-
-		var getDistinctResourceTypes = function(resources) {
-			var types = [];
-			var i;
-			var length = resources.length;
-			for (i = 0; i < length; i++) {
-				if (types.indexOf(resources[i].type) < 0) {
-					types.push(resources[i].type);
-				}
-			}
-			return types;
-		};
-
-		var insertRaw = function(resources) {
-			var resource;
-			var relationshipsBlueprint;
-			var relationshipAlias;
-			var i;
-			var length = resources.length;
-			for (i = 0; i < length; i++) {
-				resource = resources[i];
-				relationshipsBlueprint = CONFIG['models'][resource.type]['relationships'];
-				for (relationshipAlias in relationshipsBlueprint) {
-					// add empty collection {} if the resource doesn't has the relationships key
-					if (!resource[relationshipAlias]) {
-						resource[relationshipAlias] = {};
-					}
-				}
-				storage.get(resource.type)[resource.id] = resource;
-			}
 		};
 
 		var entangle = function(modelTypes) {
@@ -93,7 +63,8 @@
 					for (relationshipAlias in relationships) {
 
 						relationshipModelType = CONFIG.models[modelType].relationships[relationshipAlias].type;
-						entangleRelationship(relationships[relationshipAlias], relationshipModelType);
+
+						entangleRelationship(resources[resourceId], relationships[relationshipAlias], relationshipModelType);
 
 					}
 
@@ -138,7 +109,7 @@
 
 				relationshipModelType = relationshipsBlueprint[relationshipAlias].type;
 
-				entangleRelationship(oldResource[relationshipAlias], relationshipModelType);
+				entangleRelationship(oldResource, oldResource[relationshipAlias], relationshipModelType);
 
 				alias = getAliasByModelType(relationshipModelType, oldResource.type);
 
@@ -231,14 +202,41 @@
 			return relationships;
 		};
 
-		var entangleRelationship = function(relationship, modelType) {
+		var entangleRelationship = function(resource, relationship, relationshipModelType) {
 			var id;
+			var alias = getAliasByModelType(relationshipModelType, resource.type);
 
 			for (id in relationship) {
-				relationship[id] = storage.get(modelType)[id];
+				if (!storage.get(relationshipModelType)[id]) {
+					createStandardResource(relationshipModelType, id);
+				}
+
+				var relationshipResource = storage.get(relationshipModelType)[id];
+
+				if (!relationshipResource[alias]) {
+					relationshipResource[alias] = {};
+				}
+
+				if (!relationshipResource[alias][resource.id] || relationshipResource[alias][resource.id] == null) {
+					relationshipResource[alias][resource.id] = storage.get(resource.type)[resource.id];
+				}
+
+				relationship[id] = storage.get(relationshipModelType)[id];
 			}
 		};
 
+		var createStandardResource = function(type, id) {
+			var relationshipAlias;
+
+			storage.get(type)[id] = {
+				'id': id,
+				'type': type
+			};
+
+			for (relationshipAlias in CONFIG.models[type].relationships) {
+				storage.get(type)[id][relationshipAlias] = {};
+			}
+		};
 	}
 
 	ResourceStorage.$inject = [
@@ -250,3 +248,21 @@
 		.module('Storage')
 		.service('ResourceStorage', ResourceStorage);
 })();
+
+// entangleRelationship(modelType, resourceId, relationships[relationshipAlias], relationshipModelType);
+// var entangleRelationship = function(modelType, resourceId, relationship, relationshipModelType) {
+// 		var id;
+
+// 		for (id in relationship) {
+// 			if (!storage.get(relationshipModelType)[id] && IS FOREIGN KEY RELATION {
+// 					var newRelationObject = {};
+// 					newRelationObject.type = relationshipModelType;
+// 					newRelationObject.id = id;
+// 					// modelTYpe SHOULD BE ALIAS
+// 					newRelationObject[modelType] = storage.get(modelType)[resourceId];
+// 					storage.get(relationshipModelType)[id] = newRelationObject;
+// 				}
+// 				relationship[id] = storage.get(relationshipModelType)[id];
+
+// 			}
+// 		};

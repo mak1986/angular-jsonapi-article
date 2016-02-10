@@ -7,11 +7,12 @@
 		var storage = storageService;
 
 		this.create = function(resource) {
-			console.log('in create');
 			var promise;
 			var resources;
+			// console.log(resource);
 			var jsonApi = converter.toJsonApi(resource);
-			//console.log(jsonApi)
+			// console.log('in Manager create');
+			//console.log(jsonApi);
 			return $q(function(resolve, reject) {
 
 				var apiUrl = CONFIG.url.api + CONFIG.models[resource.type].api.post;
@@ -19,8 +20,10 @@
 				promise.then(function(data) {
 
 					resources = converter.toResourceArray(data);
+
 					storage.insert(resources);
-					resolve(storage.get(resource.type));
+
+					resolve(storage.get(resource.type)[data.data.data.id]);
 
 				}, function(reason) {
 
@@ -33,10 +36,9 @@
 
 
 		this.read = function(type) {
-
 			var promise;
 			var resources;
-
+			//console.log('in Manager read');
 			return $q(function(resolve, reject) {
 
 				if (storage.count(type) !== 0) {
@@ -52,6 +54,7 @@
 						//console.log(data);
 						//resolve(resources);
 						storage.insert(resources);
+						
 						resolve(storage.get(type));
 
 					}, function(reason) {
@@ -65,10 +68,9 @@
 		};
 
 		this.readById = function(type, id) {
-
 			var promise;
 			var resources;
-
+			//console.log('in Manager readById');
 			return $q(function(resolve, reject) {
 				if (storage.get(type)[id] && storage.get(type)[id] !== null) {
 
@@ -80,8 +82,6 @@
 					promise.then(function(data) {
 
 						resources = converter.toResourceArray(data);
-
-						//resolve(resources);
 						storage.insert(resources);
 						resolve(storage.get(type)[id]);
 
@@ -96,18 +96,15 @@
 		};
 
 		this.update = function(resource) {
-			console.log('in update');
 			var promise;
 			var jsonApi = converter.toJsonApi(resource);
-			//console.log(jsonApi)
+			//console.log('in Manager update');
 			return $q(function(resolve, reject) {
 
 				var apiUrl = CONFIG.url.api + CONFIG.models[resource.type].api.patch.replace(':id', resource.id);
 				promise = rest.patch(apiUrl, jsonApi);
 				promise.then(function(data) {
-
-					//resources = converter.toResourceArray(data);
-					console.log(resource)
+					//console.log(resource);
 					storage.update(resource);
 					resolve(storage.get(resource.type)[resource.id]);
 
@@ -121,9 +118,8 @@
 		};
 
 		this.delete = function(resource) {
-			console.log('in delete');
 			var promise;
-			//console.log(jsonApi)
+			//console.log('in Manager delete');
 			return $q(function(resolve, reject) {
 
 				var apiUrl = CONFIG.url.api + CONFIG.models[resource.type].api.delete.replace(':id', resource.id);
@@ -131,7 +127,7 @@
 				promise.then(function(data) {
 
 					storage.delete(resource);
-					//resolve(storage.get(resource.type)[resource.id]);
+					resolve();
 
 				}, function(reason) {
 
@@ -142,14 +138,40 @@
 			});
 		};
 
+		this.readFromStorage = function(type, id){
+			if(!id){
+				return storage.get(type);
+			}else{
+				return storage.get(type)[id];
+			}
+		}
+
 		this.shallowCopy = function(resource){
 			var obj = {};
 			var attr;
+			var relationshipResourceId;
+
 			for(attr in resource){
 				if(!(attr  in CONFIG.models[resource.type].relationships)){
 					obj[attr] = resource[attr];
+					
+				}else{
+					console.log(resource[attr]);
+					if(CONFIG.models[resource.type].relationships[attr].isArray){
+						for(relationshipResourceId in resource[attr]){
+							if(!obj[attr]){
+								obj[attr] = {};
+							}
+							obj[attr][relationshipResourceId] = true;
+						}
+					}else{
+						for(relationshipResourceId in resource[attr]){
+							obj[attr] = relationshipResourceId;
+						}
+					}
 				}
 			}
+			
 			return obj;
 		}
 		

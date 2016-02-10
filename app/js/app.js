@@ -4,11 +4,16 @@
 
 	angular.module('ArticlesApp', [
 		'ngRoute',
-		'Rest',
-		'DataConverter',
-		'Storage',
-		'Manager',
+		'_Authentication', //Service
+		'Rest', //Service
+		'DataConverter', //Service
+		'Storage', //Service
+		'Crud', //Service
+		'Alert', //Service
+		'Manager', //Provider
 		'Controllers',
+		'Filters',
+		'UiDirectives',
 		// dev
 		'ngPrettyJson'
 	]);
@@ -20,6 +25,7 @@
 
 	var initInjector = angular.injector(['ng']);
 	var $http = initInjector.get('$http');
+
 	$http.get('http://localhost:8080/app/config/configurations.json').then(
 		function(res) {
 			angular.module('ArticlesApp').constant('CONFIG', res.data);
@@ -32,6 +38,7 @@
 		}
 	);
 
+	angular.module('ArticlesApp').constant('BASEURL', 'http://localhost:8080/app/#/');
 	// Provider configurations
 
 
