@@ -5,28 +5,28 @@ ng-show="
 controller.mode == 'show' ||
 controller.mode == 'create' ||
 controller.mode == 'edit'
-">List</a>
+">{{ 'list' | translate: 'title' }}</a>
 
 <!-- Show button -->
 <a class="btn btn-sm btn-primary" 
 href="#/{{ controller['type_dash'] }}/show/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'edit'
-">Show</a>
+">{{ 'show' | translate: 'title' }}</a>
 
 <!-- Create button -->
 <a class="btn btn-sm btn-success" 
 href="#/{{ controller['type_dash'] }}/create" 
 ng-show="
 controller.mode == 'list'
-">Create</a>
+">{{ 'create' | translate: 'title' }}</a>
 
 <!-- Edit button -->
 <a class="btn btn-sm btn-warning" 
 href="#/{{ controller['type_dash'] }}/edit/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'show'
-">Edit</a>
+">{{ 'edit' | translate: 'title' }}</a>
 
 <!-- Delete button -->
 <button class="btn btn-sm btn-danger"  
@@ -34,4 +34,4 @@ ng-click="controller.destroy(controller[controller['type_singular']])"
 ng-show="
 controller.mode == 'show' ||
 controller.mode == 'edit'
-">Delete</button>
+">{{ 'delete' | translate: 'title' }}</button>

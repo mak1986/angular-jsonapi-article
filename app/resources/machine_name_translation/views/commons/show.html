@@ -1,0 +1,50 @@
+<div class="box" 
+	ng-controller="MachineNameTranslationController as MachineNameTranslationController" 
+	ng-init="MachineNameTranslationController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ MachineNameTranslationController.type | translate: 'title' }}</h3>
+		
+		
+		<div class="box-tools" 
+			action-buttons-resource 
+			bind-controller="MachineNameTranslationController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'translation' | translate: 'title' }}</dt><dd>{{ MachineNameTranslationController.machineNameTranslation.translation }}</dd>
+			
+			<dt>{{ 'language' | translate: 'title' }}</dt><dd>{{ MachineNameTranslationController.machineNameTranslation.language }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'machine_name' | translate: 'title' }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'name' | translate: 'title' }}</dt><dd>{{ MachineNameTranslationController.machineNameTranslation.machineName | fieldValue: 'name' }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

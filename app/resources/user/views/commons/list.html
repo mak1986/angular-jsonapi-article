@@ -4,7 +4,7 @@
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">User list</h3>
+		<h3 class="box-title">{{ UserController.type | translate: 'title' }}</h3>
 		
 		<div class="box-tools" 
 			action-buttons-resource 
@@ -23,15 +23,15 @@
 			
 					<th class="table-index-column-width">#</th>
 					
-					<th>Username</th>
+					<th>{{ 'username' | translate: 'title' }}</th>
 					
-					<th>First Name</th>
+					<th>{{ 'first_name' | translate: 'title' }}</th>
 					
-					<th>Last Name</th>
+					<th>{{ 'last_name' | translate: 'title' }}</th>
 					
-					<th>Email</th>
+					<th>{{ 'email' | translate: 'title' }}</th>
 					
-					<th class="table-action-column-width">Actions</th>
+					<th class="table-action-column-width">{{ 'actions' | translate: 'title' }}</th>
 				
 				</tr>
 			

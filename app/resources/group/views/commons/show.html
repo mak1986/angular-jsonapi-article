@@ -4,7 +4,7 @@
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">Group</h3>
+		<h3 class="box-title">{{ GroupController.type | translate: 'title' }}</h3>
 		
 		<div class="box-tools" 
 			action-buttons-resource 
@@ -16,9 +16,9 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>Name</dt><dd>{{ GroupController.group.name }}</dd>
+			<dt>{{ 'name' | translate: 'title' }}</dt><dd>{{ GroupController.group.name }}</dd>
 			
-			<dt>Order</dt><dd>{{ GroupController.group.order }}</dd>
+			<dt>{{ 'weight' | translate: 'title' }}</dt><dd>{{ GroupController.group.weight }}</dd>
 			
 		</dl>
 	
@@ -30,7 +30,7 @@
 
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">User</h3>
+		<h3 class="box-title">{{ 'user' | translate: 'title' }}</h3>
 		
 		<div class="box-tools"></div>
 	
@@ -47,15 +47,14 @@
 			
 					<th class="table-index-column-width">#</th>
 					
-					<th>Username</th>
+					<th>{{ 'username' | translate: 'title' }}</th>
 					
-					<th>First Name</th>
+					<th>{{ 'first_name' | translate: 'title' }}</th>
 					
-					<th>Last Name</th>
+					<th>{{ 'last_name' | translate: 'title' }}</th>
 					
-					<th>Email</th>
+					<th>{{ 'email' | translate: 'title' }}</th>
 					
-					<th class="table-action-column-width">Action</th>
 				
 				</tr>
 			
@@ -75,10 +74,6 @@
 					
 					<td>{{ user.email }}</td>
 					
-					<td>
-					<a href="/#/user/show/{{ id }}"
-						class="btn btn-xs btn-primary">Show</a>
-					</td>
 				
 				</tr>
 			

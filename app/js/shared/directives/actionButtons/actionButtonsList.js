@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 
-	var actionButtonsList = function(){
+	function actionButtonsList(){
 		return {
 			restrict: 'A',
 			scope: {

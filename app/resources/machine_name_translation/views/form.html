@@ -1,0 +1,61 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="MachineNameTranslationController as MachineNameTranslationController" 
+			ng-init="MachineNameTranslationController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ MachineNameTranslationController.mode | translate: 'title' }} {{ MODEL | translate: 'title' }}</h3>
+				
+				<div class="box-tools" 
+					action-buttons-resource 
+					bind-controller="MachineNameTranslationController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form novalidate role="form">
+				
+				<div class="box-body">
+					
+					<div class="form-group" 
+						ng-controller="MachineNameController as MachineNameController" >
+						
+						<label for="select-machine-name-translation-machine-name">{{ 'machine_name' | translate: 'title' }}</label>
+						
+						<select id="select-machine-name-translation-machine-name" 
+								class="form-control" 
+								ng-model="MachineNameTranslationController.machineNameTranslation.machineName"
+								ng-options="machineName.id as machineName.name for machineName in MachineNameController.machineNames track by machineName.id"></select>
+					
+					</div><!-- /.form-group -->
+
+					<div class="form-group">
+						
+						<label for="select-machine-name-translation-machine-name">{{ 'translation' | translate: 'title' }}</label>
+						
+						<input class="form-control" 
+							id="text-machine-name-translation-translation" 
+							placeholder="Translation" 
+							type="text" 
+							ng-model="MachineNameTranslationController.machineNameTranslation.translation">
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group"
+						language-select
+						bind-model="MachineNameTranslationController.machineNameTranslation"></div><!-- /.form-group -->
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					form-buttons
+					bind-controller="MachineNameTranslationController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

@@ -68,6 +68,46 @@
 				//controller: 'GroupController',
 				//controllerAs: 'GroupController'
 			}).
+			when('/machine-name/list', {
+				templateUrl: 'app/resources/machine_name/views/list.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name/show/:id', {
+				templateUrl: 'app/resources/machine_name/views/show.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name/:mode', {
+				templateUrl: 'app/resources/machine_name/views/form.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name/:mode/:id', {
+				templateUrl: 'app/resources/machine_name/views/form.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name-translation/list', {
+				templateUrl: 'app/resources/machine_name_translation/views/list.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name-translation/show/:id', {
+				templateUrl: 'app/resources/machine_name_translation/views/show.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name-translation/:mode', {
+				templateUrl: 'app/resources/machine_name_translation/views/form.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
+			when('/machine-name-translation/:mode/:id', {
+				templateUrl: 'app/resources/machine_name_translation/views/form.html',
+				//controller: 'UserController',
+				//controllerAs: 'UserController'
+			}).
 			otherwise({
 				redirectTo: '/login'
 			});

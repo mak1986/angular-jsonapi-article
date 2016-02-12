@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="bower_components/AdminLTE/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -64,11 +64,11 @@ desired effect
 
 <div class="login-box"
     ng-if="!SiteController.auth.isLoggedIn" 
-    ng-include="SiteController.getLoginTemplate()"></div><!-- /.login-box -->
+    ng-include="SiteController.getLoginView()"></div><!-- /.login-box -->
 
 <div class="wrapper"  
     ng-if="SiteController.auth.isLoggedIn" 
-    ng-include="SiteController.getAdminTemplate()"
+    ng-include="SiteController.getAdminView()"
     ng-init="SiteController.retrieveData()"></div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
@@ -86,17 +86,24 @@ desired effect
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="app/js/app.js"></script>
 <script src="app/js/route.js"></script>
-<script src="app/js/_Controllers.js"></script>
+
+<!-- Filters -->
 <script src="app/js/shared/filters/_Filters.js"></script>
 <script src="app/js/shared/filters/orderObjectBy.js"></script>
 <script src="app/js/shared/filters/capitalize.js"></script>
+<script src="app/js/shared/filters/title.js"></script>
 <script src="app/js/shared/filters/fieldValue.js"></script>
+<script src="app/js/shared/filters/translate.js"></script>
+
+<!-- Directives -->
 <script src="app/js/shared/directives/_UiDirectives.js"></script>
 <script src="app/js/shared/directives/actionButtons/actionButtonsResource.js"></script>
 <script src="app/js/shared/directives/actionButtons/actionButtonsList.js"></script>
+<script src="app/js/shared/directives/formButtons/formButtons.js"></script>
+<script src="app/js/shared/directives/languageSelect/languageSelect.js"></script>
 
-<!--<script src="../tests/fakeAspp.js"></script>-->
 
+<!-- Services -->
 <script src="app/js/shared/services/Rest/_Rest.js"></script>
 <script src="app/js/shared/services/Rest/JsonApiRest.js"></script>
 <script src="app/js/shared/services/DataConverter/_DataConverter.js"></script>
@@ -107,20 +114,25 @@ desired effect
 <script src="app/js/shared/services/Alert/AlertService.js"></script>
 <script src="app/js/shared/services/Crud/_Crud.js"></script>
 <script src="app/js/shared/services/Crud/CrudUtility.js"></script>
+<script src="app/js/shared/services/Ui/_Ui.js"></script>
+<script src="app/js/shared/services/Ui/UiService.js"></script>
 <script src="app/js/shared/services/Authentication/_Authentication.js"></script>
 <script src="app/js/shared/services/Authentication/AuthenticationService.js"></script>
+
+<!-- Providers -->
 <script src="app/js/shared/providers/Manager/_Manager.js"></script>
 <script src="app/js/shared/providers/Manager/ResourceManager.js"></script>
 
-<!--<script src="app/js/shared/JsonApiRest/JsonApiRestExceptionHandler.js"></script>-->
-
+<!-- Controllers -->
+<script src="app/js/_Controllers.js"></script>
 <script src="app/components/site/controller/SiteController.js"></script>
+<script src="app/components/sidebar/controller/SidebarController.js"></script>
 <script src="app/resources/group/controller/GroupController.js"></script>
 <script src="app/resources/user/controller/UserController.js"></script>
+<script src="app/resources/machine_name/controller/MachineNameController.js"></script>
+<script src="app/resources/machine_name_translation/controller/MachineNameTranslationController.js"></script>
 <script src="app/resources/user_preference/controller/UserPreferenceController.js"></script>
 
-<!-- dev -->
-<script src="bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -1,0 +1,6 @@
+<label for="select-language">{{ 'language' | translate: 'title' }}</label>
+
+<select id="select-language" 
+		class="form-control" 
+		ng-model="model.language"
+		ng-options="language.code as language.nativeName for language in languages"></select>

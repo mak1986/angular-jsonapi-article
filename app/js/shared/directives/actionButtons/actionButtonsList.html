@@ -1,14 +1,14 @@
 <!-- Show button -->
 <a class="btn btn-xs btn-primary" 
 href="#/{{ controller['type_dash'] }}/show/{{ resource.id }}
-">Show</a>
+">{{ 'show' | translate: 'title' }}</a>
 
 <!-- Edit button -->
 <a class="btn btn-xs btn-warning" 
 href="#/{{ controller['type_dash'] }}/edit/{{ resource.id }}
-">Edit</a>
+">{{ 'edit' | translate: 'title' }}</a>
 
 <!-- Delete button -->
 <button class="btn btn-xs btn-danger" 
-ng-click="controller.destroy(resource)" 
-">Delete</button>
+ng-click="controller.destroy(resource)
+">{{ 'delete' | translate: 'title' }}</button>

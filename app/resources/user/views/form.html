@@ -7,7 +7,7 @@
 
 			<div class="box-header with-border">
 
-				<h3 class="box-title">{{ UserController.mode | capitalize }} user</h3>
+				<h3 class="box-title">{{ UserController.mode | translate: 'title' }} {{ MODEL | translate: 'title' }}</h3>
 				
 				<div class="box-tools" 
 					action-buttons-resource 
@@ -22,7 +22,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-username">Username</label>
+						<label for="text-user-username">{{ 'username' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-username" 
@@ -34,7 +34,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-first-name">First Name</label>
+						<label for="text-user-first-name">{{ 'first_name' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-first-name" 
@@ -46,7 +46,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-last-name">Last Name</label>
+						<label for="text-user-last-name">{{ 'last_name' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-last-name" 
@@ -58,7 +58,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-email">Email</label>
+						<label for="text-user-email">{{ 'email' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-email" 
@@ -72,7 +72,7 @@
 					<div class="form-group" 
 						ng-controller="UserPreferenceController as UserPreferenceController" >
 						
-						<label for="select-user-user-preference">User Preference</label>
+						<label for="select-user-user-preference">{{ 'user_preference' | translate: 'title' }}</label>
 						
 						<select id="select-user-user-preference" 
 								class="form-control" 
@@ -85,7 +85,7 @@
 					<div class="form-group" 
 						ng-controller="GroupController as GroupController" >
 						
-						<label for="checkbox-user-group">Group</label>
+						<label for="checkbox-user-group">{{ 'group' | translate: 'title' }}</label>
 						
 						<div class="checkbox"
 							ng-repeat="group in GroupController.groups">
@@ -106,21 +106,9 @@
 					
 				</div><!-- /.box-body -->
 				
-				<div class="box-footer">
-
-					<button class="btn btn-success"
-							type="submit"
-							ng-click="UserController.store(UserController.user)"
-							ng-if="UserController.mode == 'create'">Create</button>
-					
-					<button class="btn btn-success"
-							type="submit"
-							ng-click="UserController.update(UserController.user)"
-							ng-if="UserController.mode == 'edit'"   >Save</button>
-
-					<button class="btn btn-warning">Cancel</button>
-				
-				</div><!-- /.box-footer -->
+				<div class="box-footer" 
+					form-buttons
+					bind-controller="UserController"></div><!-- /.box-footer -->
 			
 			</form>
 		</div><!-- /.box -->

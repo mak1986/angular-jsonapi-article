@@ -4,3 +4,8 @@
 .table-action-column-width{
 	width: 140px;
 }
+
+/* bootstrap overrides */
+.sidebar-menu .treeview-menu {
+    display: block;
+}

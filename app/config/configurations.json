@@ -1,4 +1,7 @@
 {
+	"site":{
+		"default_language": "en"
+	},
 	"models": {
 
 		"user": {
@@ -98,8 +101,64 @@
 					"type": "text",
 					"mode": ["list", "show", "create", "edit"]
 				},
-				"order": {
+				"weight": {
 					"type": "number",
+					"mode": ["list", "show", "create", "edit"]
+				}
+			}
+		},
+		"machine_name": {
+			"api": {
+				"get": {
+					"all": "/machine_name",
+					"one": "/machine_name/:id"
+				},
+				"post": "/machine_name",
+				"patch": "/machine_name/:id",
+				"delete": "/machine_name/:id"
+			},
+			"relationships": {
+				"translations": {
+					"type": "machine_name_translation",
+					"isArray": true,
+					"cascadeDelete": false
+				}
+			},
+			"singular": "machineName",
+			"plural": "machineNames",
+			"structure": {
+				"name": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				}
+			}
+		},
+		"machine_name_translation": {
+			"api": {
+				"get": {
+					"all": "/machine_name_translation",
+					"one": "/machine_name_translation/:id"
+				},
+				"post": "/machine_name_translation",
+				"patch": "/machine_name_translation/:id",
+				"delete": "/machine_name_translation/:id"
+			},
+			"relationships": {
+				"machineName": {
+					"type": "machine_name",
+					"isArray": false,
+					"cascadeDelete": false
+				}
+			},
+			"singular": "machineNameTranslation",
+			"plural": "machineNameTranslations",
+			"structure": {
+				"translation": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"]
+				},
+				"language": {
+					"type": "select",
 					"mode": ["list", "show", "create", "edit"]
 				}
 			}

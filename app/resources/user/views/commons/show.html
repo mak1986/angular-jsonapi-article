@@ -4,7 +4,7 @@
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">User</h3>
+		<h3 class="box-title">{{ UserController.type | translate: 'title' }}</h3>
 		
 		<div class="box-tools" 
 			action-buttons-resource 
@@ -16,13 +16,13 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>Username</dt><dd>{{ UserController.user.username }}</dd>
+			<dt>{{ 'username' | translate: 'title' }}</dt><dd>{{ UserController.user.username }}</dd>
 			
-			<dt>First Name</dt><dd>{{ UserController.user.first_name }}</dd>
+			<dt>{{ 'first_name' | translate: 'title' }}</dt><dd>{{ UserController.user.first_name }}</dd>
 			
-			<dt>Last Name</dt><dd>{{ UserController.user.last_name }}</dd>
+			<dt>{{ 'last_name' | translate: 'title' }}</dt><dd>{{ UserController.user.last_name }}</dd>
 			
-			<dt>Email</dt><dd>{{ UserController.user.email }}</dd>
+			<dt>{{ 'email' | translate: 'title' }}</dt><dd>{{ UserController.user.email }}</dd>
 			
 		</dl>
 	
@@ -31,7 +31,7 @@
 
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">Preference</h3>
+		<h3 class="box-title">{{ 'user_preference' | translate: 'title' }}</h3>
 		
 		<div class="box-tools"></div>
 	
@@ -41,9 +41,9 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>Admin Skin</dt><dd>{{ UserController.user.preference | fieldValue: 'admin_skin' }}</dd>
+			<dt>{{ 'admin_skin' | translate: 'title' }}</dt><dd>{{ UserController.user.preference | fieldValue: 'admin_skin' }}</dd>
 			
-			<dt>Language</dt><dd>{{ UserController.user.preference | fieldValue: 'language' }}</dd>
+			<dt>{{ 'language' | translate: 'title' }}</dt><dd>{{ UserController.user.preference | fieldValue: 'language' }}</dd>
 			
 		</dl>
 	
@@ -55,7 +55,7 @@
 
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">Group</h3>
+		<h3 class="box-title">{{ 'group' | translate: 'title' }}</h3>
 		
 		<div class="box-tools"></div>
 	
@@ -72,11 +72,10 @@
 			
 					<th class="table-index-column-width">#</th>
 					
-					<th>Name</th>
+					<th>{{ 'name' | translate: 'title' }}</th>
 					
-					<th>Order</th>
+					<th>{{ 'weight' | translate: 'title' }}</th>
 					
-					<th class="table-action-column-width">Action</th>
 				
 				</tr>
 			
@@ -90,12 +89,8 @@
 					
 					<td>{{ group.name }}</td>
 					
-					<td>{{ group.order }}</td>
+					<td>{{ group.weight }}</td>
 					
-					<td>
-					<a href="/#/group/show/{{ id }}"
-						class="btn btn-xs btn-primary">Show</a>
-					</td>
 				
 				</tr>
 			

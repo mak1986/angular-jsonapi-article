@@ -4,7 +4,7 @@
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">User Preference list</h3>
+		<h3 class="box-title">{{ UserPreferenceController.type | translate: 'title' }}</h3>
 		
 		<div class="box-tools" 
 			action-buttons-resource 
@@ -23,11 +23,11 @@
 			
 					<th class="table-index-column-width">#</th>
 					
-					<th>Admin Skin</th>
+					<th>{{ 'admin_skin' | translate: 'title' }}</th>
 					
-					<th>Language</th>
+					<th>{{ 'language' | translate: 'title' }}</th>
 					
-					<th class="table-action-column-width">Actions</th>
+					<th class="table-action-column-width">{{ 'actions' | translate: 'title' }}</th>
 				
 				</tr>
 			

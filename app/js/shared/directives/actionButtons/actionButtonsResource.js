@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 
-	var actionButtonsResource = function(){
+	function actionButtonsResource(){
 		return {
 			restrict: 'A',
 			scope: {

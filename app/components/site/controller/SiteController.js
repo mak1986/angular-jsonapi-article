@@ -3,6 +3,7 @@
 
 	function SiteController($location, $rootScope, CONFIG, AlertService, AuthenticationService, ResourceManager) {
 
+		var vm = this;
 		var uriSegment = {};
 
 		var setUriSegment = function() {
@@ -16,25 +17,25 @@
 			setUriSegment();
 		});
 
-		this.getUriSegment = function(number) {
+		vm.getUriSegment = function(number) {
 			return uriSegment[number];
 		};
 
-		this.init = function() {
+		vm.init = function() {
 
 			// Bind AlertService to SiteController
-			this.alert = AlertService;
+			vm.alert = AlertService;
 
 			// Bind AuthenticationService to SiteController
-			this.auth = AuthenticationService;
+			vm.auth = AuthenticationService;
 
 			// Set Uri segment
 			setUriSegment();
 		};
 
-		this.init();
+		vm.init();
 
-		this.retrieveData = function() {
+		vm.retrieveData = function() {
 			// Retrieve all data from server
 			var count = 0;
 			var modelsCount = Object.keys(CONFIG.models).length;
@@ -45,7 +46,7 @@
 					count++;
 
 					if(count==modelsCount){
-						$rootScope.$broadcast('SiteControllerRetrieveData');
+						AuthenticationService.setUser();
 					}
 				
 				}, function(errorData) {
@@ -54,16 +55,20 @@
 			}
 		}
 
-		this.getCommonsTemplate = function(model, file) {
+		vm.getCommonsView = function(model, file) {
 			return "app/resources/" + model + "/views/commons/" + file + ".html";
 		};
 
-		this.getLoginTemplate = function() {
+		vm.getLoginView = function() {
 			return "app/components/site/views/login.html";
 		}
 
-		this.getAdminTemplate = function() {
+		vm.getAdminView = function() {
 			return "app/components/site/views/admin.html";
+		}
+
+		vm.getSidebarView = function() {
+			return "app/components/sidebar/views/sidebar.html";
 		}
 
 	}

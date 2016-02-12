@@ -8,7 +8,7 @@
 			
 			// set model type
 			vm["type"] = type;
-			vm["type_dash"] = type.replace("_", "-");
+			vm["type_dash"] = type.split("_").join("-");
 			vm["type_singular"] = CONFIG.models[type].singular;
 			vm["type_plural"] = CONFIG.models[type].plural;
 
@@ -58,7 +58,7 @@
 
 		this.store = function(vm, type, resource) {
 			resource["type"] = type;
-
+			console.log(resource);
 			resource = prepareSubmittedData(resource);
 
 			ResourceManager.create(resource)
@@ -127,7 +127,16 @@
 							delete resource[attr];
 						}
 					} else {
-						id = resource[attr].id;
+						console.log(resource[attr]);
+						console.log(attr);
+						//edit
+						if(resource[attr].id){
+							id = resource[attr].id;
+						}else{
+						//create
+							id = resource[attr];
+							resource[attr] = {};
+						}
 						resource[attr][id] = ResourceManager.readFromStorage(relationshipModelType, id);
 						delete resource[attr].id;
 					}

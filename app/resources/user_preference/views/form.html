@@ -7,7 +7,7 @@
 
 			<div class="box-header with-border">
 
-				<h3 class="box-title">{{ UserPreferenceController.mode | capitalize }} user preference</h3>
+				<h3 class="box-title">{{ UserPreferenceController.mode | translate: 'title' }} {{ MODEL | translate: 'title' }}</h3>
 				
 				<div class="box-tools" 
 					action-buttons-resource 
@@ -22,7 +22,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-preference-admin-skin">Admin Skin</label>
+						<label for="text-user-preference-admin-skin">{{ 'admin_skin' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-preference-admin-skin" 
@@ -34,7 +34,7 @@
 					
 					<div class="form-group">
 						
-						<label for="text-user-preference-language">Language</label>
+						<label for="text-user-preference-language">{{ 'language' | translate: 'title' }}</label>
 						
 						<input class="form-control" 
 							id="text-user-preference-language" 
@@ -48,7 +48,7 @@
 					<div class="form-group" 
 						ng-controller="UserController as UserController" >
 						
-						<label for="select-user-preference-user">User</label>
+						<label for="select-user-preference-user">{{ 'user' | translate: 'title' }}</label>
 						
 						<select id="select-user-preference-user" 
 								class="form-control" 
@@ -63,21 +63,9 @@
 					
 				</div><!-- /.box-body -->
 				
-				<div class="box-footer">
-
-					<button class="btn btn-success"
-							type="submit"
-							ng-click="UserPreferenceController.store(UserPreferenceController.preference)"
-							ng-if="UserPreferenceController.mode == 'create'">Create</button>
-					
-					<button class="btn btn-success"
-							type="submit"
-							ng-click="UserPreferenceController.update(UserPreferenceController.preference)"
-							ng-if="UserPreferenceController.mode == 'edit'"   >Save</button>
-
-					<button class="btn btn-warning">Cancel</button>
-				
-				</div><!-- /.box-footer -->
+				<div class="box-footer" 
+					form-buttons
+					bind-controller="UserPreferenceController"></div><!-- /.box-footer -->
 			
 			</form>
 		</div><!-- /.box -->
