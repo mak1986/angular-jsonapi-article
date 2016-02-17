@@ -1,0 +1,108 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="UserPreferenceController as UserPreferenceController" 
+			ng-init="UserPreferenceController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ UserPreferenceController.mode | translate | title }} {{ 'user_preference' | translate | title }}</h3>
+				
+				<div class="box-tools" 
+					action-buttons-resource 
+					bind-controller="UserPreferenceController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-user-preference-admin-skin"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="admin_skin"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="admin_skin"></div>
+
+						<input class="form-control" 
+							id="text-user-preference-admin-skin" 
+							name="admin_skin"
+							placeholder="{{ 'admin_skin' | translate | title }}"
+							type="text" 
+							ng-model="UserPreferenceController.preference.admin_skin"
+							hook-validation-required
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-preference-language"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="language"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="language"></div>
+
+						<input class="form-control" 
+							id="text-user-preference-language" 
+							name="language"
+							placeholder="{{ 'language' | translate | title }}"
+							type="text" 
+							ng-model="UserPreferenceController.preference.language"
+							hook-validation-required
+							>
+					
+					</div><!-- /.form-group -->
+
+					
+					<div class="form-group" 
+						ng-controller="UserController as UserController" >
+						
+						<label for="select-user-preference-user"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="user"
+							hook-label-bind-required="true">
+							>
+						</label>
+						
+						<select id="select-user-preference-user" 
+								class="form-control" 
+								name="user"
+								ng-model="UserPreferenceController.preference.user"
+								ng-options="user.id as user.name for user in UserController.users track by user.id"></select>
+					
+					</div><!-- /.form-group -->
+
+					
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					form-buttons
+					bind-form="form"
+					bind-controller="UserPreferenceController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

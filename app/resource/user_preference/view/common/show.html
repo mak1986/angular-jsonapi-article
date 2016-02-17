@@ -1,0 +1,63 @@
+<div class="box" 
+	ng-controller="UserPreferenceController as UserPreferenceController" 
+	ng-init="UserPreferenceController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ UserPreferenceController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="UserPreferenceController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.admin_skin }}</dd>
+			
+			<dt>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.language }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'user' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'username' }}</dd>
+			
+			<dt>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'first_name' }}</dd>
+			
+			<dt>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'last_name' }}</dd>
+			
+			<dt>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'email' }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

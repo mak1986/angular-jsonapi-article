@@ -1,0 +1,194 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="GroupController as GroupController" 
+			ng-init="GroupController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ GroupController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'group' | hookFilterTranslate | hookFilterTitle }}</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="GroupController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-group-name"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="name"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="name"></div>
+
+						<input class="form-control" 
+							id="text-group-name" 
+							name="name"
+							placeholder="{{ 'name' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="GroupController.group.name"
+							hook-validation-required
+							hook-validation-unique
+							hook-validation-unique-bind-controller="GroupController"
+							hook-validation-unique-bind-model="GroupController.group"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="number-group-weight"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="weight"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="weight"></div>
+
+						<input class="form-control"
+								id="number-group-weight" 
+								name="weight"
+								placeholder="{{ 'weight' | hookFilterTranslate | hookFilterTitle }}"
+								type="number"  
+								ng-model="GroupController.group.weight"
+								hook-validation-required
+								hook-validation-number
+								>
+					
+					</div><!-- /.form-group -->
+
+					
+
+					
+					<div class="form-group" 
+						ng-controller="AdminSubmenuController as AdminSubmenuController" >
+						
+						<label for="checkbox-group-admin-submenu"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="admin_submenu"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="adminSubmenu in AdminSubmenuController.adminSubmenus">
+							
+							<label for="checkbox-group-admin-submenu-{{ adminSubmenu.id }}">
+								
+								<input id="checkbox-group-admin-submenu-{{ adminSubmenu.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.adminSubmenus[adminSubmenu.id]">{{ adminSubmenu.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+					<div class="form-group" 
+						ng-controller="AdminMainMenuController as AdminMainMenuController" >
+						
+						<label for="checkbox-group-admin-main-menu"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="admin_main_menu"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="adminMainMenu in AdminMainMenuController.adminMainMenus">
+							
+							<label for="checkbox-group-admin-main-menu-{{ adminMainMenu.id }}">
+								
+								<input id="checkbox-group-admin-main-menu-{{ adminMainMenu.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.adminMainMenus[adminMainMenu.id]">{{ adminMainMenu.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+					<div class="form-group" 
+						ng-controller="UserController as UserController" >
+						
+						<label for="checkbox-group-user"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="user"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="user in UserController.users">
+							
+							<label for="checkbox-group-user-{{ user.id }}">
+								
+								<input id="checkbox-group-user-{{ user.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.users[user.id]">{{ user.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+					<div class="form-group" 
+						ng-controller="SiteController as SiteController" >
+						
+						<label for="checkbox-group-site"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="site"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="site in SiteController.sites">
+							
+							<label for="checkbox-group-site-{{ site.id }}">
+								
+								<input id="checkbox-group-site-{{ site.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.sites[site.id]">{{ site.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					hook-form-button
+					hook-form-button-bind-form="form"
+					hook-form-button-bind-controller="GroupController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

@@ -1,0 +1,191 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="UserController as UserController" 
+			ng-init="UserController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ UserController.mode | translate | title }} {{ 'user' | translate | title }}</h3>
+				
+				<div class="box-tools" 
+					action-buttons-resource 
+					bind-controller="UserController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-user-username"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="username"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="username"></div>
+
+						<input class="form-control" 
+							id="text-user-username" 
+							name="username"
+							placeholder="{{ 'username' | translate | title }}"
+							type="text" 
+							ng-model="UserController.user.username"
+							hook-validation-required
+							hook-validation-min-length="4"
+							hook-validation-max-length="20"
+							hook-validation-no-special-characters
+							hook-validation-unique
+							hook-validation-unique-bind-controller="UserController"
+							hook-validation-unique-bind-model="UserController.user"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-first-name"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="first_name"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="first_name"></div>
+
+						<input class="form-control" 
+							id="text-user-first-name" 
+							name="first_name"
+							placeholder="{{ 'first_name' | translate | title }}"
+							type="text" 
+							ng-model="UserController.user.first_name"
+							hook-validation-required
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-user-last-name"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="last_name"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="last_name"></div>
+
+						<input class="form-control" 
+							id="text-user-last-name" 
+							name="last_name"
+							placeholder="{{ 'last_name' | translate | title }}"
+							type="text" 
+							ng-model="UserController.user.last_name"
+							hook-validation-required
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="email-user-email"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="email"
+							hook-label-bind-required="true">
+						</label>
+						
+						<div hook-error-messages 
+							hook-error-messages-bind-form="form"
+							hook-error-messages-bind-field="email"></div>
+
+						<input class="form-control"
+								id="email-user-email"
+								name="email" 
+								placeholder="{{ 'email' | translate | title }}"
+								type="email"  
+								ng-model="UserController.user.email"
+								hook-validation-required
+								hook-validation-email
+								hook-validation-unique
+								hook-validation-unique-bind-controller="UserController"
+								hook-validation-unique-bind-model="UserController.user"
+>
+					
+					</div><!-- /.form-group -->
+
+					
+					<div class="form-group" 
+						ng-controller="UserPreferenceController as UserPreferenceController" >
+						
+						<label for="select-user-user-preference"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="user_preference"
+							hook-label-bind-required="true">
+							>
+						</label>
+						
+						<select id="select-user-user-preference" 
+								class="form-control" 
+								name="user_preference"
+								ng-model="UserController.user.preference"
+								ng-options="preference.id as preference.name for preference in UserPreferenceController.preferences track by preference.id"></select>
+					
+					</div><!-- /.form-group -->
+
+					
+					<div class="form-group" 
+						ng-controller="GroupController as GroupController" >
+						
+						<label for="checkbox-user-group"
+							hook-label
+							hook-label-bind-form="form"
+							hook-label-bind-field="group"
+							hook-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="group in GroupController.groups">
+							
+							<label for="checkbox-user-group-{{ group.id }}">
+								
+								<input id="checkbox-user-group-{{ group.id }}" 
+									type="checkbox"
+									ng-model="UserController.user.groups[group.id]">{{ group.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					form-buttons
+					bind-form="form"
+					bind-controller="UserController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

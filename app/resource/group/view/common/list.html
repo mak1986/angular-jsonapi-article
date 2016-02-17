@@ -1,0 +1,62 @@
+<div class="box" 
+	ng-controller="GroupController as GroupController" 
+	ng-init="GroupController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ GroupController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="GroupController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, group) in GroupController.groups">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ group.name }}</td>
+					
+					<td>{{ group.weight }}</td>
+					
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="group" 
+						hook-action-button-list-bind-controller="GroupController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

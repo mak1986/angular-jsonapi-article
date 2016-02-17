@@ -1,0 +1,165 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="AdminMainMenuController as AdminMainMenuController" 
+			ng-init="AdminMainMenuController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ AdminMainMenuController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'admin_main_menu' | hookFilterTranslate | hookFilterTitle }}</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="AdminMainMenuController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-admin-main-menu-href"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="href"
+							hook-form-label-bind-required="false">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="href"></div>
+
+						<input class="form-control" 
+							id="text-admin-main-menu-href" 
+							name="href"
+							placeholder="{{ 'href' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="AdminMainMenuController.adminMainMenu.href"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-admin-main-menu-name"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="name"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="name"></div>
+
+						<input class="form-control" 
+							id="text-admin-main-menu-name" 
+							name="name"
+							placeholder="{{ 'name' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="AdminMainMenuController.adminMainMenu.name"
+							hook-validation-required
+							hook-validation-unique
+							hook-validation-unique-bind-controller="AdminMainMenuController"
+							hook-validation-unique-bind-model="AdminMainMenuController.adminMainMenu"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-admin-main-menu-icon"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="icon"
+							hook-form-label-bind-required="false">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="icon"></div>
+
+						<input class="form-control" 
+							id="text-admin-main-menu-icon" 
+							name="icon"
+							placeholder="{{ 'icon' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="AdminMainMenuController.adminMainMenu.icon"
+							>
+					
+					</div><!-- /.form-group -->
+
+					
+
+					
+					<div class="form-group" 
+						ng-controller="AdminSubmenuController as AdminSubmenuController" >
+						
+						<label for="checkbox-admin-main-menu-admin-submenu"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="admin_submenu"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="adminSubmenu in AdminSubmenuController.adminSubmenus">
+							
+							<label for="checkbox-admin-main-menu-admin-submenu-{{ adminSubmenu.id }}">
+								
+								<input id="checkbox-admin-main-menu-admin-submenu-{{ adminSubmenu.id }}" 
+									type="checkbox"
+									ng-model="AdminMainMenuController.adminMainMenu.adminSubmenus[adminSubmenu.id]">{{ adminSubmenu.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+					<div class="form-group" 
+						ng-controller="GroupController as GroupController" >
+						
+						<label for="checkbox-admin-main-menu-group"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="group"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="group in GroupController.groups">
+							
+							<label for="checkbox-admin-main-menu-group-{{ group.id }}">
+								
+								<input id="checkbox-admin-main-menu-group-{{ group.id }}" 
+									type="checkbox"
+									ng-model="AdminMainMenuController.adminMainMenu.groups[group.id]">{{ group.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					hook-form-button
+					hook-form-button-bind-form="form"
+					hook-form-button-bind-controller="AdminMainMenuController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

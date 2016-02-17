@@ -1,0 +1,165 @@
+<div class="box" 
+	ng-controller="SiteController as SiteController" 
+	ng-init="SiteController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ SiteController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="SiteController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.domain }}</dd>
+			
+			<dt>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.subdomain }}</dd>
+			
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.name }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'plan' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.plan | hookFilterFieldValue: 'name' }}</dd>
+			
+			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.plan | hookFilterFieldValue: 'description' }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+
+
+
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'user' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, user) in SiteController.site.users">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ user.username }}</td>
+					
+					<td>{{ user.first_name }}</td>
+					
+					<td>{{ user.last_name }}</td>
+					
+					<td>{{ user.email }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'group' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, group) in SiteController.site.groups">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ group.name }}</td>
+					
+					<td>{{ group.weight }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

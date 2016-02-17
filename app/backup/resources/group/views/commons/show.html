@@ -1,0 +1,94 @@
+<div class="box" 
+	ng-controller="GroupController as GroupController" 
+	ng-init="GroupController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ GroupController.type | translate | title }}</h3>
+		
+		<div class="box-tools" 
+			action-buttons-resource 
+			bind-controller="GroupController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'name' | translate | title }}</dt><dd>{{ GroupController.group.name }}</dd>
+			
+			<dt>{{ 'weight' | translate | title }}</dt><dd>{{ GroupController.group.weight }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'user' | translate | title }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'username' | translate | title }}</th>
+					
+					<th>{{ 'first_name' | translate | title }}</th>
+					
+					<th>{{ 'last_name' | translate | title }}</th>
+					
+					<th>{{ 'email' | translate | title }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, user) in GroupController.group.users">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ user.username }}</td>
+					
+					<td>{{ user.first_name }}</td>
+					
+					<td>{{ user.last_name }}</td>
+					
+					<td>{{ user.email }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

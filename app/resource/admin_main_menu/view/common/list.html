@@ -1,0 +1,66 @@
+<div class="box" 
+	ng-controller="AdminMainMenuController as AdminMainMenuController" 
+	ng-init="AdminMainMenuController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ AdminMainMenuController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="AdminMainMenuController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'href' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'icon' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, adminMainMenu) in AdminMainMenuController.adminMainMenus">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ adminMainMenu.href }}</td>
+					
+					<td>{{ adminMainMenu.name }}</td>
+					
+					<td>{{ adminMainMenu.icon }}</td>
+					
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="adminMainMenu" 
+						hook-action-button-list-bind-controller="AdminMainMenuController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

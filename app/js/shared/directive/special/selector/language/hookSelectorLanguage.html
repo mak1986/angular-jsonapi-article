@@ -1,0 +1,9 @@
+<label for="select-language">{{ 'language' | hookFilterTranslate | hookFilterTitle }}</label>
+
+<select id="select-language" 
+		class="form-control" 
+		name="language"
+		ng-model="model.language"
+		ng-options="language.code as language.nativeName for language in languages"
+		hook-validation-required
+		></select>

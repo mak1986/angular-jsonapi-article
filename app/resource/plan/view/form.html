@@ -1,0 +1,117 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="PlanController as PlanController" 
+			ng-init="PlanController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ PlanController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'plan' | hookFilterTranslate | hookFilterTitle }}</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="PlanController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-plan-name"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="name"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="name"></div>
+
+						<input class="form-control" 
+							id="text-plan-name" 
+							name="name"
+							placeholder="{{ 'name' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="PlanController.plan.name"
+							hook-validation-required
+							hook-validation-unique
+							hook-validation-unique-bind-controller="PlanController"
+							hook-validation-unique-bind-model="PlanController.plan"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-plan-description"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="description"
+							hook-form-label-bind-required="false">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="description"></div>
+
+						<input class="form-control" 
+							id="text-plan-description" 
+							name="description"
+							placeholder="{{ 'description' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="PlanController.plan.description"
+							>
+					
+					</div><!-- /.form-group -->
+
+					
+
+					
+					<div class="form-group" 
+						ng-controller="SiteController as SiteController" >
+						
+						<label for="checkbox-plan-site"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="site"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="site in SiteController.sites">
+							
+							<label for="checkbox-plan-site-{{ site.id }}">
+								
+								<input id="checkbox-plan-site-{{ site.id }}" 
+									type="checkbox"
+									ng-model="PlanController.plan.sites[site.id]">{{ site.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					hook-form-button
+					hook-form-button-bind-form="form"
+					hook-form-button-bind-controller="PlanController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

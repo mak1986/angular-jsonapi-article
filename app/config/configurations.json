@@ -1,9 +1,53 @@
 {
-	"site":{
+	"site": {
 		"default_language": "en"
 	},
 	"models": {
-
+		"admin_route": {
+			"api": {
+				"get": {
+					"all": "/admin_route",
+					"one": "/admin_route/:id"
+				},
+				"post": "/admin_route",
+				"patch": "/admin_route/:id",
+				"delete": "/admin_route/:id"
+			},
+			"relationships": {},
+			"singular": "adminRoute",
+			"plural": "adminRoutes",
+			"structure": {
+				"model": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
+				},
+				"mode": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
+				},
+				"route": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-unique"
+					]
+				},
+				"templateUrl": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
+				}
+			}
+		},
 		"user": {
 			"api": {
 				"get": {
@@ -29,25 +73,43 @@
 			"singular": "user",
 			"plural": "users",
 			"structure": {
+				"username": {
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-min-length=\"4\"",
+						"hook-validation-max-length=\"20\"",
+						"hook-validation-no-special-characters",
+						"hook-validation-unique"
+					]
+				},
 				"first_name": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				},
 				"last_name": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
-				},
-				"username": {
-					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				},
 				"email": {
-					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"type": "email",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-email",
+						"hook-validation-unique"
+					]
 				}
 			}
 		},
-		"user_preference":{
+		"user_preference": {
 			"api": {
 				"get": {
 					"all": "/user_preference",
@@ -68,12 +130,18 @@
 			"plural": "preferences",
 			"structure": {
 				"language": {
-					"type":"text",
-					"mode": ["list", "show", "create", "edit"]
+					"type": "text",
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				},
 				"admin_skin": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				}
 			}
 		},
@@ -99,11 +167,19 @@
 			"structure": {
 				"name": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-unique"
+					]
 				},
 				"weight": {
 					"type": "number",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-number"
+					]
 				}
 			}
 		},
@@ -129,7 +205,11 @@
 			"structure": {
 				"name": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required",
+						"hook-validation-unique"
+					]
 				}
 			}
 		},
@@ -155,11 +235,17 @@
 			"structure": {
 				"translation": {
 					"type": "text",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				},
 				"language": {
 					"type": "select",
-					"mode": ["list", "show", "create", "edit"]
+					"mode": ["list", "show", "create", "edit"],
+					"validation": [
+						"hook-validation-required"
+					]
 				}
 			}
 		}
@@ -171,7 +257,118 @@
 			"converter": "JsonApiResourceConverter"
 		}
 	},
+	"languages": {
+		"th": {
+			"name": "Thai",
+			"nativeName": "ไทย",
+			"blacklist_filters": ["capitalize", "title"]
+		},
+		"en": {
+			"name": "English",
+			"nativeName": "English",
+			"blacklist_filters": []
+		}
+	},
 	"url": {
 		"api": "http://localhost:3000/api"
+	},
+	"routes": {
+		"1": {
+			"route": "/group/list",
+			"templateUrl": "app/resources/group/views/list.html"
+		},
+		"2": {
+			"route": "/group/show/:id",
+			"templateUrl": "app/resources/group/views/show.html"
+		},
+		"3": {
+			"route": "/group/:mode",
+			"templateUrl": "app/resources/group/views/form.html"
+		},
+		"4": {
+			"route": "/group/:mode/:id",
+			"templateUrl": "app/resources/group/views/form.html"
+		},
+		"5": {
+			"route": "/user/list",
+			"templateUrl": "app/resources/user/views/list.html"
+		},
+		"6": {
+			"route": "/user/show/:id",
+			"templateUrl": "app/resources/user/views/show.html"
+		},
+		"7": {
+			"route": "/user/:mode",
+			"templateUrl": "app/resources/user/views/form.html"
+		},
+		"8": {
+			"route": "/user/:mode/:id",
+			"templateUrl": "app/resources/user/views/form.html"
+		},
+		"9": {
+			"route": "/user-preference/list",
+			"templateUrl": "app/resources/user_preference/views/list.html"
+		},
+		"10": {
+			"route": "/user-preference/show/:id",
+			"templateUrl": "app/resources/user_preference/views/show.html"
+		},
+		"11": {
+			"route": "/user-preference/:mode",
+			"templateUrl": "app/resources/user_preference/views/form.html"
+		},
+		"12": {
+			"route": "/user-preference/:mode/:id",
+			"templateUrl": "app/resources/user_preference/views/form.html"
+		},
+		"13": {
+			"route": "/machine-name/list",
+			"templateUrl": "app/resources/machine_name/views/list.html"
+		},
+		"14": {
+			"route": "/machine-name/show/:id",
+			"templateUrl": "app/resources/machine_name/views/show.html"
+		},
+		"15": {
+			"route": "/machine-name/:mode",
+			"templateUrl": "app/resources/machine_name/views/form.html"
+		},
+		"16": {
+			"route": "/machine-name/:mode/:id",
+			"templateUrl": "app/resources/machine_name/views/form.html"
+		},
+		"17": {
+			"route": "/machine-name-translation/list",
+			"templateUrl": "app/resources/machine_name_translation/views/list.html"
+		},
+		"18": {
+			"route": "/machine-name-translation/show/:id",
+			"templateUrl": "app/resources/machine_name_translation/views/show.html"
+		},
+		"19": {
+			"route": "/machine-name-translation/:mode",
+			"templateUrl": "app/resources/machine_name_translation/views/form.html"
+		},
+		"20": {
+			"route": "/machine-name-translation/:mode/:id",
+			"templateUrl": "app/resources/machine_name_translation/views/form.html"
+		},
+		"21": {
+			"route": "/admin-route/list",
+			"templateUrl": "app/resources/admin_route/views/list.html"
+		},
+		"22": {
+			"route": "/admin-route/show/:id",
+			"templateUrl": "app/resources/admin_route/views/show.html"
+		},
+		"23": {
+			"route": "/admin-route/:mode",
+			"templateUrl": "app/resources/admin_route/views/form.html"
+		},
+		"24": {
+			"route": "/admin-route/:mode/:id",
+			"templateUrl": "app/resources/admin_route/views/form.html"
+		}
+
 	}
 }

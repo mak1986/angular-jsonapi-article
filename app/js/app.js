@@ -1,8 +1,8 @@
-// Inject Modules in ArticlesApp
+// Inject Modules in HookApp
 (function() {
 	'use strict';
 
-	angular.module('ArticlesApp', [
+	angular.module('HookApp', [
 		'ngRoute',
 		'_Authentication', //Service
 		'_Rest', //Service
@@ -10,11 +10,11 @@
 		'_Storage', //Service
 		'_Crud', //Service
 		'_Alert', //Service
-		'_Ui', //Service
+		'_UserInterface', //Service
 		'_Manager', //Provider
 		'_Controllers', //Controller
-		'_Filters',	//Filter
-		'_UiDirectives', //Directive
+		'_Filter', //Filter
+		'_Directive', //Directive
 	]);
 
 
@@ -25,38 +25,30 @@
 	var initInjector = angular.injector(['ng']);
 	var $http = initInjector.get('$http');
 
-	$http.get('http://localhost:8080/app/config/configurations.json').then(
+	$http.get('http://localhost:3000/config').then(
 		function(res) {
-			angular.module('ArticlesApp').constant('CONFIG', res.data);
-		}
-	).then(
-		$http.get('http://localhost:8080/app/config/isoLangs.json').then(
-			function(res){
-				angular.module('ArticlesApp').constant('LANGUAGE', res.data);
-			}
-		).then(
-			function(){
-				// Manual Initialization. Ref: https://docs.angularjs.org/guide/bootstrap#manual-initialization
-				// Note: Do not use ng-app directive
-				angular.element(document).ready(function() {
-					angular.bootstrap(document, ['ArticlesApp']);
-				});
-			}
-		)
-	);
+			angular.module('HookApp').constant('CONFIG', res.data);
 
-	angular.module('ArticlesApp').constant('BASEURL', 'http://localhost:8080/app/#/');
-	
+			// Manual Initialization. Ref: https://docs.angularjs.org/guide/bootstrap#manual-initialization
+			// Note: Do not use ng-app directive
+			angular.element(document).ready(function() {
+				angular.bootstrap(document, ['HookApp']);
+			});
+		}
+	)
+
+	angular.module('HookApp').constant('BASEURL', 'http://localhost:8080/app/#/');
+
 	// Provider configurations
 
-	angular.module('ArticlesApp')
+	angular.module('HookApp')
 		.config(function(ResourceManagerProvider, CONFIG) {
 
 			ResourceManagerProvider.setConverter(CONFIG.providers.ResourceManager.converter);
 			ResourceManagerProvider.setRest(CONFIG.providers.ResourceManager.rest);
 			ResourceManagerProvider.setStorage(CONFIG.providers.ResourceManager.storage);
 		});
-	angular.module('ArticlesApp')
+	angular.module('HookApp')
 		.config(['$httpProvider', function($httpProvider) {
 			//Reset headers to avoid OPTIONS request (aka preflight)
 			$httpProvider.defaults.headers.common = {};

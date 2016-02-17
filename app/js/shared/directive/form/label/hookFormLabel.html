@@ -1,0 +1,15 @@
+{{ field | hookFilterTranslate | hookFilterTitle }}
+
+<span ng-if="required=='true'" class="text-red">*</span>
+
+<span ng-if="form[field].$pending[field]">
+	
+	<span class="spinner">
+	
+		<i class="fa fa-spinner"></i>
+	
+	</span> 
+	
+	{{ 'validating' | hookFilterTranslate | hookFilterCapitalize }}...
+
+</span>

@@ -1,0 +1,188 @@
+<div class="row">
+ 	<div class="col-md-12">
+ 		
+		<div class="box" 
+			ng-controller="SiteController as SiteController" 
+			ng-init="SiteController.form()">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">{{ SiteController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'site' | hookFilterTranslate | hookFilterTitle }}</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="SiteController"></div>
+
+			</div><!-- /.box-header -->
+			
+			<!-- form start -->
+			<form name="form"
+				role="form"
+				novalidate>
+				
+				<div class="box-body">
+					
+					<div class="form-group">
+						
+						<label for="text-site-domain"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="domain"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="domain"></div>
+
+						<input class="form-control" 
+							id="text-site-domain" 
+							name="domain"
+							placeholder="{{ 'domain' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="SiteController.site.domain"
+							hook-validation-required
+							hook-validation-unique
+							hook-validation-unique-bind-controller="SiteController"
+							hook-validation-unique-bind-model="SiteController.site"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-site-subdomain"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="subdomain"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="subdomain"></div>
+
+						<input class="form-control" 
+							id="text-site-subdomain" 
+							name="subdomain"
+							placeholder="{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="SiteController.site.subdomain"
+							hook-validation-required
+							hook-validation-unique
+							hook-validation-unique-bind-controller="SiteController"
+							hook-validation-unique-bind-model="SiteController.site"
+							>
+					
+					</div><!-- /.form-group -->
+					
+					<div class="form-group">
+						
+						<label for="text-site-name"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="name"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="name"></div>
+
+						<input class="form-control" 
+							id="text-site-name" 
+							name="name"
+							placeholder="{{ 'name' | hookFilterTranslate | hookFilterTitle }}"
+							type="text" 
+							ng-model="SiteController.site.name"
+							hook-validation-required
+							>
+					
+					</div><!-- /.form-group -->
+
+					
+					<div class="form-group" 
+						ng-controller="PlanController as PlanController" >
+						
+						<label for="select-site-plan"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="plan"
+							hook-form-label-bind-required="true">
+							>
+						</label>
+						
+						<select id="select-site-plan" 
+								class="form-control" 
+								name="plan"
+								ng-model="SiteController.site.plan"
+								ng-options="plan.id as plan.name for plan in PlanController.plans track by plan.id"></select>
+					
+					</div><!-- /.form-group -->
+
+					
+					<div class="form-group" 
+						ng-controller="UserController as UserController" >
+						
+						<label for="checkbox-site-user"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="user"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="user in UserController.users">
+							
+							<label for="checkbox-site-user-{{ user.id }}">
+								
+								<input id="checkbox-site-user-{{ user.id }}" 
+									type="checkbox"
+									ng-model="SiteController.site.users[user.id]">{{ user.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+					<div class="form-group" 
+						ng-controller="GroupController as GroupController" >
+						
+						<label for="checkbox-site-group"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="group"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="group in GroupController.groups">
+							
+							<label for="checkbox-site-group-{{ group.id }}">
+								
+								<input id="checkbox-site-group-{{ group.id }}" 
+									type="checkbox"
+									ng-model="SiteController.site.groups[group.id]">{{ group.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+
+					
+				</div><!-- /.box-body -->
+				
+				<div class="box-footer" 
+					hook-form-button
+					hook-form-button-bind-form="form"
+					hook-form-button-bind-controller="SiteController"></div><!-- /.box-footer -->
+			
+			</form>
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+</div><!-- /.row -->

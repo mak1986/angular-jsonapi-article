@@ -1,0 +1,90 @@
+<div class="box" 
+	ng-controller="PlanController as PlanController" 
+	ng-init="PlanController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ PlanController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="PlanController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ PlanController.plan.name }}</dd>
+			
+			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ PlanController.plan.description }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'site' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, site) in PlanController.plan.sites">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ site.domain }}</td>
+					
+					<td>{{ site.subdomain }}</td>
+					
+					<td>{{ site.name }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

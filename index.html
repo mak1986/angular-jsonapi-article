@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html ng-controller="SiteController as SiteController">
+<html ng-controller="HookController as HookController">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="bower_components/AdminLTE/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -59,17 +59,17 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition {{'skin-' + (SiteController.auth.user.preference | fieldValue: 'admin_skin')}}" 
-      ng-class="{'sidebar-mini': SiteController.auth.isLoggedIn, 'login-page': !SiteController.auth.isLoggedIn}">
+<body class="hold-transition {{'skin-' + (HookController.auth.user.preference | hookFilterFieldValue: 'admin_skin')}}" 
+      ng-class="{'sidebar-mini': HookController.auth.isLoggedIn, 'login-page': !HookController.auth.isLoggedIn}">
 
 <div class="login-box"
-    ng-if="!SiteController.auth.isLoggedIn" 
-    ng-include="SiteController.getLoginView()"></div><!-- /.login-box -->
+    ng-if="!HookController.auth.isLoggedIn" 
+    ng-include="HookController.getLoginView()"></div><!-- /.login-box -->
 
 <div class="wrapper"  
-    ng-if="SiteController.auth.isLoggedIn" 
-    ng-include="SiteController.getAdminView()"
-    ng-init="SiteController.retrieveData()"></div><!-- ./wrapper -->
+    ng-if="HookController.auth.isLoggedIn" 
+    ng-include="HookController.getAdminView()"
+    ng-init="HookController.retrieveData()"></div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
 
@@ -88,50 +88,82 @@ desired effect
 <script src="app/js/route.js"></script>
 
 <!-- Filters -->
-<script src="app/js/shared/filters/_Filters.js"></script>
-<script src="app/js/shared/filters/orderObjectBy.js"></script>
-<script src="app/js/shared/filters/capitalize.js"></script>
-<script src="app/js/shared/filters/title.js"></script>
-<script src="app/js/shared/filters/fieldValue.js"></script>
-<script src="app/js/shared/filters/translate.js"></script>
+<script src="app/js/shared/filter/_Filter.js"></script>
+<script src="app/js/shared/filter/hookFilterByGroupId.js"></script>
+<script src="app/js/shared/filter/hookFilterBySiteId.js"></script>
+<script src="app/js/shared/filter/hookFilterInBlackListFilters.js"></script>
+<!-- <script src="app/js/shared/filter/orderObjectBy.js"></script> -->
+<script src="app/js/shared/filter/hookFilterCapitalize.js"></script>
+<script src="app/js/shared/filter/hookFilterTitle.js"></script>
+<script src="app/js/shared/filter/hookFilterFieldValue.js"></script>
+<script src="app/js/shared/filter/hookFilterTranslate.js"></script>
+<script src="app/js/shared/filter/hookFilterReplace.js"></script>
 
 <!-- Directives -->
-<script src="app/js/shared/directives/_UiDirectives.js"></script>
-<script src="app/js/shared/directives/actionButtons/actionButtonsResource.js"></script>
-<script src="app/js/shared/directives/actionButtons/actionButtonsList.js"></script>
-<script src="app/js/shared/directives/formButtons/formButtons.js"></script>
-<script src="app/js/shared/directives/languageSelect/languageSelect.js"></script>
-
+<script src="app/js/shared/directive/_Directive.js"></script>
+<!-- ./form -->
+<!-- ./form/button -->
+<script src="app/js/shared/directive/form/button/hookFormButton.js"></script>
+<!-- ./form/label -->
+<script src="app/js/shared/directive/form/label/hookFormLabel.js"></script>
+<!-- ./form/validation_message -->
+<script src="app/js/shared/directive/form/validation_message/hookValidationMessage.js"></script>
+<!-- ./form/validation_rule -->
+<script src="app/js/shared/directive/form/validation_rule/hookValidationRequired.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationNoSpecialCharacters.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationUnique.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationMinLength.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationMaxLength.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationEmail.js"></script>
+<script src="app/js/shared/directive/form/validation_rule/hookValidationNumber.js"></script>
+<!-- ./special -->
+<!-- ./special/action_button -->
+<!-- ./special/action_button/box_tools -->
+<script src="app/js/shared/directive/special/action_button/box_tools/hookActionButtonBoxTools.js"></script>
+<!-- ./special/action_button/list -->
+<script src="app/js/shared/directive/special/action_button/list/hookActionButtonList.js"></script>
+<!-- ./special/selector -->
+<!-- ./special/selector/language -->
+<script src="app/js/shared/directive/special/selector/language/hookSelectorLanguage.js"></script>
+  
 
 <!-- Services -->
-<script src="app/js/shared/services/Rest/_Rest.js"></script>
-<script src="app/js/shared/services/Rest/JsonApiRest.js"></script>
-<script src="app/js/shared/services/DataConverter/_DataConverter.js"></script>
-<script src="app/js/shared/services/DataConverter/JsonApiResourceConverter.js"></script>
-<script src="app/js/shared/services/Storage/_Storage.js"></script>
-<script src="app/js/shared/services/Storage/ResourceStorage.js"></script>
-<script src="app/js/shared/services/Alert/_Alert.js"></script>
-<script src="app/js/shared/services/Alert/AlertService.js"></script>
-<script src="app/js/shared/services/Crud/_Crud.js"></script>
-<script src="app/js/shared/services/Crud/CrudUtility.js"></script>
-<script src="app/js/shared/services/Ui/_Ui.js"></script>
-<script src="app/js/shared/services/Ui/UiService.js"></script>
-<script src="app/js/shared/services/Authentication/_Authentication.js"></script>
-<script src="app/js/shared/services/Authentication/AuthenticationService.js"></script>
+<script src="app/js/shared/service/alert/_Alert.js"></script>
+<script src="app/js/shared/service/alert/Alert.js"></script>
+<script src="app/js/shared/service/authentication/_Authentication.js"></script>
+<script src="app/js/shared/service/authentication/Authentication.js"></script>
+<script src="app/js/shared/service/crud/_Crud.js"></script>
+<script src="app/js/shared/service/crud/CrudUtility.js"></script>
+<script src="app/js/shared/service/dataConverter/_DataConverter.js"></script>
+<script src="app/js/shared/service/dataConverter/JsonApiResourceConverter.js"></script>
+<script src="app/js/shared/service/rest/_Rest.js"></script>
+<script src="app/js/shared/service/rest/JsonApiRest.js"></script>
+<script src="app/js/shared/service/storage/_Storage.js"></script>
+<script src="app/js/shared/service/storage/ResourceStorage.js"></script>
+<script src="app/js/shared/service/user_interface/_UserInterface.js"></script>
+<script src="app/js/shared/service/user_interface/UserInterface.js"></script>
+
 
 <!-- Providers -->
-<script src="app/js/shared/providers/Manager/_Manager.js"></script>
-<script src="app/js/shared/providers/Manager/ResourceManager.js"></script>
+<script src="app/js/shared/provider/manager/_Manager.js"></script>
+<script src="app/js/shared/provider/manager/ResourceManager.js"></script>
 
-<!-- Controllers -->
+<!-- Special Controllers -->
 <script src="app/js/_Controllers.js"></script>
-<script src="app/components/site/controller/SiteController.js"></script>
-<script src="app/components/sidebar/controller/SidebarController.js"></script>
-<script src="app/resources/group/controller/GroupController.js"></script>
-<script src="app/resources/user/controller/UserController.js"></script>
-<script src="app/resources/machine_name/controller/MachineNameController.js"></script>
-<script src="app/resources/machine_name_translation/controller/MachineNameTranslationController.js"></script>
-<script src="app/resources/user_preference/controller/UserPreferenceController.js"></script>
+<script src="app/component/hook/controller/HookController.js"></script>
+<script src="app/component/sidebar/controller/SidebarController.js"></script>
+
+<!-- Resource Controllers -->
+<script src="app/resource/admin_route/controller/AdminRouteController.js"></script>
+<script src="app/resource/admin_main_menu/controller/AdminMainMenuController.js"></script>
+<script src="app/resource/admin_submenu/controller/AdminSubmenuController.js"></script>
+<script src="app/resource/group/controller/GroupController.js"></script>
+<script src="app/resource/user/controller/UserController.js"></script>
+<script src="app/resource/machine_name/controller/MachineNameController.js"></script>
+<script src="app/resource/machine_name_translation/controller/MachineNameTranslationController.js"></script>
+<script src="app/resource/plan/controller/PlanController.js"></script> 
+<script src="app/resource/site/controller/SiteController.js"></script>
+<script src="app/resource/user_preference/controller/UserPreferenceController.js"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

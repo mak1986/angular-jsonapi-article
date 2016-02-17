@@ -1,0 +1,14 @@
+<div ng-show="HookController.alert.active">
+  <div  class="alert alert-{{ HookController.alert.type }}
+        alert-dismissable">
+    <button aria-hidden="true"
+            class="close" 
+            ng-click="HookController.alert.reset()"
+            type="button">×</button>
+    <h4>
+      <i class="icon fa {{ HookController.alert.icon }}"></i> 
+      {{ HookController.alert.title }}
+    </h4>
+    {{ HookController.alert.body }}
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="box" 
+	ng-controller="PlanController as PlanController" 
+	ng-init="PlanController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ PlanController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="PlanController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, plan) in PlanController.plans">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ plan.name }}</td>
+					
+					<td>{{ plan.description }}</td>
+					
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="plan" 
+						hook-action-button-list-bind-controller="PlanController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

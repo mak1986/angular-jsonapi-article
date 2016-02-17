@@ -1,0 +1,62 @@
+<div class="box" 
+	ng-controller="UserPreferenceController as UserPreferenceController" 
+	ng-init="UserPreferenceController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ UserPreferenceController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="UserPreferenceController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, preference) in UserPreferenceController.preferences">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ preference.admin_skin }}</td>
+					
+					<td>{{ preference.language }}</td>
+					
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="preference" 
+						hook-action-button-list-bind-controller="UserPreferenceController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

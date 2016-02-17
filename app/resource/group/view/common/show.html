@@ -1,0 +1,246 @@
+<div class="box" 
+	ng-controller="GroupController as GroupController" 
+	ng-init="GroupController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ GroupController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="GroupController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ GroupController.group.name }}</dd>
+			
+			<dt>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ GroupController.group.weight }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'admin_submenu' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'href' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, adminSubmenu) in GroupController.group.adminSubmenus">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ adminSubmenu.href }}</td>
+					
+					<td>{{ adminSubmenu.name }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'admin_main_menu' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'href' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'icon' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, adminMainMenu) in GroupController.group.adminMainMenus">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ adminMainMenu.href }}</td>
+					
+					<td>{{ adminMainMenu.name }}</td>
+					
+					<td>{{ adminMainMenu.icon }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'user' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, user) in GroupController.group.users">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ user.username }}</td>
+					
+					<td>{{ user.first_name }}</td>
+					
+					<td>{{ user.last_name }}</td>
+					
+					<td>{{ user.email }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'site' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, site) in GroupController.group.sites">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ site.domain }}</td>
+					
+					<td>{{ site.subdomain }}</td>
+					
+					<td>{{ site.name }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->
