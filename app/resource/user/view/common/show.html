@@ -16,13 +16,17 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.username }}</dd>
+			<dt>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.username }}</dd>
 			
-			<dt>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.first_name }}</dd>
+			<dt>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.first_name }}</dd>
 			
-			<dt>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.last_name }}</dd>
+			<dt>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.last_name }}</dd>
 			
-			<dt>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.email }}</dd>
+			<dt>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.email }}</dd>
 			
 		</dl>
 	
@@ -41,9 +45,11 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.preference | hookFilterFieldValue: 'admin_skin' }}</dd>
+			<dt>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.preference | hookFilterFieldValue: 'admin_skin' }}</dd>
 			
-			<dt>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ UserController.user.preference | hookFilterFieldValue: 'language' }}</dd>
+			<dt>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ UserController.user.preference | hookFilterFieldValue: 'language' }}</dd>
 			
 		</dl>
 	

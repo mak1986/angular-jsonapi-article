@@ -16,11 +16,14 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.domain }}</dd>
+			<dt>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ SiteController.site.domain }}</dd>
 			
-			<dt>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.subdomain }}</dd>
+			<dt>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ SiteController.site.subdomain }}</dd>
 			
-			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.name }}</dd>
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ SiteController.site.name }}</dd>
 			
 		</dl>
 	
@@ -39,9 +42,11 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.plan | hookFilterFieldValue: 'name' }}</dd>
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ SiteController.site.plan | hookFilterFieldValue: 'name' }}</dd>
 			
-			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt><dd>{{ SiteController.site.plan | hookFilterFieldValue: 'description' }}</dd>
+			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ SiteController.site.plan | hookFilterFieldValue: 'description' }}</dd>
 			
 		</dl>
 	

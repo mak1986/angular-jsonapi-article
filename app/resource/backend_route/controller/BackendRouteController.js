@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	function AdminRouteController($routeParams, CONFIG, CrudUtility, ResourceManager) {
+	function BackendRouteController($routeParams, CONFIG, CrudUtility, ResourceManager) {
 
-		var vm = CrudUtility.init(this, 'admin_route');
+		var vm = CrudUtility.init(this, 'backend_route');
 
 		this.list = function() {
 			CrudUtility.list(vm, vm["type"]);
@@ -31,7 +31,7 @@
 
 	}
 
-	AdminRouteController.$inject = [
+	BackendRouteController.$inject = [
 		'$routeParams',
 		'CONFIG',
 		'CrudUtility',
@@ -40,5 +40,5 @@
 
 	angular
 		.module('_Controllers')
-		.controller('AdminRouteController', AdminRouteController);
+		.controller('BackendRouteController', BackendRouteController);
 })();

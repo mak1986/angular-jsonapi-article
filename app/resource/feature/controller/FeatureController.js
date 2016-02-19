@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	function AdminMainMenuController($routeParams, CONFIG, CrudUtility, ResourceManager) {
+	function FeatureController($routeParams, CONFIG, CrudUtility, ResourceManager) {
 
-		var vm = CrudUtility.init(this, 'admin_main_menu');
+		var vm = CrudUtility.init(this, 'feature');
 
 		this.list = function() {
 			CrudUtility.list(vm, vm["type"]);
@@ -31,7 +31,7 @@
 
 	}
 
-	AdminMainMenuController.$inject = [
+	FeatureController.$inject = [
 		'$routeParams',
 		'CONFIG',
 		'CrudUtility',
@@ -40,5 +40,5 @@
 
 	angular
 		.module('_Controllers')
-		.controller('AdminMainMenuController', AdminMainMenuController);
+		.controller('FeatureController', FeatureController);
 })();

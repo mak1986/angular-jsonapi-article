@@ -24,9 +24,9 @@
 					<th class="table-index-column-width">#</th>
 					
 					<th>{{ 'translation' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
 				
 				</tr>
@@ -40,9 +40,9 @@
 					<td>{{ $index + 1 }}</td>
 					
 					<td>{{ machineNameTranslation.translation }}</td>
-					
+
 					<td>{{ machineNameTranslation.language }}</td>
-					
+
 					<td hook-action-button-list 
 						hook-action-button-list-bind-resource="machineNameTranslation" 
 						hook-action-button-list-bind-controller="MachineNameTranslationController">

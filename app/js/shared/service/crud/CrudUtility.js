@@ -55,6 +55,7 @@
 
 			setMode(vm, 'edit');
 			vm[vm['type_singular']] = ResourceManager.shallowCopy(resource);
+			console.log(vm[vm['type_singular']]);
 		};
 
 		this.store = function(vm, type, resource) {
@@ -81,11 +82,12 @@
 			
 			ResourceManager.update(resource)
 				.then(function() {
-					Alert.setSuccessMessage("The data has successfully been updated.", false);
-					edit(vm, type);
+					Alert.setSuccessMessage("The data has successfully been updated.", true);
+					//edit(vm, type);
+					$location.path("/" + vm["type_dash"] + "/list");
 				}, function(reason) {
 					Alert.setErrorMessage(reason, false);
-					// $location.path();
+					$location.path();
 				});
 		};
 
@@ -113,6 +115,11 @@
 			var id;
 			var relationships = CONFIG.models[resource.type].relationships;
 			var relationshipModelType;
+
+			if(resource['$$hashKey']){
+				delete resource['$$hashKey'];
+			}
+
 			for (attr in resource) {
 				if (attr in relationships) {
 					relationshipModelType = relationships[attr].type;
@@ -141,9 +148,14 @@
 						resource[attr][id] = ResourceManager.readFromStorage(relationshipModelType, id);
 						delete resource[attr].id;
 					}
+				}else{
+					if(attr != 'id' && attr != 'type' && CONFIG.models[resource.type].structure[attr].type == 'boolean'){
+						resource[attr] = (resource[attr] == "true" || resource[attr] == "1");
+					}
 				}
 
 			}
+			
 			return resource;
 
 		};

@@ -16,7 +16,6 @@
 			
 			if(service.user){
 				var lang = $filter('hookFilterFieldValue')(service.user.preference, 'language');
-			 	console.log(lang);
 			 	return lang;
 			}
 			return service.defaultLanguage;

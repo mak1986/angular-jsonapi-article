@@ -1,0 +1,215 @@
+<div class="box" 
+	ng-controller="FeatureController as FeatureController" 
+	ng-init="FeatureController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ FeatureController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="FeatureController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<dl><!-- class="dl-horizontal" -->
+			
+			<dt>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ FeatureController.feature.machine_name }}</dd>
+			
+			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ FeatureController.feature.description }}</dd>
+			
+			<dt>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ FeatureController.feature.weight }}</dd>
+			
+			<dt>{{ 'owner' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd><span class="fa" ng-class="FeatureController.feature.owner ? 'fa-check':'fa-close'"></span></dd>
+			
+			<dt>{{ 'icon' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ FeatureController.feature.icon }}</dd>
+			
+			<dt>{{ 'hide_from_menu' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd><span class="fa" ng-class="FeatureController.feature.hide_from_menu ? 'fa-check':'fa-close'"></span></dd>
+			
+			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ FeatureController.feature.name }}</dd>
+			
+		</dl>
+	
+	</div><!-- /.box-body -->
+	
+
+
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'backend_route' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th class="text-center">{{ 'is_menu' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'route' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'mode' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'model' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'templateUrl' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, backendRoute) in FeatureController.feature.backendRoutes">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ backendRoute.machine_name }}</td>
+					
+					<td class="text-center" ng-class="backendRoute.is_menu ? 'text-success':'text-danger'"><span class="fa" ng-class="backendRoute.is_menu ? 'fa-check':'fa-close'"></span></td>
+					
+					<td>{{ backendRoute.route }}</td>
+					
+					<td>{{ backendRoute.mode }}</td>
+					
+					<td>{{ backendRoute.model }}</td>
+					
+					<td>{{ backendRoute.templateUrl }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'plan' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, plan) in FeatureController.feature.plans">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ plan.name }}</td>
+					
+					<td>{{ plan.description }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'group' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+
+		<table class="table no-border table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
+					
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, group) in FeatureController.feature.groups">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ group.name }}</td>
+					
+					<td>{{ group.weight }}</td>
+					
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+
+	</div><!-- /.box-body -->
+
+
+
+
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

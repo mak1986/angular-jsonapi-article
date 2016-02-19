@@ -1,31 +1,53 @@
 (function() {
 	'use strict';
 
-	function SidebarController(Authentication, ResourceManager,UserInterface) {
+	function SidebarController(Authentication, ResourceManager, UserInterface) {
 
 		var vm = this;
+		var currentRoute;
+
 		vm.mainMenuExpandState = {};
-		vm.adminMainMenus = ResourceManager.readFromStorage('admin_main_menu');
-		
-		vm.init = function(){
+		vm.activeMainMenuId = undefined;
+		vm.activeSubmenuId = undefined;
+		vm.features = ResourceManager.readFromStorage('feature');
+
+		vm.init = function() {
 			var key;
-			for(key in vm.adminMainMenus){
+			for (key in vm.features) {
 				vm.mainMenuExpandState[key] = false;
 			}
 		};
 
 		vm.init();
 
-		vm.toggle = function(id){
-			vm.mainMenuExpandState[id] = !vm.mainMenuExpandState[id];
+		vm.selectMainMenu = function(mainMenuId) {
+			if (vm.submenuCount(vm.features[mainMenuId].backendRoutes) == 1) {
+				vm.activeSubmenuId = undefined;
+				vm.activeMainMenuId = mainMenuId;
+			}			
+			vm.mainMenuExpandState[mainMenuId] = !vm.mainMenuExpandState[mainMenuId];
 		};
 
-		vm.isExpanded = function(id){
+		vm.selectSubmenu = function(submenuId, mainMenuId) {
+			vm.activeSubmenuId = submenuId;
+			vm.activeMainMenuId = mainMenuId;
+		};
+
+		vm.isExpanded = function(id) {
 			return mainMenuExpandState[id];
-		}
-		vm.test = function(){
-			console.log('test');
-		}
+		};
+
+		vm.submenuCount = function(routes) {
+			var id;
+			var count = 0;
+			for (id in routes) {
+				if (routes[id].is_menu) {
+					count++;
+				}
+			}
+			return count;
+		};
+
 	}
 
 	SidebarController.$inject = [

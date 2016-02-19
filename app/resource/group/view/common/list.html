@@ -24,9 +24,9 @@
 					<th class="table-index-column-width">#</th>
 					
 					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
 				
 				</tr>
@@ -40,9 +40,9 @@
 					<td>{{ $index + 1 }}</td>
 					
 					<td>{{ group.name }}</td>
-					
+
 					<td>{{ group.weight }}</td>
-					
+
 					<td hook-action-button-list 
 						hook-action-button-list-bind-resource="group" 
 						hook-action-button-list-bind-controller="GroupController">

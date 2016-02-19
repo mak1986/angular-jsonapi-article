@@ -24,9 +24,9 @@
 					<th class="table-index-column-width">#</th>
 					
 					<th>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
 				
 				</tr>
@@ -40,9 +40,9 @@
 					<td>{{ $index + 1 }}</td>
 					
 					<td>{{ preference.admin_skin }}</td>
-					
+
 					<td>{{ preference.language }}</td>
-					
+
 					<td hook-action-button-list 
 						hook-action-button-list-bind-resource="preference" 
 						hook-action-button-list-bind-controller="UserPreferenceController">

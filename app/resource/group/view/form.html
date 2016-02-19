@@ -77,81 +77,7 @@
 					
 
 					
-					<div class="form-group" 
-						ng-controller="AdminSubmenuController as AdminSubmenuController" >
-						
-						<label for="checkbox-group-admin-submenu"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="admin_submenu"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="adminSubmenu in AdminSubmenuController.adminSubmenus">
-							
-							<label for="checkbox-group-admin-submenu-{{ adminSubmenu.id }}">
-								
-								<input id="checkbox-group-admin-submenu-{{ adminSubmenu.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.adminSubmenus[adminSubmenu.id]">{{ adminSubmenu.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
 
-					</div><!-- /.form-group -->
-					<div class="form-group" 
-						ng-controller="AdminMainMenuController as AdminMainMenuController" >
-						
-						<label for="checkbox-group-admin-main-menu"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="admin_main_menu"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="adminMainMenu in AdminMainMenuController.adminMainMenus">
-							
-							<label for="checkbox-group-admin-main-menu-{{ adminMainMenu.id }}">
-								
-								<input id="checkbox-group-admin-main-menu-{{ adminMainMenu.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.adminMainMenus[adminMainMenu.id]">{{ adminMainMenu.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
-
-					</div><!-- /.form-group -->
-					<div class="form-group" 
-						ng-controller="UserController as UserController" >
-						
-						<label for="checkbox-group-user"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="user"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="user in UserController.users">
-							
-							<label for="checkbox-group-user-{{ user.id }}">
-								
-								<input id="checkbox-group-user-{{ user.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.users[user.id]">{{ user.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
-
-					</div><!-- /.form-group -->
 					<div class="form-group" 
 						ng-controller="SiteController as SiteController" >
 						
@@ -171,6 +97,58 @@
 								<input id="checkbox-group-site-{{ site.id }}" 
 									type="checkbox"
 									ng-model="GroupController.group.sites[site.id]">{{ site.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+					<div class="form-group" 
+						ng-controller="FeatureController as FeatureController" >
+						
+						<label for="checkbox-group-feature"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="feature"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="feature in FeatureController.features">
+							
+							<label for="checkbox-group-feature-{{ feature.id }}">
+								
+								<input id="checkbox-group-feature-{{ feature.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.features[feature.id]">{{ feature.name }}
+							
+							</label>
+						
+						</div><!-- /.checkbox -->
+
+					</div><!-- /.form-group -->
+
+					<div class="form-group" 
+						ng-controller="UserController as UserController" >
+						
+						<label for="checkbox-group-user"
+							hook-form-label
+							hook-form-label-bind-form="form"
+							hook-form-label-bind-field="user"
+							hook-form-label-bind-required="false">
+							>
+						</label>
+						
+						<div class="checkbox"
+							ng-repeat="user in UserController.users">
+							
+							<label for="checkbox-group-user-{{ user.id }}">
+								
+								<input id="checkbox-group-user-{{ user.id }}" 
+									type="checkbox"
+									ng-model="GroupController.group.users[user.id]">{{ user.name }}
 							
 							</label>
 						

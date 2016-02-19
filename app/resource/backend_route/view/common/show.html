@@ -1,14 +1,14 @@
 <div class="box" 
-	ng-controller="PlanController as PlanController" 
-	ng-init="PlanController.show()">
+	ng-controller="BackendRouteController as BackendRouteController" 
+	ng-init="BackendRouteController.show()">
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">{{ PlanController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		<h3 class="box-title">{{ BackendRouteController.type | hookFilterTranslate | hookFilterTitle }}</h3>
 		
 		<div class="box-tools" 
 			hook-action-button-box-tools 
-			hook-action-button-box-tools-bind-controller="PlanController"></div>
+			hook-action-button-box-tools-bind-controller="BackendRouteController"></div>
 	
 	</div><!-- /.box-header -->
 	
@@ -16,11 +16,23 @@
 		
 		<dl><!-- class="dl-horizontal" -->
 			
-			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ PlanController.plan.name }}</dd>
+			<dt>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ BackendRouteController.backendRoute.machine_name }}</dd>
 			
-			<dt>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ PlanController.plan.description }}</dd>
+			<dt>{{ 'is_menu' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd><span class="fa" ng-class="BackendRouteController.backendRoute.is_menu ? 'fa-check':'fa-close'"></span></dd>
+			
+			<dt>{{ 'route' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ BackendRouteController.backendRoute.route }}</dd>
+			
+			<dt>{{ 'mode' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ BackendRouteController.backendRoute.mode }}</dd>
+			
+			<dt>{{ 'model' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ BackendRouteController.backendRoute.model }}</dd>
+			
+			<dt>{{ 'templateUrl' | hookFilterTranslate | hookFilterTitle }}</dt>
+			<dd>{{ BackendRouteController.backendRoute.templateUrl }}</dd>
 			
 		</dl>
 	
@@ -28,58 +40,6 @@
 	
 
 
-
-
-	<div class="box-header with-border">
-		
-		<h3 class="box-title">{{ 'site' | hookFilterTranslate | hookFilterTitle }}</h3>
-		
-		<div class="box-tools"></div>
-	
-	</div><!-- /.box-header -->
-	
-	<div class="box-body">
-
-		<table class="table no-border table-hover"
-			id="table-group"> 
-			
-			<thead>
-				
-				<tr>
-			
-					<th class="table-index-column-width">#</th>
-					
-					<th>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-				
-				</tr>
-			
-			</thead>
-			
-			<tbody>
-				
-				<tr ng-repeat="(id, site) in PlanController.plan.sites">
-					
-					<td>{{ $index + 1 }}</td>
-					
-					<td>{{ site.domain }}</td>
-					
-					<td>{{ site.subdomain }}</td>
-					
-					<td>{{ site.name }}</td>
-					
-				
-				</tr>
-			
-			</tbody>
-		
-		</table>
-
-	</div><!-- /.box-body -->
 
 
 	<div class="box-header with-border">
@@ -122,7 +82,7 @@
 			
 			<tbody>
 				
-				<tr ng-repeat="(id, feature) in PlanController.plan.features">
+				<tr ng-repeat="(id, feature) in BackendRouteController.backendRoute.features">
 					
 					<td>{{ $index + 1 }}</td>
 					

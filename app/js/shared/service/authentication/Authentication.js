@@ -4,10 +4,12 @@
 	function Authentication($filter, $location, $rootScope, $window, CONFIG, ResourceManager, UserInterface) {
 
 		var service = this;
-		var userId;
-
-		service.isLoggedIn = false;
+		// uncomment for real login
+		// var userId;
+		// service.isLoggedIn = false;
 		
+
+
 		service.login = function(login) {
 			var where = {};
 
@@ -64,6 +66,11 @@
 			}
 		};
 
+
+		//comment for real login
+		var userId = 1;
+		service.isLiggedIn = true;
+		service.retrieveData();
 	}
 
 	Authentication.$inject = [

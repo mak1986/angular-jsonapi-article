@@ -24,11 +24,11 @@
 					<th class="table-index-column-width">#</th>
 					
 					<th>{{ 'domain' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th>{{ 'subdomain' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+
 					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
 				
 				</tr>
@@ -42,11 +42,11 @@
 					<td>{{ $index + 1 }}</td>
 					
 					<td>{{ site.domain }}</td>
-					
+
 					<td>{{ site.subdomain }}</td>
-					
+
 					<td>{{ site.name }}</td>
-					
+
 					<td hook-action-button-list 
 						hook-action-button-list-bind-resource="site" 
 						hook-action-button-list-bind-controller="SiteController">

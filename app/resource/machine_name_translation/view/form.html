@@ -46,9 +46,26 @@
 					
 					</div><!-- /.form-group -->
 					
-					<div class="form-group"
-						hook-selector-language
-						hook-selector-language-bind-model="MachineNameTranslationController.machineNameTranslation"></div><!-- /.form-group -->
+					<div class="form-group">
+						
+						<label for="select-machine-name-translation-language"
+							hook-form-label
+							hook-form-label-bind-form="form"s
+							hook-form-label-bind-field="language"
+							hook-form-label-bind-required="true">
+						</label>
+						
+						<div hook-validation-message 
+							hook-validation-message-bind-form="form"
+							hook-validation-message-bind-field="language"></div>
+
+						<select id="select-machine-name-translation-language" 
+								class="form-control" 
+								name="language"
+								ng-model="MachineNameTranslationController.machineNameTranslation.language"
+								ng-options="machineNameTranslation.id as machineNameTranslation.name for machineNameTranslation in SomeObjects track by machineNameTranslation.id"></select>
+					
+					</div><!-- /.form-group -->
 
 					
 					<div class="form-group" 

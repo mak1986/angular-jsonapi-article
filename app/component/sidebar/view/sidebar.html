@@ -59,29 +59,38 @@
     </li>
     <!-- Optionally, you can add icons to the links -->
     <!-- <li class="active"><a href="/#/user/list"><i class="fa fa-link"></i> <span>User</span></a></li> -->
-    <li class="treeview" 
-      ng-repeat="(id, adminMainMenu) in SidebarController.adminMainMenus | hookFilterByGroupId">
+    <li ng-class="{ 'treeview': SidebarController.submenuCount(feature.backendRoutes) > 1 , 'active': SidebarController.activeMainMenuId == feature.id}" 
+      ng-hide="feature.hide_from_menu"
+      ng-repeat="(id, feature) in SidebarController.features | hookFilterByGroupId | orderBy: 'weight'">
       
-      <a href="" 
-        ng-click="SidebarController.toggle(adminMainMenu.id)">
+      <a ng-href="{{ SidebarController.submenuCount(feature.backendRoutes) == 1 ? (feature.backendRoutes | hookFilterFieldValue: 'route') : '' }}" 
+        ng-click="SidebarController.selectMainMenu(feature.id)">
 
-        <i class="fa {{ adminMainMenu.icon }}"></i> 
+        <i class="fa {{ feature.icon }}"></i> 
       
         <span>
-          {{ adminMainMenu.name | hookFilterTranslate | hookFilterTitle }}
+          {{ feature.machine_name | hookFilterTranslate | hookFilterTitle }}
         </span> 
       
-        <i class="fa fa-angle-left pull-right"></i>
+        <i class="fa fa-angle-left pull-right"
+          ng-hide="SidebarController.submenuCount(feature.backendRoutes) == 1" ></i>
 
       </a>
       
       <ul class="treeview-menu" 
-        ng-show="SidebarController.mainMenuExpandState[adminMainMenu.id]">
+        ng-show="SidebarController.mainMenuExpandState[feature.id] && SidebarController.submenuCount(feature.backendRoutes) > 1">
         
-        <li ng-repeat="(id, adminSubmenu) in adminMainMenu.adminSubmenus | hookFilterByGroupId">
+        <li ng-class="{'active': SidebarController.activeSubmenuId == backendRoute.id}"
+          ng-repeat="(id, backendRoute) in feature.backendRoutes"
+          ng-show="backendRoute.is_menu" >
       
-          <a href="{{ adminSubmenu.href }}">
-            {{ adminSubmenu.name | hookFilterTranslate | hookFilterTitle }}
+          <a href="{{ backendRoute.route }}"
+            ng-click="SidebarController.selectSubmenu(backendRoute.id, feature.id)">
+            
+            <i class="fa fa-circle-o"></i>
+            
+            {{ backendRoute.machine_name | hookFilterTranslate | hookFilterTitle }}
+          
           </a>
       
         </li>

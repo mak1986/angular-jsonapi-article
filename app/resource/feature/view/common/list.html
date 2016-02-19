@@ -1,0 +1,82 @@
+<div class="box" 
+	ng-controller="FeatureController as FeatureController" 
+	ng-init="FeatureController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ FeatureController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="FeatureController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th class="text-center">{{ 'owner' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th>{{ 'icon' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th class="text-center">{{ 'hide_from_menu' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th class="table-action-column-width">{{ 'actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, feature) in FeatureController.features">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ feature.machine_name }}</td>
+
+					<td>{{ feature.description }}</td>
+
+					<td>{{ feature.weight }}</td>
+
+					<td class="text-center" ng-class="feature.owner ? 'text-success':'text-danger'"><span class="fa" ng-class="feature.owner ? 'fa-check':'fa-close'"></span></td>
+
+					<td>{{ feature.icon }}</td>
+
+					<td class="text-center" ng-class="feature.hide_from_menu ? 'text-success':'text-danger'"><span class="fa" ng-class="feature.hide_from_menu ? 'fa-check':'fa-close'"></span></td>
+
+					<td>{{ feature.name }}</td>
+
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="feature" 
+						hook-action-button-list-bind-controller="FeatureController">
+					</td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->
