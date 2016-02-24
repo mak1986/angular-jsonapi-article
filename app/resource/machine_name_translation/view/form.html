@@ -1,13 +1,17 @@
-<div class="row">
+<!-- Main model: machine_name_translation -->
+
+<div class="row"
+	ng-controller="MachineNameTranslationController as MachineNameTranslationController" 
+	ng-init="MachineNameTranslationController.form()">
  	<div class="col-md-12">
  		
-		<div class="box" 
-			ng-controller="MachineNameTranslationController as MachineNameTranslationController" 
-			ng-init="MachineNameTranslationController.form()">
+		<div class="box">
 
 			<div class="box-header with-border">
 
-				<h3 class="box-title">{{ MachineNameTranslationController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'machine_name_translation' | hookFilterTranslate | hookFilterTitle }}</h3>
+				<h3 class="box-title">
+					{{ ('ui.' + MachineNameTranslationController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.machine_name_translation' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
 				
 				<div class="box-tools" 
 					hook-action-button-box-tools 
@@ -15,91 +19,97 @@
 
 			</div><!-- /.box-header -->
 			
-			<!-- form start -->
-			<form name="form"
-				role="form"
-				novalidate>
-				
-				<div class="box-body">
-					
-					<div class="form-group">
-						
-						<label for="text-machine-name-translation-translation"
-							hook-form-label
-							hook-form-label-bind-form="form"s
-							hook-form-label-bind-field="translation"
-							hook-form-label-bind-required="true">
-						</label>
-						
-						<div hook-validation-message 
-							hook-validation-message-bind-form="form"
-							hook-validation-message-bind-field="translation"></div>
-
-						<input class="form-control" 
-							id="text-machine-name-translation-translation" 
-							name="translation"
-							placeholder="{{ 'translation' | hookFilterTranslate | hookFilterTitle }}"
-							type="text" 
-							ng-model="MachineNameTranslationController.machineNameTranslation.translation"
-							hook-validation-required
-							>
-					
-					</div><!-- /.form-group -->
-					
-					<div class="form-group">
-						
-						<label for="select-machine-name-translation-language"
-							hook-form-label
-							hook-form-label-bind-form="form"s
-							hook-form-label-bind-field="language"
-							hook-form-label-bind-required="true">
-						</label>
-						
-						<div hook-validation-message 
-							hook-validation-message-bind-form="form"
-							hook-validation-message-bind-field="language"></div>
-
-						<select id="select-machine-name-translation-language" 
-								class="form-control" 
-								name="language"
-								ng-model="MachineNameTranslationController.machineNameTranslation.language"
-								ng-options="machineNameTranslation.id as machineNameTranslation.name for machineNameTranslation in SomeObjects track by machineNameTranslation.id"></select>
-					
-					</div><!-- /.form-group -->
-
-					
-					<div class="form-group" 
-						ng-controller="MachineNameController as MachineNameController" >
-						
-						<label for="select-machine-name-translation-machine-name"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="machine_name"
-							hook-form-label-bind-required="true">
-							>
-						</label>
-						
-						<select id="select-machine-name-translation-machine-name" 
-								class="form-control" 
-								name="machine_name"
-								ng-model="MachineNameTranslationController.machineNameTranslation.machineName"
-								ng-options="machineName.id as machineName.name for machineName in MachineNameController.machineNames track by machineName.id"></select>
-					
-					</div><!-- /.form-group -->
-
-					
-
-
-					
-				</div><!-- /.box-body -->
-				
-				<div class="box-footer" 
-					hook-form-button
-					hook-form-button-bind-form="form"
-					hook-form-button-bind-controller="MachineNameTranslationController"></div><!-- /.box-footer -->
 			
-			</form>
+			<div class="nav-tabs-custom">
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-machine-name-translation-translation"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="translation"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="translation"></div>
+							
+							<input class="form-control" 
+								id="text-machine-name-translation-translation" 
+								name="translation"
+								placeholder="{{ 'label.translation' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="MachineNameTranslationController.machineNameTranslation.translation"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+						<!-- Main model: machine_name_translation, Relationship alias: machineName, Relationship model: machine_name -->
+
+						<div class="form-group" 
+							ng-controller="MachineNameController as MachineNameController" >
+							
+							<label for="select-machine-name-translation-machine-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="machine_name"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-machine-name-translation-machine-name" 
+									class="form-control" 
+									name="machineName"
+									ng-model="MachineNameTranslationController.machineNameTranslation.machineName"
+									ng-options="machineName.id as (machineName.name | hookFilterContentTranslate) for machineName in MachineNameController.machineNames track by machineName.id"></select>
+						
+						</div><!-- /.form-group -->
+
+						<!-- Main model: machine_name_translation, Relationship alias: language, Relationship model: language -->
+
+						<div class="form-group" 
+							ng-controller="LanguageController as LanguageController" >
+							
+							<label for="select-machine-name-translation-language"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="language"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-machine-name-translation-language" 
+									class="form-control" 
+									name="language"
+									ng-model="MachineNameTranslationController.machineNameTranslation.language"
+									ng-options="language.id as (language.name | hookFilterContentTranslate) for language in LanguageController.languages track by language.id"></select>
+						
+						</div><!-- /.form-group -->
+
+		
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="MachineNameTranslationController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
 		</div><!-- /.box -->
 
  	</div><!-- /.col -->
+
+
 </div><!-- /.row -->

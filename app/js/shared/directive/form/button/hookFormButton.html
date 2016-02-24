@@ -3,15 +3,15 @@
 		ng-class="{ 'disabled': form.$invalid }"
 		ng-click="controller.store(controller[controller['type_singular']])"
 		ng-disabled="form.$invalid"
-		ng-if="controller.mode == 'create'">{{ 'create' | hookFilterTranslate | hookFilterTitle }}</button>
+		ng-if="controller.mode == 'create'">{{ 'ui.create' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
 
 <button class="btn btn-success"
 		type="submit"
 		ng-class="{ 'disabled': form.$invalid }"
 		ng-click="controller.update(controller[controller['type_singular']])"
 		ng-disabled="form.$invalid"
-		ng-if="controller.mode == 'edit'">{{ 'save' | hookFilterTranslate | hookFilterTitle }} </button>
+		ng-if="controller.mode == 'edit'">{{ 'ui.save' | hookFilterMachineNameTranslate | hookFilterTitle }} </button>
 
 <!-- Cancel button -->
 <button class="btn btn-warning" 
-ng-click="">{{ 'cancel' | hookFilterTranslate | hookFilterTitle }}</button>
+ng-click="">{{ 'ui.cancel' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>

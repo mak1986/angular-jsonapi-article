@@ -1,10 +1,12 @@
+<!-- Main model: user_preference -->
+
 <div class="box" 
 	ng-controller="UserPreferenceController as UserPreferenceController" 
 	ng-init="UserPreferenceController.show()">
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">{{ UserPreferenceController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		<h3 class="box-title">{{ 'model.user_preference' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 		
 		<div class="box-tools" 
 			hook-action-button-box-tools 
@@ -12,58 +14,102 @@
 	
 	</div><!-- /.box-header -->
 	
-	<div class="box-body">
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="UserPreferenceController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': UserPreferenceController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+          
+          	<a href="" ng-click="UserPreferenceController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.admin_skin' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.admin_skin }}</dd>
+				
+			</dl>
 		
-		<dl><!-- class="dl-horizontal" -->
-			
-			<dt>{{ 'admin_skin' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.admin_skin }}</dd>
-			
-			<dt>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.language }}</dd>
-			
-		</dl>
+		</div><!-- /.box-body -->
 	
-	</div><!-- /.box-body -->
-	
-
-	<div class="box-header with-border">
+		<!-- Main model: user_preference, Relationship alias: user, Relationship model: user -->
 		
-		<h3 class="box-title">{{ 'user' | hookFilterTranslate | hookFilterTitle }}</h3>
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.user' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
 		
-		<div class="box-tools"></div>
-	
-	</div><!-- /.box-header -->
-	
-	<div class="box-body">
+		</div><!-- /.box-header -->
 		
-		<dl><!-- class="dl-horizontal" -->
+		<div class="box-body">
 			
-			<dt>{{ 'username' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'username' }}</dd>
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.username' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.user | hookFilterByFieldValue: 'username' }}</dd>
+				
+				<dt>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.user | hookFilterByFieldValue: 'first_name' | hookFilterContentTranslate: UserPreferenceController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.user | hookFilterByFieldValue: 'last_name' | hookFilterContentTranslate: UserPreferenceController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.user | hookFilterByFieldValue: 'email' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+		<!-- Main model: user_preference, Relationship alias: language, Relationship model: language -->
+		
+		<div class="box-header with-border">
 			
-			<dt>{{ 'first_name' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'first_name' }}</dd>
+			<h3 class="box-title">{{ 'label.language' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 			
-			<dt>{{ 'last_name' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'last_name' }}</dd>
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
 			
-			<dt>{{ 'email' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ UserPreferenceController.preference.user | hookFilterFieldValue: 'email' }}</dd>
-			
-		</dl>
-	
-	</div><!-- /.box-body -->
-
-
-
-
-
-
-
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.language | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: UserPreferenceController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.flag' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.language | hookFilterByFieldValue: 'flag' }}</dd>
+				
+				<dt>{{ 'label.native_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.language | hookFilterByFieldValue: 'native_name' }}</dd>
+				
+				<dt>{{ 'label.iso_2_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserPreferenceController.preference.language | hookFilterByFieldValue: 'iso_2_code' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
 
 
 	<div class="box-footer">
 	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
 
 </div><!-- /.box -->

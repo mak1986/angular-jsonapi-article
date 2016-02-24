@@ -19,7 +19,7 @@
           } 
           
           ctrl['$substitutions']["hook_validation_max_length"] = {
-            "$field": field,
+            "$field": 'label.'+field,
             "$max_length": maxLength
           }
 

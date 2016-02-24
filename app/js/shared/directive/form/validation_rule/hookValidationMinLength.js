@@ -19,7 +19,7 @@
           } 
           
           ctrl['$substitutions']["hook_validation_min_length"] = {
-            "$field": field,
+            "$field": 'label.'+field,
             "$min_length": minLength
           }
 

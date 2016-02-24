@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Flag icons -->
+  <link rel="stylesheet" href="bower_components/flag-icon-css/css/flag-icon.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -59,7 +61,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition {{'skin-' + (HookController.auth.user.preference | hookFilterFieldValue: 'admin_skin')}}" 
+<body class="hold-transition {{'skin-' + (HookController.auth.user.preference | hookFilterByFieldValue: 'admin_skin')}}" 
       ng-class="{'sidebar-mini': HookController.auth.isLoggedIn, 'login-page': !HookController.auth.isLoggedIn}">
 
 <div class="login-box"
@@ -91,13 +93,14 @@ desired effect
 <script src="app/js/shared/filter/_Filter.js"></script>
 <script src="app/js/shared/filter/hookFilterByGroupId.js"></script>
 <script src="app/js/shared/filter/hookFilterBySiteId.js"></script>
+<script src="app/js/shared/filter/hookFilterContentTranslate.js"></script>
 <script src="app/js/shared/filter/hookFilterCount.js"></script>
 <script src="app/js/shared/filter/hookFilterInBlackListFilters.js"></script>
 <!-- <script src="app/js/shared/filter/orderObjectBy.js"></script> -->
 <script src="app/js/shared/filter/hookFilterCapitalize.js"></script>
 <script src="app/js/shared/filter/hookFilterTitle.js"></script>
-<script src="app/js/shared/filter/hookFilterFieldValue.js"></script>
-<script src="app/js/shared/filter/hookFilterTranslate.js"></script>
+<script src="app/js/shared/filter/hookFilterByFieldValue.js"></script>
+<script src="app/js/shared/filter/hookFilterMachineNameTranslate.js"></script>
 <script src="app/js/shared/filter/hookFilterReplace.js"></script>
 
 <!-- Directives -->
@@ -155,13 +158,19 @@ desired effect
 <script src="app/component/sidebar/controller/SidebarController.js"></script>
 
 <!-- Resource Controllers -->
+<script src="app/resource/accommodation/controller/AccommodationController.js"></script>
+<script src="app/resource/accommodation_facility/controller/AccommodationFacilityController.js"></script>
+<script src="app/resource/accommodation_kind/controller/AccommodationKindController.js"></script>
+<script src="app/resource/room_combination/controller/RoomCombinationController.js"></script>
 <script src="app/resource/backend_route/controller/BackendRouteController.js"></script>
 <script src="app/resource/feature/controller/FeatureController.js"></script>
 <script src="app/resource/group/controller/GroupController.js"></script>
+<script src="app/resource/language/controller/LanguageController.js"></script>
 <script src="app/resource/user/controller/UserController.js"></script>
 <script src="app/resource/machine_name/controller/MachineNameController.js"></script>
 <script src="app/resource/machine_name_translation/controller/MachineNameTranslationController.js"></script>
 <script src="app/resource/plan/controller/PlanController.js"></script> 
+<script src="app/resource/resort_facility/controller/ResortFacilityController.js"></script>
 <script src="app/resource/site/controller/SiteController.js"></script>
 <script src="app/resource/user_preference/controller/UserPreferenceController.js"></script>
 

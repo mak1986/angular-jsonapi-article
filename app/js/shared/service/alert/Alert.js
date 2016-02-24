@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function Alert($rootScope) {
+	function Alert($filter, $rootScope) {
 
 		var service = this;
 		var queue = [];
@@ -14,28 +14,34 @@
 			}
 		});
 
-		this.setSuccessMessage = function(message, redirect) {
+		this.setSuccessMessage = function(subject, action, redirect) {
 			var alert = {};
 
 			alert.active = true;
 			alert.type = "success";
 			alert.icon = "fa-check";
-			alert.title = "Success!";
-			alert.body = message;
+			alert.title = $filter('hookFilterMachineNameTranslate')('ui.success_title');
+			alert.body = $filter('hookFilterReplace')(
+				$filter('hookFilterMachineNameTranslate')('ui.success_body'), {
+					'$subject': $filter('hookFilterCapitalize')($filter('hookFilterMachineNameTranslate')(subject)),
+					'$action': $filter('hookFilterMachineNameTranslate')(action)
+			});
+
 			if (redirect == true) {
 				queue.push(alert);
 			}
+
 			setAlert(alert);
 		};
 
-		this.setErrorMessage = function(message, redirect) {
+		this.setErrorMessage = function(redirect) {
 			var alert = {};
 
 			alert.active = true;
 			alert.type = "danger";
 			alert.icon = "fa-ban";
-			alert.title = "Error!";
-			alert.body = message;
+			alert.title = $filter('hookFilterMachineNameTranslate')('ui.error_title');
+			alert.body = $filter('hookFilterMachineNameTranslate')('ui.error_body');
 			if (redirect == true) {
 				queue.push(alert);
 			}
@@ -62,6 +68,7 @@
 	}
 
 	Alert.$inject = [
+		'$filter',
 		'$rootScope'
 	];
 

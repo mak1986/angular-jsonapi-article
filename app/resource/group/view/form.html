@@ -1,13 +1,17 @@
-<div class="row">
- 	<div class="col-md-12">
+<!-- Main model: group -->
+
+<div class="row"
+	ng-controller="GroupController as GroupController" 
+	ng-init="GroupController.form()">
+ 	<div class="col-md-8">
  		
-		<div class="box" 
-			ng-controller="GroupController as GroupController" 
-			ng-init="GroupController.form()">
+		<div class="box">
 
 			<div class="box-header with-border">
 
-				<h3 class="box-title">{{ GroupController.mode | hookFilterTranslate | hookFilterTitle }} {{ 'group' | hookFilterTranslate | hookFilterTitle }}</h3>
+				<h3 class="box-title">
+					{{ ('ui.' + GroupController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.group' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
 				
 				<div class="box-tools" 
 					hook-action-button-box-tools 
@@ -15,158 +19,225 @@
 
 			</div><!-- /.box-header -->
 			
-			<!-- form start -->
-			<form name="form"
-				role="form"
-				novalidate>
-				
-				<div class="box-body">
-					
-					<div class="form-group">
-						
-						<label for="text-group-name"
-							hook-form-label
-							hook-form-label-bind-form="form"s
-							hook-form-label-bind-field="name"
-							hook-form-label-bind-required="true">
-						</label>
-						
-						<div hook-validation-message 
-							hook-validation-message-bind-form="form"
-							hook-validation-message-bind-field="name"></div>
-
-						<input class="form-control" 
-							id="text-group-name" 
-							name="name"
-							placeholder="{{ 'name' | hookFilterTranslate | hookFilterTitle }}"
-							type="text" 
-							ng-model="GroupController.group.name"
-							hook-validation-required
-							hook-validation-unique
-							hook-validation-unique-bind-controller="GroupController"
-							hook-validation-unique-bind-model="GroupController.group"
-							>
-					
-					</div><!-- /.form-group -->
-					
-					<div class="form-group">
-						
-						<label for="number-group-weight"
-							hook-form-label
-							hook-form-label-bind-form="form"s
-							hook-form-label-bind-field="weight"
-							hook-form-label-bind-required="true">
-						</label>
-						
-						<div hook-validation-message 
-							hook-validation-message-bind-form="form"
-							hook-validation-message-bind-field="weight"></div>
-
-						<input class="form-control"
-								id="number-group-weight" 
-								name="weight"
-								placeholder="{{ 'weight' | hookFilterTranslate | hookFilterTitle }}"
-								type="number"  
-								ng-model="GroupController.group.weight"
-								hook-validation-required
-								hook-validation-number
-								>
-					
-					</div><!-- /.form-group -->
-
-					
-
-					
-
-					<div class="form-group" 
-						ng-controller="SiteController as SiteController" >
-						
-						<label for="checkbox-group-site"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="site"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="site in SiteController.sites">
-							
-							<label for="checkbox-group-site-{{ site.id }}">
-								
-								<input id="checkbox-group-site-{{ site.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.sites[site.id]">{{ site.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
-
-					</div><!-- /.form-group -->
-
-					<div class="form-group" 
-						ng-controller="FeatureController as FeatureController" >
-						
-						<label for="checkbox-group-feature"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="feature"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="feature in FeatureController.features">
-							
-							<label for="checkbox-group-feature-{{ feature.id }}">
-								
-								<input id="checkbox-group-feature-{{ feature.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.features[feature.id]">{{ feature.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
-
-					</div><!-- /.form-group -->
-
-					<div class="form-group" 
-						ng-controller="UserController as UserController" >
-						
-						<label for="checkbox-group-user"
-							hook-form-label
-							hook-form-label-bind-form="form"
-							hook-form-label-bind-field="user"
-							hook-form-label-bind-required="false">
-							>
-						</label>
-						
-						<div class="checkbox"
-							ng-repeat="user in UserController.users">
-							
-							<label for="checkbox-group-user-{{ user.id }}">
-								
-								<input id="checkbox-group-user-{{ user.id }}" 
-									type="checkbox"
-									ng-model="GroupController.group.users[user.id]">{{ user.name }}
-							
-							</label>
-						
-						</div><!-- /.checkbox -->
-
-					</div><!-- /.form-group -->
-
-
-					
-				</div><!-- /.box-body -->
-				
-				<div class="box-footer" 
-					hook-form-button
-					hook-form-button-bind-form="form"
-					hook-form-button-bind-controller="GroupController"></div><!-- /.box-footer -->
 			
-			</form>
+			<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" ng-init="GroupController.displayLanguage=HookController.ui.getLanguage()">
+                 
+                  <li ng-class="{ 'active': GroupController.displayLanguage==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="GroupController.displayLanguage=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-group-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="name"
+								hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(GroupController.displayLanguage)"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="name"></div>
+							
+							<input class="form-control" 
+								id="text-group-name" 
+								name="name"
+								placeholder="{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="GroupController.group.name[GroupController.displayLanguage]"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="number-group-weight"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="weight"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="weight"></div>
+							
+							<input class="form-control"
+									id="number-group-weight" 
+									name="weight"
+									placeholder="{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+									type="number"  
+									ng-model="GroupController.group.weight"
+									hook-validation-required
+									hook-validation-number
+									>
+						
+						</div><!-- /.form-group -->
+
+	
+		
+						<!-- Main model: group, Relationship alias: users, Relationship model: user -->
+
+						<div class="form-group" 
+							ng-controller="UserController as UserController" >
+							
+							<label for="checkbox-group-users"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="users"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="users in UserController.users">
+								
+								<label for="checkbox-group-users-{{ users.id }}">
+									
+									<input id="checkbox-group-users-{{ users.id }}" 
+										type="checkbox"
+										ng-model="GroupController.group.users[users.id]">{{ users.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+						<!-- Main model: group, Relationship alias: sites, Relationship model: site -->
+
+						<div class="form-group" 
+							ng-controller="SiteController as SiteController" >
+							
+							<label for="checkbox-group-sites"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="sites"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="sites in SiteController.sites">
+								
+								<label for="checkbox-group-sites-{{ sites.id }}">
+									
+									<input id="checkbox-group-sites-{{ sites.id }}" 
+										type="checkbox"
+										ng-model="GroupController.group.sites[sites.id]">{{ sites.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+						<!-- Main model: group, Relationship alias: features, Relationship model: feature -->
+
+						<div class="form-group" 
+							ng-controller="FeatureController as FeatureController" >
+							
+							<label for="checkbox-group-features"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="features"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="features in FeatureController.features">
+								
+								<label for="checkbox-group-features-{{ features.id }}">
+									
+									<input id="checkbox-group-features-{{ features.id }}" 
+										type="checkbox"
+										ng-model="GroupController.group.features[features.id]">{{ features.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="GroupController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
 		</div><!-- /.box -->
 
  	</div><!-- /.col -->
+
+	<div class="col-md-4">
+	 	
+	 	<div class="box">
+	 		<div class="box-header with-border">
+			
+				<h3 class="box-title">{{ 'ui.translation_view' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+			</div><!-- /.box-header -->
+
+			<div class="nav-tabs-custom" ng-init="GroupController.displayLanguageView=HookController.ui.getLanguage()">
+                
+                <ul class="nav nav-tabs">
+                 
+                  <li ng-class="{ 'active': GroupController.displayLanguageView==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="GroupController.displayLanguageView=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<div class="tab-content">
+				
+					<dl><!-- class="dl-horizontal" -->
+					
+						<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+						<dd>{{ GroupController.group.name | hookFilterContentTranslate: GroupController.displayLanguageView }}</dd>
+					</dl>
+			
+				</div><!-- /.tab-content -->
+
+ 		    </div><!-- /.nav-tabs-custom -->
+ 		
+ 		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
 </div><!-- /.row -->

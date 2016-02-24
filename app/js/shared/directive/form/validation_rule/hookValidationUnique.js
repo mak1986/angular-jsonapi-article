@@ -18,7 +18,7 @@
         }
 
         ctrl['$substitutions']["hook_validation_unique"] = {
-          "$field": field
+          "$field": 'label.'+field
         }
 
         ctrl.$asyncValidators[field] = function(modelValue, viewValue) {

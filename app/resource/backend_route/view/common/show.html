@@ -1,10 +1,12 @@
+<!-- Main model: backend_route -->
+
 <div class="box" 
 	ng-controller="BackendRouteController as BackendRouteController" 
 	ng-init="BackendRouteController.show()">
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">{{ BackendRouteController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		<h3 class="box-title">{{ 'model.backend_route' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 		
 		<div class="box-tools" 
 			hook-action-button-box-tools 
@@ -12,109 +14,129 @@
 	
 	</div><!-- /.box-header -->
 	
-	<div class="box-body">
-		
-		<dl><!-- class="dl-horizontal" -->
-			
-			<dt>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ BackendRouteController.backendRoute.machine_name }}</dd>
-			
-			<dt>{{ 'is_menu' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd><span class="fa" ng-class="BackendRouteController.backendRoute.is_menu ? 'fa-check':'fa-close'"></span></dd>
-			
-			<dt>{{ 'route' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ BackendRouteController.backendRoute.route }}</dd>
-			
-			<dt>{{ 'mode' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ BackendRouteController.backendRoute.mode }}</dd>
-			
-			<dt>{{ 'model' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ BackendRouteController.backendRoute.model }}</dd>
-			
-			<dt>{{ 'templateUrl' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ BackendRouteController.backendRoute.templateUrl }}</dd>
-			
-		</dl>
-	
-	</div><!-- /.box-body -->
-	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="BackendRouteController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': BackendRouteController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+          
+          	<a href="" ng-click="BackendRouteController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
 
 
-
-
-	<div class="box-header with-border">
-		
-		<h3 class="box-title">{{ 'feature' | hookFilterTranslate | hookFilterTitle }}</h3>
-		
-		<div class="box-tools"></div>
-	
-	</div><!-- /.box-header -->
-	
-	<div class="box-body">
-
-		<table class="table no-border table-hover"
-			id="table-group"> 
+		<div class="box-body">
 			
-			<thead>
+			<dl><!-- class="dl-horizontal" -->
 				
-				<tr>
-			
-					<th class="table-index-column-width">#</th>
-					
-					<th>{{ 'machine_name' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'description' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'weight' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th class="text-center">{{ 'owner' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'icon' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th class="text-center">{{ 'hide_from_menu' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+				<dt>{{ 'label.machine_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ BackendRouteController.backendRoute.machine_name }}</dd>
 				
-				</tr>
-			
-			</thead>
-			
-			<tbody>
+				<dt>{{ 'label.route' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ BackendRouteController.backendRoute.route }}</dd>
 				
-				<tr ng-repeat="(id, feature) in BackendRouteController.backendRoute.features">
-					
-					<td>{{ $index + 1 }}</td>
-					
-					<td>{{ feature.machine_name }}</td>
-					
-					<td>{{ feature.description }}</td>
-					
-					<td>{{ feature.weight }}</td>
-					
-					<td class="text-center" ng-class="feature.owner ? 'text-success':'text-danger'"><span class="fa" ng-class="feature.owner ? 'fa-check':'fa-close'"></span></td>
-					
-					<td>{{ feature.icon }}</td>
-					
-					<td class="text-center" ng-class="feature.hide_from_menu ? 'text-success':'text-danger'"><span class="fa" ng-class="feature.hide_from_menu ? 'fa-check':'fa-close'"></span></td>
-					
-					<td>{{ feature.name }}</td>
-					
+				<dt>{{ 'label.templateUrl' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ BackendRouteController.backendRoute.templateUrl }}</dd>
 				
-				</tr>
-			
-			</tbody>
+				<dt>{{ 'label.model' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ BackendRouteController.backendRoute.model }}</dd>
+				
+				<dt>{{ 'label.mode' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ BackendRouteController.backendRoute.mode }}</dd>
+				
+				<dt>{{ 'label.is_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd ng-class="backendRoute.is_menu ? 'text-success':'text-danger'"><span class="fa" ng-class="BackendRouteController.backendRoute.is_menu ? 'fa-check':'fa-close'"></span></dd>
+				
+			</dl>
 		
-		</table>
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: backend_route, Relationship alias: features, Relationship model: feature -->
 
-	</div><!-- /.box-body -->
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.features' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
 
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.icon' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th class="text-center">{{ 'label.hide_from_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th class="text-center">{{ 'label.owner' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, feature) in BackendRouteController.backendRoute.features">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ feature.icon }}</td>
+						
+						<td>{{ feature.name | hookFilterContentTranslate: BackendRouteController.displayLanguage }}</td>
+						
+						<td>{{ feature.description | hookFilterContentTranslate: BackendRouteController.displayLanguage }}</td>
+						
+						<td class="text-center" 
+							ng-class="feature.hide_from_menu ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="feature.hide_from_menu ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+						<td class="text-center" 
+							ng-class="feature.owner ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="feature.owner ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+						<td>{{ feature.weight }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
 
-
-
+		</div><!-- /.box-body -->
 
 
 	<div class="box-footer">
 	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
 
 </div><!-- /.box -->

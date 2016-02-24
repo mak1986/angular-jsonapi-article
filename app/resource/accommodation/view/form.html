@@ -1,0 +1,393 @@
+<!-- Main model: accommodation -->
+
+<div class="row"
+	ng-controller="AccommodationController as AccommodationController" 
+	ng-init="AccommodationController.form()">
+ 	<div class="col-md-8">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + AccommodationController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.accommodation' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="AccommodationController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" ng-init="AccommodationController.displayLanguage=HookController.ui.getLanguage()">
+                 
+                  <li ng-class="{ 'active': AccommodationController.displayLanguage==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="AccommodationController.displayLanguage=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="name"
+								hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(AccommodationController.displayLanguage)"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="name"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-name" 
+								name="name"
+								placeholder="{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.name[AccommodationController.displayLanguage]"	 						
+								hook-validation-required
+								hook-validation-unique
+								hook-validation-unique-bind-controller="AccommodationController"
+								hook-validation-unique-bind-model="AccommodationController.accommodation"
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-description"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="description"
+								hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(AccommodationController.displayLanguage)"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="description"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-description" 
+								name="description"
+								placeholder="{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.description[AccommodationController.displayLanguage]"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-size"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="size"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="size"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-size" 
+								name="size"
+								placeholder="{{ 'label.size' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.size"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-rooms"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="rooms"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="rooms"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-rooms" 
+								name="rooms"
+								placeholder="{{ 'label.rooms' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.rooms"	 						
+								hook-validation-number
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-price"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="price"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="price"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-price" 
+								name="price"
+								placeholder="{{ 'label.price' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.price"	 						
+								hook-validation-number
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-extra-bed-price"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="extra_bed_price"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="extra_bed_price"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-extra-bed-price" 
+								name="extra_bed_price"
+								placeholder="{{ 'label.extra_bed_price' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.extra_bed_price"	 						
+								hook-validation-number
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-max-quantity"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="max_quantity"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="max_quantity"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-max-quantity" 
+								name="max_quantity"
+								placeholder="{{ 'label.max_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.max_quantity"	 						
+								hook-validation-number
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation-max-extra-bed"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="max_extra_bed"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="max_extra_bed"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation-max-extra-bed" 
+								name="max_extra_bed"
+								placeholder="{{ 'label.max_extra_bed' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationController.accommodation.max_extra_bed"	 						
+								hook-validation-number
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+						<!-- Main model: accommodation, Relationship alias: site, Relationship model: site -->
+
+						<div class="form-group" 
+							ng-controller="SiteController as SiteController" >
+							
+							<label for="select-accommodation-site"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="site"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-accommodation-site" 
+									class="form-control" 
+									name="site"
+									ng-model="AccommodationController.accommodation.site"
+									ng-options="site.id as (site.name | hookFilterContentTranslate) for site in SiteController.sites track by site.id"></select>
+						
+						</div><!-- /.form-group -->
+
+						<!-- Main model: accommodation, Relationship alias: kind, Relationship model: accommodation_kind -->
+
+						<div class="form-group" 
+							ng-controller="AccommodationKindController as AccommodationKindController" >
+							
+							<label for="select-accommodation-kind"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="kind"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-accommodation-kind" 
+									class="form-control" 
+									name="kind"
+									ng-model="AccommodationController.accommodation.kind"
+									ng-options="kind.id as (kind.name | hookFilterContentTranslate) for kind in AccommodationKindController.kinds track by kind.id"></select>
+						
+						</div><!-- /.form-group -->
+
+						<!-- Main model: accommodation, Relationship alias: roomType, Relationship model: room_combination -->
+
+						<div class="form-group" 
+							ng-controller="RoomCombinationController as RoomCombinationController" >
+							
+							<label for="select-accommodation-room-type"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="room_type"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-accommodation-room-type" 
+									class="form-control" 
+									name="roomType"
+									ng-model="AccommodationController.accommodation.roomType"
+									ng-options="roomType.id as (roomType.name | hookFilterContentTranslate) for roomType in RoomCombinationController.roomCombinations track by roomType.id"></select>
+						
+						</div><!-- /.form-group -->
+
+		
+						<!-- Main model: accommodation, Relationship alias: facilities, Relationship model: accommodation_facility -->
+
+						<div class="form-group" 
+							ng-controller="AccommodationFacilityController as AccommodationFacilityController" >
+							
+							<label for="checkbox-accommodation-facilities"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="facilities"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="facilities in AccommodationFacilityController.facilities">
+								
+								<label for="checkbox-accommodation-facilities-{{ facilities.id }}">
+									
+									<input id="checkbox-accommodation-facilities-{{ facilities.id }}" 
+										type="checkbox"
+										ng-model="AccommodationController.accommodation.facilities[facilities.id]">{{ facilities.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="AccommodationController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+	<div class="col-md-4">
+	 	
+	 	<div class="box">
+	 		<div class="box-header with-border">
+			
+				<h3 class="box-title">{{ 'ui.translation_view' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+			</div><!-- /.box-header -->
+
+			<div class="nav-tabs-custom" ng-init="AccommodationController.displayLanguageView=HookController.ui.getLanguage()">
+                
+                <ul class="nav nav-tabs">
+                 
+                  <li ng-class="{ 'active': AccommodationController.displayLanguageView==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="AccommodationController.displayLanguageView=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<div class="tab-content">
+				
+					<dl><!-- class="dl-horizontal" -->
+					
+						<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+						<dd>{{ AccommodationController.accommodation.name | hookFilterContentTranslate: AccommodationController.displayLanguageView }}</dd>
+						<dt>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+						<dd>{{ AccommodationController.accommodation.description | hookFilterContentTranslate: AccommodationController.displayLanguageView }}</dd>
+					</dl>
+			
+				</div><!-- /.tab-content -->
+
+ 		    </div><!-- /.nav-tabs-custom -->
+ 		
+ 		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+</div><!-- /.row -->

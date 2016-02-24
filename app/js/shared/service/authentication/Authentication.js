@@ -5,8 +5,8 @@
 
 		var service = this;
 		// uncomment for real login
-		// var userId;
-		// service.isLoggedIn = false;
+		var userId;
+		service.isLoggedIn = false;
 		
 
 
@@ -14,11 +14,10 @@
 			var where = {};
 
 			ResourceManager.readWhere("user", login).then(function(resources) {
-				//console.log(resources);
 				if (resources.length == 0) {
-					//console.log("wrong login");
+					console.log("wrong login");
 				} else if (resources.length == 1) {
-					//console.log("login succes");
+					console.log("login succes");
 					userId = resources[0].id;
 					service.retrieveData();
 				}
@@ -28,11 +27,6 @@
 				console.log("something went wrong");
 
 			});
-
-			// if (login.username == "admin" && login.password == "1234") {
-			// 	service.isLoggedIn = true;
-			// 	UserInterface.setLanguage('th');
-			// }
 		};
 
 		service.logout = function() {
@@ -66,11 +60,10 @@
 			}
 		};
 
-
 		//comment for real login
-		var userId = 1;
-		service.isLiggedIn = true;
-		service.retrieveData();
+		// var userId = 1;
+		// service.isLiggedIn = true;
+		// service.retrieveData();
 	}
 
 	Authentication.$inject = [

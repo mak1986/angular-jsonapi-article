@@ -1,0 +1,59 @@
+<!-- Main model: bed_kind -->
+
+<div class="box" 
+	ng-controller="BedKindController as BedKindController" 
+	ng-init="BedKindController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.bed_kind' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="BedKindController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="box-body">
+		
+		<table class="table table-bordered table-hover"
+			id="table-group"> 
+			
+			<thead>
+				
+				<tr>
+			
+					<th class="table-index-column-width">#</th>
+					
+					<th>{{ 'label.name' | hookFilterTranslate | hookFilterTitle }}</th>
+
+					<th class="table-action-column-width">{{ 'ui.actions' | hookFilterTranslate | hookFilterTitle }}</th>
+				
+				</tr>
+			
+			</thead>
+			
+			<tbody>
+				
+				<tr ng-repeat="(id, bedKind) in BedKindController.bedKinds">
+					
+					<td>{{ $index + 1 }}</td>
+					
+					<td>{{ bedKind.name | hookFilterContentTranslate }}</td>
+
+					<td hook-action-button-list 
+						hook-action-button-list-bind-resource="bedKind" 
+						hook-action-button-list-bind-controller="BedKindController"></td>
+				
+				</tr>
+			
+			</tbody>
+		
+		</table>
+	
+	</div><!-- /.box-body -->
+	
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+</div><!-- /.box -->

@@ -1,4 +1,6 @@
-{{ field | hookFilterTranslate | hookFilterTitle }}
+<span ng-if="flag" class="flag-icon flag-icon-{{ flag }}"></span>
+
+{{ ('label.'+field) | hookFilterMachineNameTranslate | hookFilterTitle }}
 
 <span ng-if="required=='true'" class="text-red">*</span>
 
@@ -10,6 +12,6 @@
 	
 	</span> 
 	
-	{{ 'validating' | hookFilterTranslate | hookFilterCapitalize }}...
+	{{ 'ui.validating' | hookFilterMachineNameTranslate | hookFilterCapitalize }}...
 
 </span>

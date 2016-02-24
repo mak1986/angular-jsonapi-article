@@ -7,6 +7,7 @@
 			scope: {
 				form: '=hookFormLabelBindForm',
 				field: '@hookFormLabelBindField',
+				flag: '=hookFormLabelBindFlag',
 				required: '@hookFormLabelBindRequired'
 			},
 			templateUrl: 'app/js/shared/directive/form/label/hookFormLabel.html',

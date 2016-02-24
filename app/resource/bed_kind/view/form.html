@@ -1,0 +1,137 @@
+<!-- Main model: bed_kind -->
+
+<div class="row"
+	ng-controller="BedKindController as BedKindController" 
+	ng-init="BedKindController.form()">
+ 	<div class="col-md-8">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + BedKindController.mode) | hookFilterTranslate | hookFilterTitle }} {{ 'model.bed_kind' | hookFilterTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="BedKindController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" ng-init="BedKindController.formLanguage=HookController.ui.getLanguage()">
+                 
+                  <li ng-class="{ 'active': BedKindController.formLanguage==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="BedKindController.formLanguage=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-bed-kind-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="name"
+								hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(BedKindController.formLanguage)"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="name"></div>
+							
+							<input class="form-control" 
+								id="text-bed-kind-name" 
+								name="name"
+								placeholder="{{ 'label.name' | hookFilterTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BedKindController.bedKind.name[BedKindController.formLanguage]"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+		
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="BedKindController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+	<div class="col-md-4">
+	 	
+	 	<div class="box">
+	 		<div class="box-header with-border">
+			
+				<h3 class="box-title">{{ 'ui.translation_view' | hookFilterTranslate | hookFilterTitle }}</h3>
+		
+			</div><!-- /.box-header -->
+
+			<div class="nav-tabs-custom" ng-init="BedKindController.formLanguageView=HookController.ui.getLanguage()">
+                
+                <ul class="nav nav-tabs">
+                 
+                  <li ng-class="{ 'active': BedKindController.formLanguageView==language.iso_2_code }"
+                  	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+                  
+                  	<a href="" ng-click="BedKindController.formLanguageView=language.iso_2_code">
+                  	
+                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+                  	
+                  		{{ language.name | hookFilterContentTranslate }}
+                  	
+                  	</a>
+                 
+                  </li>
+                
+                </ul>
+
+				<div class="tab-content">
+				
+					<dl><!-- class="dl-horizontal" -->
+					
+						<dt>{{ 'label.name' | hookFilterTranslate | hookFilterTitle }}</dt>
+						<dd>{{ BedKindController.bedKind.name | hookFilterContentTranslate: BedKindController.formLanguageView }}</dd>
+					</dl>
+			
+				</div><!-- /.tab-content -->
+
+ 		    </div><!-- /.nav-tabs-custom -->
+ 		
+ 		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+</div><!-- /.row -->

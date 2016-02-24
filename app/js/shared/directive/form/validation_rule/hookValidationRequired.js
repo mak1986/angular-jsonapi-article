@@ -18,7 +18,7 @@
           } 
           
           ctrl['$substitutions']["hook_validation_required"] = {
-            "$field": field
+            "$field": 'label.'+field
           }
 
 

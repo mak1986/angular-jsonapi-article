@@ -1,24 +1,41 @@
 (function() {
 	'use strict';
 
-	function UserInterface($filter, CONFIG) {
+	function UserInterface($filter, CONFIG, ResourceManager) {
 
 		var service = this;
 		service.defaultLanguage = CONFIG.site.default_language;
 		service.currentSiteId = null;
 		service.user = null;
+		service.site = null;
 
 		service.setUser = function(user){
 			service.user = user;
 		};
 
+		service.setSite = function(site){
+			service.site = site;
+		};
+
 		service.getLanguage = function(){
 			
 			if(service.user){
-				var lang = $filter('hookFilterFieldValue')(service.user.preference, 'language');
+				var lang = 'en';
+				//var lang = $filter('hookFilterByFieldValue')(service.user.preference, 'language');
 			 	return lang;
 			}
 			return service.defaultLanguage;
+		};
+
+		service.getEnableLanguages = function(){
+			if(service.site){
+				return service.site.enableLanguages;
+			}
+			return ResourceManager.readFromStorage('language');
+		};
+
+		service.getFlagByIso2Code = function(language){
+			return CONFIG.languages[language].flag;
 		};
 
 		service.setCurrentSiteId = function(id){
@@ -32,7 +49,8 @@
 
 	UserInterface.$inject = [
 		'$filter',
-		'CONFIG'
+		'CONFIG',
+		'ResourceManager'
 	];
 
 	angular

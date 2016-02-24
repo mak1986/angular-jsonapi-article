@@ -5,28 +5,28 @@ ng-show="
 controller.mode == 'show' ||
 controller.mode == 'create' ||
 controller.mode == 'edit'
-">{{ 'list' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.list' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Show button -->
 <a class="btn btn-sm btn-primary" 
 href="#/{{ controller['type_dash'] }}/show/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'edit'
-">{{ 'show' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.show' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Create button -->
 <a class="btn btn-sm btn-success" 
 href="#/{{ controller['type_dash'] }}/create" 
 ng-show="
 controller.mode == 'list'
-">{{ 'create' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.create' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Edit button -->
 <a class="btn btn-sm btn-warning" 
 href="#/{{ controller['type_dash'] }}/edit/{{controller[controller['type_singular']].id}}" 
 ng-show="
 controller.mode == 'show'
-">{{ 'edit' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.edit' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Delete button -->
 <button class="btn btn-sm btn-danger"  
@@ -34,4 +34,4 @@ ng-click="controller.destroy(controller[controller['type_singular']])"
 ng-show="
 controller.mode == 'show' ||
 controller.mode == 'edit'
-">{{ 'delete' | hookFilterTranslate | hookFilterTitle }}</button>
+">{{ 'ui.delete' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>

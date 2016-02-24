@@ -1,10 +1,12 @@
+<!-- Main model: machine_name -->
+
 <div class="box" 
 	ng-controller="MachineNameController as MachineNameController" 
 	ng-init="MachineNameController.show()">
 	
 	<div class="box-header with-border">
 		
-		<h3 class="box-title">{{ MachineNameController.type | hookFilterTranslate | hookFilterTitle }}</h3>
+		<h3 class="box-title">{{ 'model.machine_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 		
 		<div class="box-tools" 
 			hook-action-button-box-tools 
@@ -12,74 +14,86 @@
 	
 	</div><!-- /.box-header -->
 	
-	<div class="box-body">
-		
-		<dl><!-- class="dl-horizontal" -->
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="MachineNameController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': MachineNameController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnableLanguages()">
+          
+          	<a href="" ng-click="MachineNameController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
 			
-			<dt>{{ 'name' | hookFilterTranslate | hookFilterTitle }}</dt>
-			<dd>{{ MachineNameController.machineName.name }}</dd>
-			
-		</dl>
-	
-	</div><!-- /.box-body -->
-	
-
-
-
-
-	<div class="box-header with-border">
-		
-		<h3 class="box-title">{{ 'machine_name_translation' | hookFilterTranslate | hookFilterTitle }}</h3>
-		
-		<div class="box-tools"></div>
-	
-	</div><!-- /.box-header -->
-	
-	<div class="box-body">
-
-		<table class="table no-border table-hover"
-			id="table-group"> 
-			
-			<thead>
+			<dl><!-- class="dl-horizontal" -->
 				
-				<tr>
-			
-					<th class="table-index-column-width">#</th>
-					
-					<th>{{ 'translation' | hookFilterTranslate | hookFilterTitle }}</th>
-					
-					<th>{{ 'language' | hookFilterTranslate | hookFilterTitle }}</th>
-					
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.name }}</dd>
 				
-				</tr>
-			
-			</thead>
-			
-			<tbody>
-				
-				<tr ng-repeat="(id, machineNameTranslation) in MachineNameController.machineName.machineNameTranslations">
-					
-					<td>{{ $index + 1 }}</td>
-					
-					<td>{{ machineNameTranslation.translation }}</td>
-					
-					<td>{{ machineNameTranslation.language }}</td>
-					
-				
-				</tr>
-			
-			</tbody>
+			</dl>
 		
-		</table>
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: machine_name, Relationship alias: translations, Relationship model: machine_name_translation -->
 
-	</div><!-- /.box-body -->
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.translations' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
 
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.translation' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, machineNameTranslation) in MachineNameController.machineName.translations">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ machineNameTranslation.translation }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
 
-
-
+		</div><!-- /.box-body -->
 
 
 	<div class="box-footer">
 	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
 
 </div><!-- /.box -->

@@ -33,10 +33,11 @@
 		this.show = function(vm, type) {
 			setMode(vm, 'show');
 			vm[vm["type_singular"]] = ResourceManager.readFromStorage(type, $routeParams.id);
-			console.log(vm);
+			//console.log(vm);
 		};
 
 		this.form = function(vm, type) {
+			//console.log(vm['site']);
 			if ($routeParams.mode == 'edit') {
 				this.edit(vm, type);
 			} else if ($routeParams.mode == 'create') {
@@ -55,21 +56,21 @@
 
 			setMode(vm, 'edit');
 			vm[vm['type_singular']] = ResourceManager.shallowCopy(resource);
-			console.log(vm[vm['type_singular']]);
+			//console.log(vm[vm['type_singular']]);
 		};
 
 		this.store = function(vm, type, resource) {
 			resource["type"] = type;
-			console.log(resource);
+			//console.log(resource);
 			resource = prepareSubmittedData(resource);
 
 			ResourceManager.create(resource)
 				.then(function(newResource) {
-					Alert.setSuccessMessage("The data has successfully been stored.", true);
+					Alert.setSuccessMessage('model.' + type, "ui.stored", true);
 					$location.path('/' + vm["type_dash"] + '/show/' + newResource.id);
 
 				}, function(reason) {
-					Alert.setErrorMessage(reason, false);
+					Alert.setErrorMessage(false);
 					$location.path();
 
 				});
@@ -82,11 +83,11 @@
 			
 			ResourceManager.update(resource)
 				.then(function() {
-					Alert.setSuccessMessage("The data has successfully been updated.", true);
+					Alert.setSuccessMessage('model.' + type, "ui.updated", true);
 					//edit(vm, type);
 					$location.path("/" + vm["type_dash"] + "/list");
 				}, function(reason) {
-					Alert.setErrorMessage(reason, false);
+					Alert.setErrorMessage(false);
 					$location.path();
 				});
 		};
@@ -95,13 +96,13 @@
 			ResourceManager.delete(resource)
 				.then(function() {
 					if ($location.path() == "/" + vm["type_dash"] + "/list") {
-						Alert.setSuccessMessage("The data has successfully been deleted.", false);
+						Alert.setSuccessMessage('model.' + type, "ui.deleted", false);
 					} else {
-						Alert.setSuccessMessage("The data has successfully been deleted.", true);
+						Alert.setSuccessMessage('model.' + type, "ui.deleted", true);
 					}
 					$location.path("/" + vm["type_dash"] + "/list");
 				}, function(reason) {
-					Alert.setErrorMessage(reason);
+					Alert.setErrorMessage(false);
 					// $location.path();
 				});
 		};
@@ -135,8 +136,6 @@
 							delete resource[attr];
 						}
 					} else {
-						console.log(resource[attr]);
-						console.log(attr);
 						//edit
 						if(resource[attr].id){
 							id = resource[attr].id;
@@ -149,7 +148,8 @@
 						delete resource[attr].id;
 					}
 				}else{
-					if(attr != 'id' && attr != 'type' && CONFIG.models[resource.type].structure[attr].type == 'boolean'){
+
+					if(CONFIG.models[resource.type].structure[attr] && CONFIG.models[resource.type].structure[attr].type == 'boolean'){
 						resource[attr] = (resource[attr] == "true" || resource[attr] == "1");
 					}
 				}

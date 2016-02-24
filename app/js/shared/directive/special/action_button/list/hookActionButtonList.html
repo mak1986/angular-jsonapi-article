@@ -1,14 +1,14 @@
 <!-- Show button -->
 <a class="btn btn-xs btn-primary" 
 href="#/{{ controller['type_dash'] }}/show/{{ resource.id }}
-">{{ 'show' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.show' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Edit button -->
 <a class="btn btn-xs btn-warning" 
 href="#/{{ controller['type_dash'] }}/edit/{{ resource.id }}
-">{{ 'edit' | hookFilterTranslate | hookFilterTitle }}</a>
+">{{ 'ui.edit' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
 
 <!-- Delete button -->
 <button class="btn btn-xs btn-danger" 
 ng-click="controller.destroy(resource)
-">{{ 'delete' | hookFilterTranslate | hookFilterTitle }}</button>
+">{{ 'ui.delete' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
