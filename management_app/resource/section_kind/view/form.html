@@ -1,0 +1,104 @@
+<!-- Main model: section_kind -->
+
+<div class="row"
+	ng-controller="SectionKindController as SectionKindController" 
+	ng-init="SectionKindController.form()">
+ 	<div class="col-md-12">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + SectionKindController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.section_kind' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="SectionKindController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-section-kind-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="name"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="name"></div>
+							
+							<input class="form-control" 
+								id="text-section-kind-name" 
+								name="name"
+								placeholder="{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="SectionKindController.sectionKind.name"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+		
+						<!-- Main model: section_kind, Relationship alias: sections, Relationship model: section -->
+
+						<div class="form-group" 
+							ng-controller="SectionController as SectionController" >
+							
+							<label for="checkbox-section-kind-section"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="sections"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="section in SectionController.sections">
+								
+								<label for="checkbox-section-kind-section-{{ section.id }}">
+									
+									<input id="checkbox-section-kind-section-{{ section.id }}" 
+										type="checkbox"
+										ng-model="SectionKindController.sectionKind.sections[section.id]">{{ section.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="SectionKindController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+
+</div><!-- /.row -->

@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>{{ 'ui.accommodations' | hookFilterMachineNameTranslate }}</h1>
+	</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-6"
+	ng-repeat="(id, accommodation) in UiController.ui.site.accommodations">
+    <div class="thumbnail">
+      <a href="{{UiController.getHref('accommodation/'+accommodation.id)}}"><img class="img-responsive" src="http://www.thecontinenthotel.com/wp-content/uploads/TCH@Executive-RoomOcean-Theme.jpg" alt="..."></a>
+      <div class="caption">
+        <p> 
+			Name: {{ accommodation.name | hookFilterContentTranslate }}<br>
+			Luxury: {{ accommodation.luxuryTitle | hookFilterByFieldValue: 'name' }}<br>
+			<span ng-repeat="(id, room) in accommodation.rooms">
+					Room type: {{ room.room_type }}<br>
+					Bed(s): {{ room.bed_combination | hookFilterContentTranslate }}<br> 
+				</span>
+			{{ 'ui.price' | hookFilterMachineNameTranslate }}: {{ accommodation.price }} 
+		</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+

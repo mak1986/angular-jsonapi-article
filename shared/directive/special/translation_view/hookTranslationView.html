@@ -1,0 +1,38 @@
+<div class="box">
+	<div class="box-header with-border">
+
+	<h3 class="box-title">{{ 'ui.translation_view' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+
+</div><!-- /.box-header -->
+
+<div class="nav-tabs-custom" ng-init="state.language=getLanguage()">
+
+    <ul class="nav nav-tabs">
+     
+      <li ng-class="{ 'active': state.language==language.iso_2_code }"
+      	ng-repeat="(id, language) in getEnabledLanguages()">
+      
+      	<a href="" ng-click="state.language=language.iso_2_code">
+      	
+      		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+      	
+      		{{ language.name | hookFilterContentTranslate }}
+      	
+      	</a>
+     
+      </li>
+    
+    </ul>
+
+	<div class="tab-content">
+	
+		<dl><!-- class="dl-horizontal" -->
+			<dt ng-hide="(object | hookFilterCount) == 0" ng-repeat-start="(key, object) in translationFieldsModel">{{ 'label.' + key | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+			<dd ng-hide="(object | hookFilterCount) == 0" ng-repeat-end>{{ object | hookFilterContentTranslate: state.language }}</dd>
+		</dl>
+
+	</div><!-- /.tab-content -->
+
+    </div><!-- /.nav-tabs-custom -->
+
+</div><!-- /.box -->

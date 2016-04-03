@@ -1,0 +1,12 @@
+<label for="text-section-title">
+	<span class="flag-icon flag-icon-{{ HookController.ui.getFlagByIso2Code(SectionController.getLanguage(section)) }}"></span>
+	{{ 'label.title' | hookFilterMachineNameTranslate | hookFilterTitle }}
+</label>
+
+<input class="form-control" 
+	id="text-section-title" 
+	name="title"
+	placeholder="{{ 'label.title' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+	type="text" 
+	ng-model="section.title[SectionController.getLanguage(section)]"
+	>

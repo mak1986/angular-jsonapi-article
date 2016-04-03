@@ -1,0 +1,235 @@
+<!-- Main model: backend_route -->
+
+<div class="row"
+	ng-controller="BackendRouteController as BackendRouteController" 
+	ng-init="BackendRouteController.form()">
+ 	<div class="col-md-12">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + BackendRouteController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.backend_route' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="BackendRouteController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-backend-route-machine-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="machine_name"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="machine_name"></div>
+							
+							<input class="form-control" 
+								id="text-backend-route-machine-name" 
+								name="machine_name"
+								placeholder="{{ 'label.machine_name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BackendRouteController.backendRoute.machine_name"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-backend-route-route"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="route"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="route"></div>
+							
+							<input class="form-control" 
+								id="text-backend-route-route" 
+								name="route"
+								placeholder="{{ 'label.route' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BackendRouteController.backendRoute.route"	 						
+								hook-validation-required
+								hook-validation-unique
+								hook-validation-unique-bind-controller="BackendRouteController"
+								hook-validation-unique-bind-model="BackendRouteController.backendRoute"
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-backend-route-template-url"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="templateUrl"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="templateUrl"></div>
+							
+							<input class="form-control" 
+								id="text-backend-route-template-url" 
+								name="templateUrl"
+								placeholder="{{ 'label.templateUrl' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BackendRouteController.backendRoute.templateUrl"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-backend-route-model"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="model"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="model"></div>
+							
+							<input class="form-control" 
+								id="text-backend-route-model" 
+								name="model"
+								placeholder="{{ 'label.model' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BackendRouteController.backendRoute.model"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-backend-route-mode"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="mode"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="mode"></div>
+							
+							<input class="form-control" 
+								id="text-backend-route-mode" 
+								name="mode"
+								placeholder="{{ 'label.mode' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="BackendRouteController.backendRoute.mode"	 						
+								hook-validation-required
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="boolean-backend-route-is-menu"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="is_menu"
+								hook-form-label-bind-required="true"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="is_menu"></div>
+							
+							<div class="radio">
+								<label>
+									<input type="radio" 
+										ng-value="true"
+										ng-model="BackendRouteController.backendRoute.is_menu"
+										ng-checked="BackendRouteController.backendRoute.is_menu">
+									{{ 'ui.yes' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+								</label>
+								<label>
+									<input type="radio" 
+										ng-value="false"
+										ng-model="BackendRouteController.backendRoute.is_menu"
+										ng-checked="!BackendRouteController.backendRoute.is_menu">
+									{{ 'ui.no' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+								</label>
+							</div>
+						
+						</div><!-- /.form-group -->
+
+	
+		
+						<!-- Main model: backend_route, Relationship alias: features, Relationship model: feature -->
+
+						<div class="form-group" 
+							ng-controller="FeatureController as FeatureController" >
+							
+							<label for="checkbox-backend-route-feature"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="features"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="feature in FeatureController.features">
+								
+								<label for="checkbox-backend-route-feature-{{ feature.id }}">
+									
+									<input id="checkbox-backend-route-feature-{{ feature.id }}" 
+										type="checkbox"
+										ng-model="BackendRouteController.backendRoute.features[feature.id]">{{ feature.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="BackendRouteController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+
+</div><!-- /.row -->

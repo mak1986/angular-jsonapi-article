@@ -1,0 +1,13 @@
+<button class="btn btn-success"
+	type="submit"
+	ng-click="SectionController.store(section)"
+	ng-if="SectionController.isNew(section)">{{ 'ui.create' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
+
+<button class="btn btn-success"
+	type="submit"
+	ng-click="SectionController.update(section)"
+	ng-if="!SectionController.isNew(section)">{{ 'ui.save' | hookFilterMachineNameTranslate | hookFilterTitle }} </button>
+
+<!-- Cancel button -->
+<button class="btn btn-warning" 
+	ng-click="">{{ 'ui.cancel' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>

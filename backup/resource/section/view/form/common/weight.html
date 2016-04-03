@@ -1,0 +1,11 @@
+<label for="text-section-weight">
+	{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}
+</label>
+
+<input class="form-control" 
+	id="text-section-weight" 
+	name="weight"
+	placeholder="{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+	type="text" 
+	ng-model="section.weight"	 						
+	>

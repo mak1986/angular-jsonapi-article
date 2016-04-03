@@ -1,0 +1,213 @@
+<!-- Main model: user -->
+
+<div class="box" 
+	ng-controller="UserController as UserController" 
+	ng-init="UserController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.user' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="UserController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="UserController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': UserController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="UserController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.username' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserController.user.username }}</dd>
+				
+				<dt>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserController.user.first_name | hookFilterContentTranslate: UserController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserController.user.last_name | hookFilterContentTranslate: UserController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserController.user.email }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: user, Relationship alias: preference, Relationship model: user_preference -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.preference' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.admin_skin' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ UserController.user.preference | hookFilterByFieldValue: 'admin_skin' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+		<!-- Main model: user, Relationship alias: groups, Relationship model: group -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.groups' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, group) in UserController.user.groups">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ group.name | hookFilterContentTranslate: UserController.displayLanguage }}</td>
+						
+						<td>{{ group.weight }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+		<!-- Main model: user, Relationship alias: sites, Relationship model: site -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.sites' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, site) in UserController.user.sites">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ site.name | hookFilterContentTranslate: UserController.displayLanguage }}</td>
+						
+						<td>{{ site.domain }}</td>
+						
+						<td>{{ site.subdomain }}</td>
+						
+						<td>{{ site.address | hookFilterContentTranslate: UserController.displayLanguage }}</td>
+						
+						<td>{{ site.telephone }}</td>
+						
+						<td>{{ site.fax }}</td>
+						
+						<td>{{ site.email }}</td>
+						
+						<td>{{ site.facebook_link }}</td>
+						
+						<td>{{ site.twitter_link }}</td>
+						
+						<td>{{ site.tripadvisor_link }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

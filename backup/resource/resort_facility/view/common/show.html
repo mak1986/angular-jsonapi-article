@@ -1,0 +1,110 @@
+<!-- Main model: resort_facility -->
+
+<div class="box" 
+	ng-controller="ResortFacilityController as ResortFacilityController" 
+	ng-init="ResortFacilityController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.resort_facility' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="ResortFacilityController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="ResortFacilityController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': ResortFacilityController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="ResortFacilityController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.icon' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ ResortFacilityController.facility.icon }}</dd>
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ ResortFacilityController.facility.name | hookFilterContentTranslate: ResortFacilityController.displayLanguage }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: resort_facility, Relationship alias: sites, Relationship model: site -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.sites' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, site) in ResortFacilityController.resortFacility.sites">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ site.name | hookFilterContentTranslate: ResortFacilityController.displayLanguage }}</td>
+						
+						<td>{{ site.domain }}</td>
+						
+						<td>{{ site.subdomain }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

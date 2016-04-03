@@ -1,0 +1,334 @@
+<!-- Main model: page -->
+<div ng-controller="PageController as PageController" 
+	ng-init="PageController.form()">
+	
+	<div class="row"
+		ng-if="HookController.ui.hasFeature('feature.meta_data_page')"
+		>
+	 	<div class="col-md-8">
+	 		
+			<div class="box">
+
+				<div class="box-header with-border">
+
+					<h3 class="box-title">
+						{{ ('ui.' + PageController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.page' | hookFilterMachineNameTranslate | hookFilterTitle }}
+					</h3>
+					
+					<div class="box-tools" 
+						hook-action-button-box-tools 
+						hook-action-button-box-tools-bind-controller="PageController"></div>
+
+				</div><!-- /.box-header -->
+				
+				
+				<div class="nav-tabs-custom">
+	                <ul class="nav nav-tabs" ng-init="PageController.displayLanguage=HookController.ui.getLanguage()">
+	                 
+	                  <li ng-class="{ 'active': PageController.displayLanguage==language.iso_2_code }"
+	                  	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+	                  
+	                  	<a href="" ng-click="PageController.displayLanguage=language.iso_2_code">
+	                  	
+	                  		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+	                  	
+	                  		{{ language.name | hookFilterContentTranslate }}
+	                  	
+	                  	</a>
+	                 
+	                  </li>
+	                
+	                </ul>
+
+					<!-- form start -->
+					<form name="form"
+							role="form"
+							novalidate>
+
+						<div class="box-body">
+					
+								
+							<div class="form-group">
+
+								<label for="text-page-name"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="name"
+									hook-form-label-bind-required="true"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="name"></div>
+								
+								<input class="form-control" 
+									id="text-page-name" 
+									name="name"
+									placeholder="{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+									type="text" 
+			 						ng-model="PageController.page.name"	 						
+									hook-validation-required
+									>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="text-page-meta-title"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="meta_title"
+									hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(PageController.displayLanguage)"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="meta_title"></div>
+								
+								<input class="form-control" 
+									id="text-page-meta-title" 
+									name="meta_title"
+									placeholder="{{ 'label.meta_title' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+									type="text" 
+			 						ng-model="PageController.page.meta_title[PageController.displayLanguage]"	 						
+									>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="textarea-page-meta-description"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="meta_description"
+									hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(PageController.displayLanguage)"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="meta_description"></div>
+								
+				 				<textarea class="form-control" 
+			 						id="textarea-page-meta-description" 
+			 						name="meta_description"
+			 						placeholder="{{ 'label.meta_description' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+			 						rows="5"
+			 						ng-model="PageController.page.meta_description[PageController.displayLanguage]"	 						
+									></textarea>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="text-page-meta-keywords"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="meta_keywords"
+									hook-form-label-bind-flag="HookController.ui.getFlagByIso2Code(PageController.displayLanguage)"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="meta_keywords"></div>
+								
+								<input class="form-control" 
+									id="text-page-meta-keywords" 
+									name="meta_keywords"
+									placeholder="{{ 'label.meta_keywords' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+									type="text" 
+			 						ng-model="PageController.page.meta_keywords[PageController.displayLanguage]"	 						
+									>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="text-page-weight"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="weight"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="weight"></div>
+								
+								<input class="form-control" 
+									id="text-page-weight" 
+									name="weight"
+									placeholder="{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+									type="text" 
+			 						ng-model="PageController.page.weight"	 						
+									hook-validation-number
+									>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="boolean-page-is-main-menu"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="is_main_menu"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="is_main_menu"></div>
+								
+								<div class="radio">
+									<label>
+										<input type="radio" 
+											ng-value="true"
+											ng-model="PageController.page.is_main_menu"
+											ng-checked="PageController.page.is_main_menu">
+										{{ 'ui.yes' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+									</label>
+									<label>
+										<input type="radio" 
+											ng-value="false"
+											ng-model="PageController.page.is_main_menu"
+											ng-checked="!PageController.page.is_main_menu">
+										{{ 'ui.no' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+									</label>
+								</div>
+							
+							</div><!-- /.form-group -->
+								
+							<div class="form-group">
+
+								<label for="boolean-page-is-footer-menu"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="is_footer_menu"
+									hook-form-label-bind-required="false"
+									></label>
+									
+								<div hook-validation-message 
+									hook-validation-message-bind-form="form"
+									hook-validation-message-bind-field="is_footer_menu"></div>
+								
+								<div class="radio">
+									<label>
+										<input type="radio" 
+											ng-value="true"
+											ng-model="PageController.page.is_footer_menu"
+											ng-checked="PageController.page.is_footer_menu">
+										{{ 'ui.yes' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+									</label>
+									<label>
+										<input type="radio" 
+											ng-value="false"
+											ng-model="PageController.page.is_footer_menu"
+											ng-checked="!PageController.page.is_footer_menu">
+										{{ 'ui.no' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+									</label>
+								</div>
+							
+							</div><!-- /.form-group -->
+		
+							<!-- Main model: page, Relationship alias: site, Relationship model: site -->
+
+							<div class="form-group" 
+								ng-controller="SiteController as SiteController" >
+								
+								<label for="select-page-site"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="site"
+									hook-form-label-bind-required="true"></label>
+								
+								<select id="select-page-site" 
+										class="form-control" 
+										name="site"
+										ng-model="PageController.page.site"
+										ng-options="site.id as (site.name | hookFilterContentTranslate) for site in SiteController.sites track by site.id"></select>
+							
+							</div><!-- /.form-group -->
+
+			
+							<!-- Main model: page, Relationship alias: sections, Relationship model: section -->
+
+							<div class="form-group" 
+								ng-controller="SectionController as SectionController" >
+								
+								<label for="checkbox-page-sections"
+									hook-form-label
+									hook-form-label-bind-form="form"
+									hook-form-label-bind-field="sections"
+									hook-form-label-bind-required="false"></label>
+								
+								<div class="checkbox"
+									ng-repeat="sections in SectionController.sections">
+									
+									<label for="checkbox-page-sections-{{ sections.id }}">
+										
+										<input id="checkbox-page-sections-{{ sections.id }}" 
+											type="checkbox"
+											ng-model="PageController.page.sections[sections.id]">{{ sections.name | hookFilterContentTranslate }}
+									
+									</label>
+								
+								</div><!-- /.checkbox -->
+
+							</div><!-- /.form-group -->
+							
+
+		
+						
+						</div><!-- ./box-body -->
+
+						<div class="box-footer" 
+							hook-form-button
+							hook-form-button-bind-form="form"
+							hook-form-button-bind-controller="PageController"></div><!-- /.box-footer -->
+
+					</form>
+
+	            </div><!-- ./nav-tabs-custom -->
+			
+			</div><!-- /.box -->
+
+	 	</div><!-- /.col -->
+
+		<div class="col-md-4"
+			hook-translation-view
+			hook-translation-view-bind-model="PageController.page"
+			hook-translation-view-bind-get-language="HookController.ui.getLanguage()"
+			hook-translation-view-bind-get-enabled-languages="HookController.ui.getEnabledLanguages()"></div><!-- /.col -->
+
+	</div><!-- /.row -->
+
+
+	<div ng-controller="SectionController as SectionController" 
+		ng-init="SectionController.setCurrentPage(PageController.page)">
+			
+			<!-- Existing sections -->
+			<div class="row"
+				ng-init="section = SectionController.makeCopy(originSection);mode = 'show'"
+				ng-repeat="(id, originSection) in PageController.pages[PageController.page.id].sections | orderObjectBy: 'weight'"
+				ng-include="'management_app/resource/section/view/section.html'"></div>
+
+			<!-- New sections -->
+			<div class="row"
+				ng-init="mode='form'"
+				ng-repeat="(id, section) in SectionController.new_sections"
+				ng-include="'management_app/resource/section/view/section.html'"></div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<button class="btn btn-success" 
+						ng-click="SectionController.showAlert($event)"><i class="fa fa-plus-circle"></i> {{ 'ui.add_section' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
