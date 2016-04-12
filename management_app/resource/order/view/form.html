@@ -82,6 +82,25 @@
 						
 						</div><!-- /.form-group -->
 
+						<!-- Main model: order, Relationship alias: payment, Relationship model: payment -->
+
+						<div class="form-group" 
+							ng-controller="PaymentController as PaymentController" >
+							
+							<label for="select-order-payment"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="payment"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-order-payment" 
+									class="form-control" 
+									name="payment"
+									ng-model="OrderController.machineNameTranslation.payment"
+									ng-options="payment.id as (payment.name | hookFilterContentTranslate) for payment in PaymentController.payments track by payment.id"></select>
+						
+						</div><!-- /.form-group -->
+
 		
 						<!-- Main model: order, Relationship alias: accommodationOrders, Relationship model: accommodation__order -->
 

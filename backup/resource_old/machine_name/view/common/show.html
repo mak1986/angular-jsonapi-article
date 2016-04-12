@@ -1,0 +1,165 @@
+<!-- Main model: machine_name -->
+
+<div class="box" 
+	ng-controller="MachineNameController as MachineNameController" 
+	ng-init="MachineNameController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.machine_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="MachineNameController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="MachineNameController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': MachineNameController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="MachineNameController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.name }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: machine_name, Relationship alias: group, Relationship model: group -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.group' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.group | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.group | hookFilterByFieldValue: 'weight' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+		<!-- Main model: machine_name, Relationship alias: feature, Relationship model: feature -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.feature' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.icon' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'icon' }}</dd>
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'description' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.hide_from_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>
+					<span class="fa" 
+						ng-class="MachineNameController.machineName.feature | hookFilterByFieldValue: 'hide_from_menu ? 'fa-check':'fa-close'"></span>
+				</dd>
+				
+				<dt>{{ 'label.owner' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>
+					<span class="fa" 
+						ng-class="MachineNameController.machineName.feature | hookFilterByFieldValue: 'owner ? 'fa-check':'fa-close'"></span>
+				</dd>
+				
+				<dt>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'weight' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+		<!-- Main model: machine_name, Relationship alias: translations, Relationship model: machine_name_translation -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.translations' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.translation' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, machineNameTranslation) in MachineNameController.machineName.translations">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ machineNameTranslation.translation }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

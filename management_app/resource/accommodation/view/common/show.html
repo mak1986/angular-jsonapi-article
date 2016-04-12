@@ -316,6 +316,58 @@
 
 		</div><!-- /.box-body -->
 
+		<!-- Main model: accommodation, Relationship alias: accommodationOrders, Relationship model: accommodation__order -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.accommodation_orders' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.from' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.to' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.extra_bed_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, accommodationOrder) in AccommodationController.accommodation.accommodationOrders">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ accommodationOrder.from }}</td>
+						
+						<td>{{ accommodationOrder.to }}</td>
+						
+						<td>{{ accommodationOrder.extra_bed_quantity }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
 
 	<div class="box-footer">
 	</div><!-- /.box-footer -->

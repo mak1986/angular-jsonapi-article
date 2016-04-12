@@ -24,7 +24,7 @@
 		this.update = function(resource) {
 			CrudUtility.update(vm, vm["type"], resource);
 		};
-
+		
 		this.destroy = function(resource) {
 			CrudUtility.destroy(vm, vm["type"], resource);
 		};

@@ -1,0 +1,118 @@
+<!-- Main model: site -->
+
+<div class="box" 
+	ng-controller="SiteController as SiteController" 
+	ng-init="SiteController.list()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.site' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="SiteController"></div>
+	
+	</div><!-- /.box-header -->
+
+
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="SiteController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': SiteController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="SiteController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+	
+		<div class="box-body">
+			
+			<table class="table table-bordered table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th class="table-action-column-width">{{ 'ui.actions' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+					
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, site) in SiteController.sites">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ site.name | hookFilterContentTranslate: SiteController.displayLanguage }}</td>
+
+						<td>{{ site.domain }}</td>
+
+						<td>{{ site.subdomain }}</td>
+
+						<td>{{ site.address | hookFilterContentTranslate: SiteController.displayLanguage }}</td>
+
+						<td>{{ site.telephone }}</td>
+
+						<td>{{ site.fax }}</td>
+
+						<td>{{ site.email }}</td>
+
+						<td>{{ site.facebook_link }}</td>
+
+						<td>{{ site.twitter_link }}</td>
+
+						<td>{{ site.tripadvisor_link }}</td>
+
+						<td hook-action-button-list 
+							hook-action-button-list-bind-resource="site" 
+							hook-action-button-list-bind-controller="SiteController"></td>
+					
+					</tr>
+				
+				</tbody>
+			
+			</table>
+		
+		</div><!-- /.box-body -->
+
+	
+		<div class="box-footer">
+		</div><!-- /.box-footer -->
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

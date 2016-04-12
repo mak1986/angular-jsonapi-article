@@ -265,7 +265,7 @@
 						
 						<th>{{ 'label.max_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
-						<th>{{ 'label.max_extra_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th>{{ 'label.max_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
 						<th>{{ 'label.bathrooms' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
@@ -295,7 +295,7 @@
 						
 						<td>{{ accommodation.max_quantity }}</td>
 						
-						<td>{{ accommodation.max_extra_children }}</td>
+						<td>{{ accommodation.max_children }}</td>
 						
 						<td>{{ accommodation.bathrooms }}</td>
 						
@@ -505,8 +505,6 @@
 						
 						<th>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
-						<th class="text-center">{{ 'label.is_home' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-						
 						<th class="text-center">{{ 'label.is_main_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
 						<th class="text-center">{{ 'label.is_footer_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
@@ -530,12 +528,6 @@
 						<td>{{ page.meta_keywords | hookFilterContentTranslate: SiteController.displayLanguage }}</td>
 						
 						<td>{{ page.weight }}</td>
-						
-						<td class="text-center" 
-							ng-class="page.is_home ? 'text-success':'text-danger'">
-							<span class="fa" 
-								ng-class="page.is_home ? 'fa-check':'fa-close'"></span>
-						</td>
 						
 						<td class="text-center" 
 							ng-class="page.is_main_menu ? 'text-success':'text-danger'">

@@ -167,38 +167,6 @@
 									>
 							
 							</div><!-- /.form-group -->
-
-							<div class="form-group">
-
-								<label for="boolean-page-is-home"
-									hook-form-label
-									hook-form-label-bind-form="form"
-									hook-form-label-bind-field="is_home"
-									hook-form-label-bind-required="false"
-									></label>
-									
-								<div hook-validation-message 
-									hook-validation-message-bind-form="form"
-									hook-validation-message-bind-field="is_home"></div>
-								
-								<div class="radio">
-									<label>
-										<input type="radio" 
-											ng-value="true"
-											ng-model="PageController.page.is_home"
-											ng-checked="PageController.page.is_home">
-										{{ 'ui.yes' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
-									</label>
-									<label>
-										<input type="radio" 
-											ng-value="false"
-											ng-model="PageController.page.is_home"
-											ng-checked="!PageController.page.is_home">
-										{{ 'ui.no' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
-									</label>
-								</div>
-							
-							</div><!-- /.form-group -->
 								
 							<div class="form-group">
 

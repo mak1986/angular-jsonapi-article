@@ -1,0 +1,160 @@
+<!-- Main model: accommodation__order -->
+
+<div class="row"
+	ng-controller="AccommodationOrderController as AccommodationOrderController" 
+	ng-init="AccommodationOrderController.form()">
+ 	<div class="col-md-12">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + AccommodationOrderController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.accommodation__order' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="AccommodationOrderController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-accommodation--order-from"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="from"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="from"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation--order-from" 
+								name="from"
+								placeholder="{{ 'label.from' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationOrderController.accommodationOrder.from"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation--order-to"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="to"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="to"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation--order-to" 
+								name="to"
+								placeholder="{{ 'label.to' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationOrderController.accommodationOrder.to"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-accommodation--order-extra-bed-quantity"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="extra_bed_quantity"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="extra_bed_quantity"></div>
+							
+							<input class="form-control" 
+								id="text-accommodation--order-extra-bed-quantity" 
+								name="extra_bed_quantity"
+								placeholder="{{ 'label.extra_bed_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="AccommodationOrderController.accommodationOrder.extra_bed_quantity"	 						
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+						<!-- Main model: accommodation__order, Relationship alias: accommodation, Relationship model: accommodation -->
+
+						<div class="form-group" 
+							ng-controller="AccommodationController as AccommodationController" >
+							
+							<label for="select-accommodation--order-accommodation"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="accommodation"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-accommodation--order-accommodation" 
+									class="form-control" 
+									name="accommodation"
+									ng-model="AccommodationOrderController.accommodationOrder.accommodation"
+									ng-options="accommodation.id as (accommodation.name | hookFilterContentTranslate) for accommodation in AccommodationController.accommodations track by accommodation.id"></select>
+						
+						</div><!-- /.form-group -->
+
+						<!-- Main model: accommodation__order, Relationship alias: order, Relationship model: order -->
+
+						<div class="form-group" 
+							ng-controller="OrderController as OrderController" >
+							
+							<label for="select-accommodation--order-order"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="order"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-accommodation--order-order" 
+									class="form-control" 
+									name="order"
+									ng-model="AccommodationOrderController.accommodationOrder.order"
+									ng-options="order.id as (order.name | hookFilterContentTranslate) for order in OrderController.machineNameTranslations track by order.id"></select>
+						
+						</div><!-- /.form-group -->
+
+		
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="AccommodationOrderController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+
+</div><!-- /.row -->

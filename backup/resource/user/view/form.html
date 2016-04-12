@@ -180,20 +180,20 @@
 						<div class="form-group" 
 							ng-controller="GroupController as GroupController" >
 							
-							<label for="checkbox-user-groups"
+							<label for="checkbox-user-group"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="groups"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="groups in GroupController.groups">
+								ng-repeat="group in GroupController.groups">
 								
-								<label for="checkbox-user-groups-{{ groups.id }}">
+								<label for="checkbox-user-group-{{ group.id }}">
 									
-									<input id="checkbox-user-groups-{{ groups.id }}" 
+									<input id="checkbox-user-group-{{ group.id }}" 
 										type="checkbox"
-										ng-model="UserController.user.groups[groups.id]">{{ groups.name | hookFilterContentTranslate }}
+										ng-model="UserController.user.groups[group.id]">{{ group.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -207,20 +207,20 @@
 						<div class="form-group" 
 							ng-controller="SiteController as SiteController" >
 							
-							<label for="checkbox-user-sites"
+							<label for="checkbox-user-site"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="sites"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="sites in SiteController.sites">
+								ng-repeat="site in SiteController.sites">
 								
-								<label for="checkbox-user-sites-{{ sites.id }}">
+								<label for="checkbox-user-site-{{ site.id }}">
 									
-									<input id="checkbox-user-sites-{{ sites.id }}" 
+									<input id="checkbox-user-site-{{ site.id }}" 
 										type="checkbox"
-										ng-model="UserController.user.sites[sites.id]">{{ sites.name | hookFilterContentTranslate }}
+										ng-model="UserController.user.sites[site.id]">{{ site.name | hookFilterContentTranslate }}
 								
 								</label>
 							

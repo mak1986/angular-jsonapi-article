@@ -55,8 +55,6 @@
 
 						<th>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
-						<th class="text-center">{{ 'label.is_home' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
 						<th class="text-center">{{ 'label.is_main_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
 						<th class="text-center">{{ 'label.is_footer_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
@@ -82,10 +80,6 @@
 						<td>{{ page.meta_keywords | hookFilterContentTranslate: PageController.displayLanguage }}</td>
 
 						<td>{{ page.weight }}</td>
-
-						<td class="text-center" 
-							ng-class="page.is_home ? 'text-success':'text-danger'">
-							<span class="fa" ng-class="page.is_home ? 'fa-check':'fa-close'"></span></td>
 
 						<td class="text-center" 
 							ng-class="page.is_main_menu ? 'text-success':'text-danger'">

@@ -127,20 +127,20 @@
 						<div class="form-group" 
 							ng-controller="AccommodationController as AccommodationController" >
 							
-							<label for="checkbox-room-accommodations"
+							<label for="checkbox-room-accommodation"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="accommodations"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="accommodations in AccommodationController.accommodations">
+								ng-repeat="accommodation in AccommodationController.accommodations">
 								
-								<label for="checkbox-room-accommodations-{{ accommodations.id }}">
+								<label for="checkbox-room-accommodation-{{ accommodation.id }}">
 									
-									<input id="checkbox-room-accommodations-{{ accommodations.id }}" 
+									<input id="checkbox-room-accommodation-{{ accommodation.id }}" 
 										type="checkbox"
-										ng-model="RoomController.room.accommodations[accommodations.id]">{{ accommodations.name | hookFilterContentTranslate }}
+										ng-model="RoomController.room.accommodations[accommodation.id]">{{ accommodation.name | hookFilterContentTranslate }}
 								
 								</label>
 							

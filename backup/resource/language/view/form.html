@@ -150,20 +150,20 @@
 						<div class="form-group" 
 							ng-controller="SiteController as SiteController" >
 							
-							<label for="checkbox-language-site-default-languages"
+							<label for="checkbox-language-site"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="site_default_languages"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="siteDefaultLanguages in SiteController.sites">
+								ng-repeat="site in SiteController.sites">
 								
-								<label for="checkbox-language-site-default-languages-{{ siteDefaultLanguages.id }}">
+								<label for="checkbox-language-site-{{ site.id }}">
 									
-									<input id="checkbox-language-site-default-languages-{{ siteDefaultLanguages.id }}" 
+									<input id="checkbox-language-site-{{ site.id }}" 
 										type="checkbox"
-										ng-model="LanguageController.language.siteDefaultLanguages[siteDefaultLanguages.id]">{{ siteDefaultLanguages.name | hookFilterContentTranslate }}
+										ng-model="LanguageController.language.siteDefaultLanguages[site.id]">{{ site.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -177,20 +177,20 @@
 						<div class="form-group" 
 							ng-controller="SiteController as SiteController" >
 							
-							<label for="checkbox-language-site-enabled-languages"
+							<label for="checkbox-language-site"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="site_enabled_languages"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="siteEnabledLanguages in SiteController.sites">
+								ng-repeat="site in SiteController.sites">
 								
-								<label for="checkbox-language-site-enabled-languages-{{ siteEnabledLanguages.id }}">
+								<label for="checkbox-language-site-{{ site.id }}">
 									
-									<input id="checkbox-language-site-enabled-languages-{{ siteEnabledLanguages.id }}" 
+									<input id="checkbox-language-site-{{ site.id }}" 
 										type="checkbox"
-										ng-model="LanguageController.language.siteEnabledLanguages[siteEnabledLanguages.id]">{{ siteEnabledLanguages.name | hookFilterContentTranslate }}
+										ng-model="LanguageController.language.siteEnabledLanguages[site.id]">{{ site.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -204,20 +204,20 @@
 						<div class="form-group" 
 							ng-controller="SiteController as SiteController" >
 							
-							<label for="checkbox-language-site-published-languages"
+							<label for="checkbox-language-site"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="site_published_languages"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="sitePublishedLanguages in SiteController.sites">
+								ng-repeat="site in SiteController.sites">
 								
-								<label for="checkbox-language-site-published-languages-{{ sitePublishedLanguages.id }}">
+								<label for="checkbox-language-site-{{ site.id }}">
 									
-									<input id="checkbox-language-site-published-languages-{{ sitePublishedLanguages.id }}" 
+									<input id="checkbox-language-site-{{ site.id }}" 
 										type="checkbox"
-										ng-model="LanguageController.language.sitePublishedLanguages[sitePublishedLanguages.id]">{{ sitePublishedLanguages.name | hookFilterContentTranslate }}
+										ng-model="LanguageController.language.sitePublishedLanguages[site.id]">{{ site.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -231,20 +231,20 @@
 						<div class="form-group" 
 							ng-controller="UserPreferenceController as UserPreferenceController" >
 							
-							<label for="checkbox-language-user-preferences"
+							<label for="checkbox-language-preference"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="user_preferences"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="userPreferences in UserPreferenceController.preferences">
+								ng-repeat="preference in UserPreferenceController.preferences">
 								
-								<label for="checkbox-language-user-preferences-{{ userPreferences.id }}">
+								<label for="checkbox-language-preference-{{ preference.id }}">
 									
-									<input id="checkbox-language-user-preferences-{{ userPreferences.id }}" 
+									<input id="checkbox-language-preference-{{ preference.id }}" 
 										type="checkbox"
-										ng-model="LanguageController.language.userPreferences[userPreferences.id]">{{ userPreferences.name | hookFilterContentTranslate }}
+										ng-model="LanguageController.language.userPreferences[preference.id]">{{ preference.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -258,20 +258,20 @@
 						<div class="form-group" 
 							ng-controller="MachineNameTranslationController as MachineNameTranslationController" >
 							
-							<label for="checkbox-language-machine-name-translations"
+							<label for="checkbox-language-machine-name-translation"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="machine_name_translations"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="machineNameTranslations in MachineNameTranslationController.machineNameTranslations">
+								ng-repeat="machineNameTranslation in MachineNameTranslationController.machineNameTranslations">
 								
-								<label for="checkbox-language-machine-name-translations-{{ machineNameTranslations.id }}">
+								<label for="checkbox-language-machine-name-translation-{{ machineNameTranslation.id }}">
 									
-									<input id="checkbox-language-machine-name-translations-{{ machineNameTranslations.id }}" 
+									<input id="checkbox-language-machine-name-translation-{{ machineNameTranslation.id }}" 
 										type="checkbox"
-										ng-model="LanguageController.language.machineNameTranslations[machineNameTranslations.id]">{{ machineNameTranslations.name | hookFilterContentTranslate }}
+										ng-model="LanguageController.language.machineNameTranslations[machineNameTranslation.id]">{{ machineNameTranslation.name | hookFilterContentTranslate }}
 								
 								</label>
 							

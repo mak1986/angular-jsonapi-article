@@ -1,0 +1,145 @@
+<!-- Main model: room -->
+
+<div class="box" 
+	ng-controller="RoomController as RoomController" 
+	ng-init="RoomController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.room' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="RoomController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="RoomController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': RoomController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="RoomController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.room_type' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ RoomController.room.room_type }}</dd>
+				
+				<dt>{{ 'label.bed_combination' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ RoomController.room.bed_combination | hookFilterContentTranslate: RoomController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.max_people' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ RoomController.room.max_people }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: room, Relationship alias: accommodations, Relationship model: accommodation -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.accommodations' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.square_area' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.price' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.extra_bed_price' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.max_extra_bed' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.max_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.max_extra_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.bathrooms' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th class="text-center">{{ 'label.is_parent' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, accommodation) in RoomController.room.accommodations">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ accommodation.name | hookFilterContentTranslate: RoomController.displayLanguage }}</td>
+						
+						<td>{{ accommodation.description | hookFilterContentTranslate: RoomController.displayLanguage }}</td>
+						
+						<td>{{ accommodation.square_area }}</td>
+						
+						<td>{{ accommodation.price }}</td>
+						
+						<td>{{ accommodation.extra_bed_price }}</td>
+						
+						<td>{{ accommodation.max_extra_bed }}</td>
+						
+						<td>{{ accommodation.max_quantity }}</td>
+						
+						<td>{{ accommodation.max_extra_children }}</td>
+						
+						<td>{{ accommodation.bathrooms }}</td>
+						
+						<td class="text-center" 
+							ng-class="accommodation.is_parent ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="accommodation.is_parent ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

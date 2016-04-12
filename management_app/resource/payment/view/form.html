@@ -1,0 +1,437 @@
+<!-- Main model: payment -->
+
+<div class="row"
+	ng-controller="PaymentController as PaymentController" 
+	ng-init="PaymentController.form()">
+ 	<div class="col-md-12">
+ 		
+		<div class="box">
+
+			<div class="box-header with-border">
+
+				<h3 class="box-title">
+					{{ ('ui.' + PaymentController.mode) | hookFilterMachineNameTranslate | hookFilterTitle }} {{ 'model.payment' | hookFilterMachineNameTranslate | hookFilterTitle }}
+				</h3>
+				
+				<div class="box-tools" 
+					hook-action-button-box-tools 
+					hook-action-button-box-tools-bind-controller="PaymentController"></div>
+
+			</div><!-- /.box-header -->
+			
+			
+			<div class="nav-tabs-custom">
+
+				<!-- form start -->
+				<form name="form"
+						role="form"
+						novalidate>
+
+					<div class="box-body">
+				
+							
+						<div class="form-group">
+
+							<label for="text-payment-first-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="first_name"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="first_name"></div>
+							
+							<input class="form-control" 
+								id="text-payment-first-name" 
+								name="first_name"
+								placeholder="{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.first_name"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-last-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="last_name"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="last_name"></div>
+							
+							<input class="form-control" 
+								id="text-payment-last-name" 
+								name="last_name"
+								placeholder="{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.last_name"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-cardholder-name"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="cardholder_name"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="cardholder_name"></div>
+							
+							<input class="form-control" 
+								id="text-payment-cardholder-name" 
+								name="cardholder_name"
+								placeholder="{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.cardholder_name"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-billing-address-line-1"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="billing_address_line_1"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="billing_address_line_1"></div>
+							
+							<input class="form-control" 
+								id="text-payment-billing-address-line-1" 
+								name="billing_address_line_1"
+								placeholder="{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.billing_address_line_1"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-billing-address-line-2"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="billing_address_line_2"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="billing_address_line_2"></div>
+							
+							<input class="form-control" 
+								id="text-payment-billing-address-line-2" 
+								name="billing_address_line_2"
+								placeholder="{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.billing_address_line_2"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-city"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="city"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="city"></div>
+							
+							<input class="form-control" 
+								id="text-payment-city" 
+								name="city"
+								placeholder="{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.city"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-country"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="country"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="country"></div>
+							
+							<input class="form-control" 
+								id="text-payment-country" 
+								name="country"
+								placeholder="{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.country"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-postal-code"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="postal_code"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="postal_code"></div>
+							
+							<input class="form-control" 
+								id="text-payment-postal-code" 
+								name="postal_code"
+								placeholder="{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.postal_code"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-credit-card-number"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="credit_card_number"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="credit_card_number"></div>
+							
+							<input class="form-control" 
+								id="text-payment-credit-card-number" 
+								name="credit_card_number"
+								placeholder="{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.credit_card_number"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-cvc"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="cvc"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="cvc"></div>
+							
+							<input class="form-control" 
+								id="text-payment-cvc" 
+								name="cvc"
+								placeholder="{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.cvc"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-exp-month"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="exp_month"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="exp_month"></div>
+							
+							<input class="form-control" 
+								id="text-payment-exp-month" 
+								name="exp_month"
+								placeholder="{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.exp_month"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-exp-year"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="exp_year"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="exp_year"></div>
+							
+							<input class="form-control" 
+								id="text-payment-exp-year" 
+								name="exp_year"
+								placeholder="{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.exp_year"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-email"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="email"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="email"></div>
+							
+							<input class="form-control" 
+								id="text-payment-email" 
+								name="email"
+								placeholder="{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.email"	 						
+								hook-validation-email
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-phone-area-code"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="phone_area_code"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="phone_area_code"></div>
+							
+							<input class="form-control" 
+								id="text-payment-phone-area-code" 
+								name="phone_area_code"
+								placeholder="{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.phone_area_code"	 						
+								>
+						
+						</div><!-- /.form-group -->
+							
+						<div class="form-group">
+
+							<label for="text-payment-phone-number"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="phone_number"
+								hook-form-label-bind-required="false"
+								></label>
+								
+							<div hook-validation-message 
+								hook-validation-message-bind-form="form"
+								hook-validation-message-bind-field="phone_number"></div>
+							
+							<input class="form-control" 
+								id="text-payment-phone-number" 
+								name="phone_number"
+								placeholder="{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}"
+								type="text" 
+		 						ng-model="PaymentController.payment.phone_number"	 						
+								>
+						
+						</div><!-- /.form-group -->
+
+	
+						<!-- Main model: payment, Relationship alias: order, Relationship model: order -->
+
+						<div class="form-group" 
+							ng-controller="OrderController as OrderController" >
+							
+							<label for="select-payment-order"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="order"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-payment-order" 
+									class="form-control" 
+									name="order"
+									ng-model="PaymentController.payment.order"
+									ng-options="order.id as (order.name | hookFilterContentTranslate) for order in OrderController.machineNameTranslations track by order.id"></select>
+						
+						</div><!-- /.form-group -->
+
+						<!-- Main model: payment, Relationship alias: site, Relationship model: site -->
+
+						<div class="form-group" 
+							ng-controller="SiteController as SiteController" >
+							
+							<label for="select-payment-site"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="site"
+								hook-form-label-bind-required="true"></label>
+							
+							<select id="select-payment-site" 
+									class="form-control" 
+									name="site"
+									ng-model="PaymentController.payment.site"
+									ng-options="site.id as (site.name | hookFilterContentTranslate) for site in SiteController.sites track by site.id"></select>
+						
+						</div><!-- /.form-group -->
+
+		
+	
+					
+					</div><!-- ./box-body -->
+
+					<div class="box-footer" 
+						hook-form-button
+						hook-form-button-bind-form="form"
+						hook-form-button-bind-controller="PaymentController"></div><!-- /.box-footer -->
+
+				</form>
+
+            </div><!-- ./nav-tabs-custom -->
+		
+		</div><!-- /.box -->
+
+ 	</div><!-- /.col -->
+
+
+</div><!-- /.row -->

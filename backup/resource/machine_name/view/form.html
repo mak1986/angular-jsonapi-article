@@ -102,20 +102,20 @@
 						<div class="form-group" 
 							ng-controller="MachineNameTranslationController as MachineNameTranslationController" >
 							
-							<label for="checkbox-machine-name-translations"
+							<label for="checkbox-machine-name-machine-name-translation"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="translations"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="translations in MachineNameTranslationController.machineNameTranslations">
+								ng-repeat="machineNameTranslation in MachineNameTranslationController.machineNameTranslations">
 								
-								<label for="checkbox-machine-name-translations-{{ translations.id }}">
+								<label for="checkbox-machine-name-machine-name-translation-{{ machineNameTranslation.id }}">
 									
-									<input id="checkbox-machine-name-translations-{{ translations.id }}" 
+									<input id="checkbox-machine-name-machine-name-translation-{{ machineNameTranslation.id }}" 
 										type="checkbox"
-										ng-model="MachineNameController.machineName.translations[translations.id]">{{ translations.name | hookFilterContentTranslate }}
+										ng-model="MachineNameController.machineName.translations[machineNameTranslation.id]">{{ machineNameTranslation.name | hookFilterContentTranslate }}
 								
 								</label>
 							

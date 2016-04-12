@@ -1,0 +1,182 @@
+<!-- Main model: plan -->
+
+<div class="box" 
+	ng-controller="PlanController as PlanController" 
+	ng-init="PlanController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.plan' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="PlanController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="PlanController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': PlanController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="PlanController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PlanController.plan.name | hookFilterContentTranslate: PlanController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PlanController.plan.description | hookFilterContentTranslate: PlanController.displayLanguage }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: plan, Relationship alias: sites, Relationship model: site -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.sites' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, site) in PlanController.plan.sites">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ site.name | hookFilterContentTranslate: PlanController.displayLanguage }}</td>
+						
+						<td>{{ site.domain }}</td>
+						
+						<td>{{ site.subdomain }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+		<!-- Main model: plan, Relationship alias: features, Relationship model: feature -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.features' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.icon' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th class="text-center">{{ 'label.hide_from_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th class="text-center">{{ 'label.owner' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, feature) in PlanController.plan.features">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ feature.icon }}</td>
+						
+						<td>{{ feature.name | hookFilterContentTranslate: PlanController.displayLanguage }}</td>
+						
+						<td>{{ feature.description | hookFilterContentTranslate: PlanController.displayLanguage }}</td>
+						
+						<td class="text-center" 
+							ng-class="feature.hide_from_menu ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="feature.hide_from_menu ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+						<td class="text-center" 
+							ng-class="feature.owner ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="feature.owner ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+						<td>{{ feature.weight }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

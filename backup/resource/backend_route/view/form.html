@@ -192,20 +192,20 @@
 						<div class="form-group" 
 							ng-controller="FeatureController as FeatureController" >
 							
-							<label for="checkbox-backend-route-features"
+							<label for="checkbox-backend-route-feature"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="features"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="features in FeatureController.features">
+								ng-repeat="feature in FeatureController.features">
 								
-								<label for="checkbox-backend-route-features-{{ features.id }}">
+								<label for="checkbox-backend-route-feature-{{ feature.id }}">
 									
-									<input id="checkbox-backend-route-features-{{ features.id }}" 
+									<input id="checkbox-backend-route-feature-{{ feature.id }}" 
 										type="checkbox"
-										ng-model="BackendRouteController.backendRoute.features[features.id]">{{ features.name | hookFilterContentTranslate }}
+										ng-model="BackendRouteController.backendRoute.features[feature.id]">{{ feature.name | hookFilterContentTranslate }}
 								
 								</label>
 							

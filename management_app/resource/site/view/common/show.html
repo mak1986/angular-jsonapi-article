@@ -550,6 +550,154 @@
 
 		</div><!-- /.box-body -->
 
+		<!-- Main model: site, Relationship alias: orders, Relationship model: order -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.orders' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th class="text-center">{{ 'label.paid' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, machineNameTranslation) in SiteController.site.orders">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td class="text-center" 
+							ng-class="machineNameTranslation.paid ? 'text-success':'text-danger'">
+							<span class="fa" 
+								ng-class="machineNameTranslation.paid ? 'fa-check':'fa-close'"></span>
+						</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
+		<!-- Main model: site, Relationship alias: payments, Relationship model: payment -->
+
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.payments' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+
+			<table class="table no-border table-hover"
+				id="table-group"> 
+				
+				<thead>
+					
+					<tr>
+				
+						<th class="table-index-column-width">#</th>
+						
+						<th>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+						<th>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr ng-repeat="(id, payment) in SiteController.site.payments">
+						
+						<td>{{ $index + 1 }}</td>
+						
+						<td>{{ payment.first_name }}</td>
+						
+						<td>{{ payment.last_name }}</td>
+						
+						<td>{{ payment.cardholder_name }}</td>
+						
+						<td>{{ payment.billing_address_line_1 }}</td>
+						
+						<td>{{ payment.billing_address_line_2 }}</td>
+						
+						<td>{{ payment.city }}</td>
+						
+						<td>{{ payment.country }}</td>
+						
+						<td>{{ payment.postal_code }}</td>
+						
+						<td>{{ payment.credit_card_number }}</td>
+						
+						<td>{{ payment.cvc }}</td>
+						
+						<td>{{ payment.exp_month }}</td>
+						
+						<td>{{ payment.exp_year }}</td>
+						
+						<td>{{ payment.email }}</td>
+						
+						<td>{{ payment.phone_area_code }}</td>
+						
+						<td>{{ payment.phone_number }}</td>
+						
+		
+					</tr>
+				
+				</tbody>
+			
+			</table>
+
+		</div><!-- /.box-body -->
+
 
 	<div class="box-footer">
 	</div><!-- /.box-footer -->

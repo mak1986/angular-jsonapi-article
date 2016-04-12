@@ -93,6 +93,69 @@
 		
 		</div><!-- /.box-body -->
 
+		<!-- Main model: order, Relationship alias: payment, Relationship model: payment -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.payment' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'first_name' }}</dd>
+				
+				<dt>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'last_name' }}</dd>
+				
+				<dt>{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'cardholder_name' }}</dd>
+				
+				<dt>{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'billing_address_line_1' }}</dd>
+				
+				<dt>{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'billing_address_line_2' }}</dd>
+				
+				<dt>{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'city' }}</dd>
+				
+				<dt>{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'country' }}</dd>
+				
+				<dt>{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'postal_code' }}</dd>
+				
+				<dt>{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'credit_card_number' }}</dd>
+				
+				<dt>{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'cvc' }}</dd>
+				
+				<dt>{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'exp_month' }}</dd>
+				
+				<dt>{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'exp_year' }}</dd>
+				
+				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'email' }}</dd>
+				
+				<dt>{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'phone_area_code' }}</dd>
+				
+				<dt>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'phone_number' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
 		<!-- Main model: order, Relationship alias: accommodationOrders, Relationship model: accommodation__order -->
 
 		<div class="box-header with-border">

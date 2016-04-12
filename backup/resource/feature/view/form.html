@@ -233,20 +233,20 @@
 						<div class="form-group" 
 							ng-controller="BackendRouteController as BackendRouteController" >
 							
-							<label for="checkbox-feature-backend-routes"
+							<label for="checkbox-feature-backend-route"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="backend_routes"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="backendRoutes in BackendRouteController.backendRoutes">
+								ng-repeat="backendRoute in BackendRouteController.backendRoutes">
 								
-								<label for="checkbox-feature-backend-routes-{{ backendRoutes.id }}">
+								<label for="checkbox-feature-backend-route-{{ backendRoute.id }}">
 									
-									<input id="checkbox-feature-backend-routes-{{ backendRoutes.id }}" 
+									<input id="checkbox-feature-backend-route-{{ backendRoute.id }}" 
 										type="checkbox"
-										ng-model="FeatureController.feature.backendRoutes[backendRoutes.id]">{{ backendRoutes.name | hookFilterContentTranslate }}
+										ng-model="FeatureController.feature.backendRoutes[backendRoute.id]">{{ backendRoute.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -260,20 +260,20 @@
 						<div class="form-group" 
 							ng-controller="GroupController as GroupController" >
 							
-							<label for="checkbox-feature-groups"
+							<label for="checkbox-feature-group"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="groups"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="groups in GroupController.groups">
+								ng-repeat="group in GroupController.groups">
 								
-								<label for="checkbox-feature-groups-{{ groups.id }}">
+								<label for="checkbox-feature-group-{{ group.id }}">
 									
-									<input id="checkbox-feature-groups-{{ groups.id }}" 
+									<input id="checkbox-feature-group-{{ group.id }}" 
 										type="checkbox"
-										ng-model="FeatureController.feature.groups[groups.id]">{{ groups.name | hookFilterContentTranslate }}
+										ng-model="FeatureController.feature.groups[group.id]">{{ group.name | hookFilterContentTranslate }}
 								
 								</label>
 							
@@ -287,20 +287,20 @@
 						<div class="form-group" 
 							ng-controller="PlanController as PlanController" >
 							
-							<label for="checkbox-feature-plans"
+							<label for="checkbox-feature-plan"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="plans"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="plans in PlanController.plans">
+								ng-repeat="plan in PlanController.plans">
 								
-								<label for="checkbox-feature-plans-{{ plans.id }}">
+								<label for="checkbox-feature-plan-{{ plan.id }}">
 									
-									<input id="checkbox-feature-plans-{{ plans.id }}" 
+									<input id="checkbox-feature-plan-{{ plan.id }}" 
 										type="checkbox"
-										ng-model="FeatureController.feature.plans[plans.id]">{{ plans.name | hookFilterContentTranslate }}
+										ng-model="FeatureController.feature.plans[plan.id]">{{ plan.name | hookFilterContentTranslate }}
 								
 								</label>
 							

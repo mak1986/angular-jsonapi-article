@@ -59,8 +59,8 @@
 				<dt>{{ 'label.max_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>{{ AccommodationController.accommodation.max_quantity }}</dd>
 				
-				<dt>{{ 'label.max_extra_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.max_extra_children }}</dd>
+				<dt>{{ 'label.max_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ AccommodationController.accommodation.max_children }}</dd>
 				
 				<dt>{{ 'label.bathrooms' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>{{ AccommodationController.accommodation.bathrooms }}</dd>
@@ -107,8 +107,8 @@
 				<dt>{{ 'label.max_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>{{ AccommodationController.accommodation.parent | hookFilterByFieldValue: 'max_quantity' }}</dd>
 				
-				<dt>{{ 'label.max_extra_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.parent | hookFilterByFieldValue: 'max_extra_children' }}</dd>
+				<dt>{{ 'label.max_children' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ AccommodationController.accommodation.parent | hookFilterByFieldValue: 'max_children' }}</dd>
 				
 				<dt>{{ 'label.bathrooms' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>{{ AccommodationController.accommodation.parent | hookFilterByFieldValue: 'bathrooms' }}</dd>
@@ -116,7 +116,7 @@
 				<dt>{{ 'label.is_parent' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>
 					<span class="fa" 
-						ng-class="AccommodationController.accommodation.accommodation | hookFilterByFieldValue: 'is_parent ? 'fa-check':'fa-close'"></span>
+						ng-class="AccommodationController.accommodation.accommodation | hookFilterByFieldValue: 'is_parent' ? 'fa-check':'fa-close'"></span>
 				</dd>
 				
 			</dl>

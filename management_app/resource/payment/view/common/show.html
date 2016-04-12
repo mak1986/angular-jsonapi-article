@@ -1,0 +1,169 @@
+<!-- Main model: payment -->
+
+<div class="box" 
+	ng-controller="PaymentController as PaymentController" 
+	ng-init="PaymentController.show()">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'model.payment' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+		
+		<div class="box-tools" 
+			hook-action-button-box-tools 
+			hook-action-button-box-tools-bind-controller="PaymentController"></div>
+	
+	</div><!-- /.box-header -->
+	
+	<div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs" ng-init="PaymentController.displayLanguage=HookController.ui.getLanguage()">
+         
+          <li ng-class="{ 'active': PaymentController.displayLanguage==language.iso_2_code }"
+          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+          
+          	<a href="" ng-click="PaymentController.displayLanguage=language.iso_2_code">
+          	
+          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+          	
+          		{{ language.name | hookFilterContentTranslate }}
+          	
+          	</a>
+         
+          </li>
+        
+        </ul>
+
+
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.first_name }}</dd>
+				
+				<dt>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.last_name }}</dd>
+				
+				<dt>{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.cardholder_name }}</dd>
+				
+				<dt>{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.billing_address_line_1 }}</dd>
+				
+				<dt>{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.billing_address_line_2 }}</dd>
+				
+				<dt>{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.city }}</dd>
+				
+				<dt>{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.country }}</dd>
+				
+				<dt>{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.postal_code }}</dd>
+				
+				<dt>{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.credit_card_number }}</dd>
+				
+				<dt>{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.cvc }}</dd>
+				
+				<dt>{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.exp_month }}</dd>
+				
+				<dt>{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.exp_year }}</dd>
+				
+				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.email }}</dd>
+				
+				<dt>{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.phone_area_code }}</dd>
+				
+				<dt>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.phone_number }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+	
+		<!-- Main model: payment, Relationship alias: order, Relationship model: order -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.order' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.paid' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>
+					<span class="fa" 
+						ng-class="PaymentController.payment.machineNameTranslation | hookFilterByFieldValue: 'paid' ? 'fa-check':'fa-close'"></span>
+				</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+		<!-- Main model: payment, Relationship alias: site, Relationship model: site -->
+		
+		<div class="box-header with-border">
+			
+			<h3 class="box-title">{{ 'label.site' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			<div class="box-tools"></div>
+		
+		</div><!-- /.box-header -->
+		
+		<div class="box-body">
+			
+			<dl><!-- class="dl-horizontal" -->
+				
+				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: PaymentController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'domain' }}</dd>
+				
+				<dt>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'subdomain' }}</dd>
+				
+				<dt>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'address' | hookFilterContentTranslate: PaymentController.displayLanguage }}</dd>
+				
+				<dt>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'telephone' }}</dd>
+				
+				<dt>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'fax' }}</dd>
+				
+				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'email' }}</dd>
+				
+				<dt>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'facebook_link' }}</dd>
+				
+				<dt>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'twitter_link' }}</dd>
+				
+				<dt>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dd>{{ PaymentController.payment.site | hookFilterByFieldValue: 'tripadvisor_link' }}</dd>
+				
+			</dl>
+		
+		</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+	</div><!-- ./nav-tabs-custom -->
+
+</div><!-- /.box -->

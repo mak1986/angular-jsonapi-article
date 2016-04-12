@@ -61,20 +61,20 @@
 						<div class="form-group" 
 							ng-controller="SectionController as SectionController" >
 							
-							<label for="checkbox-section-kind-sections"
+							<label for="checkbox-section-kind-section"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="sections"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="sections in SectionController.sections">
+								ng-repeat="section in SectionController.sections">
 								
-								<label for="checkbox-section-kind-sections-{{ sections.id }}">
+								<label for="checkbox-section-kind-section-{{ section.id }}">
 									
-									<input id="checkbox-section-kind-sections-{{ sections.id }}" 
+									<input id="checkbox-section-kind-section-{{ section.id }}" 
 										type="checkbox"
-										ng-model="SectionKindController.sectionKind.sections[sections.id]">{{ sections.name | hookFilterContentTranslate }}
+										ng-model="SectionKindController.sectionKind.sections[section.id]">{{ section.name | hookFilterContentTranslate }}
 								
 								</label>
 							

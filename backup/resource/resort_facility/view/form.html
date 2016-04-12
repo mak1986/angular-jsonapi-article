@@ -101,20 +101,20 @@
 						<div class="form-group" 
 							ng-controller="SiteController as SiteController" >
 							
-							<label for="checkbox-resort-facility-sites"
+							<label for="checkbox-resort-facility-site"
 								hook-form-label
 								hook-form-label-bind-form="form"
 								hook-form-label-bind-field="sites"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
-								ng-repeat="sites in SiteController.sites">
+								ng-repeat="site in SiteController.sites">
 								
-								<label for="checkbox-resort-facility-sites-{{ sites.id }}">
+								<label for="checkbox-resort-facility-site-{{ site.id }}">
 									
-									<input id="checkbox-resort-facility-sites-{{ sites.id }}" 
+									<input id="checkbox-resort-facility-site-{{ site.id }}" 
 										type="checkbox"
-										ng-model="ResortFacilityController.resortFacility.sites[sites.id]">{{ sites.name | hookFilterContentTranslate }}
+										ng-model="ResortFacilityController.resortFacility.sites[site.id]">{{ site.name | hookFilterContentTranslate }}
 								
 								</label>
 							

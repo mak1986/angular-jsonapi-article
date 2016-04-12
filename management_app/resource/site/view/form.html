@@ -517,6 +517,60 @@
 						</div><!-- /.form-group -->
 						
 
+						<!-- Main model: site, Relationship alias: orders, Relationship model: order -->
+
+						<div class="form-group" 
+							ng-controller="OrderController as OrderController" >
+							
+							<label for="checkbox-site-machine-name-translation"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="orders"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="machineNameTranslation in OrderController.machineNameTranslations">
+								
+								<label for="checkbox-site-machine-name-translation-{{ machineNameTranslation.id }}">
+									
+									<input id="checkbox-site-machine-name-translation-{{ machineNameTranslation.id }}" 
+										type="checkbox"
+										ng-model="SiteController.site.orders[machineNameTranslation.id]">{{ machineNameTranslation.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
+						<!-- Main model: site, Relationship alias: payments, Relationship model: payment -->
+
+						<div class="form-group" 
+							ng-controller="PaymentController as PaymentController" >
+							
+							<label for="checkbox-site-payment"
+								hook-form-label
+								hook-form-label-bind-form="form"
+								hook-form-label-bind-field="payments"
+								hook-form-label-bind-required="false"></label>
+							
+							<div class="checkbox"
+								ng-repeat="payment in PaymentController.payments">
+								
+								<label for="checkbox-site-payment-{{ payment.id }}">
+									
+									<input id="checkbox-site-payment-{{ payment.id }}" 
+										type="checkbox"
+										ng-model="SiteController.site.payments[payment.id]">{{ payment.name | hookFilterContentTranslate }}
+								
+								</label>
+							
+							</div><!-- /.checkbox -->
+
+						</div><!-- /.form-group -->
+						
+
 	
 					
 					</div><!-- ./box-body -->
