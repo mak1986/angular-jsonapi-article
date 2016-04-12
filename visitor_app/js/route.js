@@ -9,6 +9,12 @@
 			// 		templateUrl: CONFIG.routes[key]['templateUrl']
 			// 	});
 			// }
+			$routeProvider.when('/:language/invoice', {
+				templateUrl: '/visitor_app/template/invoice.html'
+			});
+			$routeProvider.when('/:language/payment', {
+				templateUrl: '/visitor_app/template/payment.html'
+			});
 			$routeProvider.when('/:language/accommodations', {
 				templateUrl: '/visitor_app/template/accommodations.html'
 			});

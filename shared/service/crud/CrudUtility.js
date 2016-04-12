@@ -8,7 +8,7 @@
 
 			// set model type
 			vm["type"] = type;
-			vm["type_dash"] = type.split("_").join("-");
+			vm["type_dash"] = type.split("_").join("-").replace('--','-');
 			vm["type_singular"] = CONFIG.models[type].singular;
 			vm["type_plural"] = CONFIG.models[type].plural;
 

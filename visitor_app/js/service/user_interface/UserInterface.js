@@ -44,6 +44,6 @@
 	];
 
 	angular
-		.module('_Rest')
+		.module('_UserInterface')
 		.service('UserInterface', UserInterface);
 })();

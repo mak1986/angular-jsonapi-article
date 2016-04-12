@@ -1,0 +1,64 @@
+<div ng-controller="CartController as CartController">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{ 'ui.invoice' | hookFilterMachineNameTranslate}} </h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h4>{{ UiController.ui.site.name | hookFilterContentTranslate }}</h4>
+			<div>
+				<p>{{ UiController.ui.site.address | hookFilterContentTranslate }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<p>Tel.: {{ UiController.ui.site.telephone }}</p>
+		</div>
+		<div class="col-md-6">
+			<p class="text-right">Date: 01.04.2016</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>{{ 'ui.accommodation' | hookFilterMachineNameTranslate }}</th>
+					<th>{{ 'ui.check_in' | hookFilterMachineNameTranslate }}</th>
+					<th>{{ 'ui.check_out' | hookFilterMachineNameTranslate }}</th>
+					<th>{{ 'ui.duration' | hookFilterMachineNameTranslate }}</th>
+					<th>{{ 'ui.charges' | hookFilterMachineNameTranslate }}</th>
+					<th>{{ 'ui.action' | hookFilterMachineNameTranslate }}</th>
+				</tr>
+				<tr ng-repeat="item in CartController.getItems('accommodation')">
+					<td>{{ $index + 1 }}</td>
+					<td>{{ item.formatName() }}</td>
+					<td>{{ item.from }}</td>
+					<td>{{ item.to }}</td>
+					<td>{{ item.duration }} {{ 'ui.nights' | hookFilterMachineNameTranslate }}</td>
+					<td>
+						{{ item.accommodation.price }} X {{ item.duration }} {{ 'ui.nights' | hookFilterMachineNameTranslate }} = {{ item.duration * item.accommodation.price }}
+					</td>
+					<td><a class="text-danger" href="" ng-click="CartController.delete(item, 'accommodation')"><span class="glyphicon glyphicon-remove"></span></a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>{{ 'ui.total_price' }}</th>
+					<td>{{ CartController.getTotalPrice('accommodation') }}</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<a class="btn btn-primary" href="{{ UiController.getHref('payment') }}">{{ 'ui.continue' | hookFilterMachineNameTranslate }}</a>
+		</div>
+	</div>
+</div>

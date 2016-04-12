@@ -1,10 +1,11 @@
 (function() {
 	'use strict';
 
-	function UiController($location, $rootScope, $routeParams, CONFIG, ResourceManager, UserInterface) {
+	function UiController($location, $rootScope, $routeParams, CONFIG, Cart, ResourceManager, UserInterface) {
 
 		var vm = this;
 		vm.ui = UserInterface;
+		vm.cart = Cart;
 
 		vm.getHref = function(location){
 			return '#/' + vm.ui.getLanguage() + '/' + location;
@@ -27,7 +28,13 @@
 		vm.getSectionView = function(file){
 			return '/shared/section/' + file + '.html';
 		};
-
+		
+		vm.getComponentView = function(component, file){
+			return '/visitor_app/component/' + component + '/view/' + file + '.html';
+		};
+		vm.getComponentImage = function(component, file, ext){
+			return '/visitor_app/component/' + component + '/img/' + file + '.' + ext;
+		};
 		vm.mainMenuHasHome = function(){
 			var id;
 			
@@ -46,6 +53,7 @@
 		'$rootScope',
 		'$routeParams',
 		'CONFIG',
+		'Cart',
 		'ResourceManager',
 		'UserInterface'
 	];

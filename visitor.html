@@ -45,8 +45,15 @@
 	            	<a href="{{ UiController.getHref(page.name) }}">{{ page.meta_title | hookFilterContentTranslate }}</a>
 	            </li>
 	          </ul>
+
+
+
 	          <ul class="nav navbar-nav navbar-right">
-		            
+		           
+		           <li class="dropdown">
+			          <a href="{{ UiController.getHref('invoice') }}"> ({{ UiController.cart.count() }}) <span class='glyphicon glyphicon-shopping-cart'></span> Book now</a>
+			        </li>
+
 		            <li class="dropdown">
 			          
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -167,42 +174,14 @@
 		<script src="/shared/filter/hookFilterMachineNameTranslate.js"></script>
 		<script src="/shared/filter/hookFilterReplace.js"></script>
 
-		<!-- Directives -->
-		<script src="/shared/directive/_Directive.js"></script>
-		<!-- ./form -->
-		<!-- ./form/button -->
-		<script src="/shared/directive/form/button/hookFormButton.js"></script>
-		<!-- ./form/label -->
-		<script src="/shared/directive/form/label/hookFormLabel.js"></script>
-		<!-- ./form/validation_message -->
-		<script src="/shared/directive/form/validation_message/hookValidationMessage.js"></script>
-		<!-- ./form/validation_rule -->
-		<script src="/shared/directive/form/validation_rule/hookValidationRequired.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationNoSpecialCharacters.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationUnique.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationMinLength.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationMaxLength.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationEmail.js"></script>
-		<script src="/shared/directive/form/validation_rule/hookValidationNumber.js"></script>
-		<!-- ./special -->
-		<!-- ./special/action_button -->
-		<!-- ./special/action_button/box_tools -->
-		<script src="/shared/directive/special/action_button/box_tools/hookActionButtonBoxTools.js"></script>
-		<!-- ./special/action_button/list -->
-		<script src="/shared/directive/special/action_button/list/hookActionButtonList.js"></script>
-		<!-- ./special/section -->
-		<script src="/shared/directive/special/section/hookSection.js"></script>  
-		<!-- ./special/translation_view -->
-		<script src="/shared/directive/special/translation_view/hookTranslationView.js"></script>  
-
 
 		<!-- Services -->
-		<script src="/shared/service/alert/_Alert.js"></script>
+		<!--<script src="/shared/service/alert/_Alert.js"></script>
 		<script src="/shared/service/alert/Alert.js"></script>
 		<script src="/shared/service/authentication/_Authentication.js"></script>
 		<script src="/shared/service/authentication/Authentication.js"></script>
 		<script src="/shared/service/crud/_Crud.js"></script>
-		<script src="/shared/service/crud/CrudUtility.js"></script>
+		<script src="/shared/service/crud/CrudUtility.js"></script>-->
 		<script src="/shared/service/dataConverter/_DataConverter.js"></script>
 		<script src="/shared/service/dataConverter/JsonApiResourceConverter.js"></script>
 		<script src="/shared/service/rest/_Rest.js"></script>
@@ -210,6 +189,8 @@
 		<script src="/shared/service/storage/_Storage.js"></script>
 		<script src="/shared/service/storage/ResourceStorage.js"></script>
 		
+		<script src="/visitor_app/js/service/cart/_Cart.js"></script>
+		<script src="/visitor_app/js/service/cart/Cart.js"></script>
 		<script src="/visitor_app/js/service/user_interface/_UserInterface.js"></script>
 		<script src="/visitor_app/js/service/user_interface/UserInterface.js"></script>
 		
@@ -220,7 +201,9 @@
 
 		<!-- Controllers -->
 		<script src="/shared/_Controllers.js"></script>
-		<script src="/visitor_app/component/ui/controller/UiController.js"></script>
+		<script src="/visitor_app/component/accommodation_booking/controller/AccommodationBookingController.js"></script>
+		<script src="/visitor_app/component/cart/controller/CartController.js"></script>
+		<script src="/visitor_app/js/controller/UiController.js"></script>
 
 
 	

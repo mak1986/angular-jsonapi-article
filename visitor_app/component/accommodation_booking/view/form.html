@@ -1,0 +1,26 @@
+<div class="panel panel-default"
+	ng-controller="AccommodationBookingController as AccommodationBookingController"
+	ng-init="AccommodationBookingController.accommodation = accommodation">
+  <div class="panel-body">
+    <form>
+	  <div class="form-group">
+	    <label for="check-in">Check in:</label>
+	    <input class="form-control"
+	    	id="check-in" 
+	    	placeholder="Check in:"
+	    	type="date" 
+	    	ng-model="AccommodationBookingController.from">
+	  </div>
+	  <div class="form-group">
+	    <label for="check-out">Check out:</label>
+	    <input class="form-control" 
+	    	id="check-out" 
+	    	placeholder="Check out:"
+	    	type="date" 
+	    	ng-model="AccommodationBookingController.to">
+	  </div>
+	  <button class="btn btn-default"
+	  	ng-click="AccommodationBookingController.book()">Book</button>
+	</form>
+  </div>
+</div>

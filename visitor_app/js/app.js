@@ -4,17 +4,18 @@
 
 	angular.module('VisitorApp', [
 		'ngRoute',
-		'_Authentication', //Service
+		// '_Authentication', //Service
 		'_Rest', //Service
 		'_DataConverter', //Service
 		'_Storage', //Service
-		'_Crud', //Service
-		'_Alert', //Service
+		// '_Crud', //Service
+		// '_Alert', //Service
+		'_Cart', //Service
 		'_UserInterface', //Service
 		'_Manager', //Provider
 		'_Controllers', //Controller
 		'_Filter', //Filter
-		'_Directive', //Directive
+		// '_Directive', //Directive
 	]);
 
 
