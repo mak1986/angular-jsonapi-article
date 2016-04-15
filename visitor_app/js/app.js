@@ -60,26 +60,28 @@
 		.run(function(CONFIG, ResourceManager, UserInterface){
 			// Retrieve all data from server
 			var count = 0;
-			var modelsCount = Object.keys(CONFIG.models).length;
+			var modelsCount = Object.keys(CONFIG.models).length-2;
 			var type;
 			for (type in CONFIG.models) {
-				ResourceManager.read(type).then(function(data) {
-					//console.log("get a model success.")
-					count++;
+				if(type!='order' && type!='accommodation__order'){
+					ResourceManager.read(type).then(function(data) {
+						//console.log("get a model success.")
+						count++;
 
-					if (count == modelsCount) {
-						// service.isLoggedIn = true;
-						// service.setup();
-						UserInterface.setSite(ResourceManager.readFromStorage('site')[CONFIG.site.id]);
-						UserInterface.setReady();
-						//console.log(vm.ui.site);
-						console.log("all models retrieved.");
-						console.log(UserInterface.site);
-					}
+						if (count == modelsCount) {
+							// service.isLoggedIn = true;
+							// service.setup();
+							UserInterface.setSite(ResourceManager.readFromStorage('site')[CONFIG.site.id]);
+							UserInterface.setReady();
+							//console.log(vm.ui.site);
+							console.log("all models retrieved.");
+							console.log(UserInterface.site);
+						}
 
-				}, function(errorData) {
-					console.log("get a model fail.", errorData);
-				});
+					}, function(errorData) {
+						console.log("get a model fail.", errorData);
+					});
+				}
 			}
 		});
 })();

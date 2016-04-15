@@ -7,6 +7,7 @@
 		service.ready = false;
 		service.currentSelectedLanguage = CONFIG.site.default_language;
 		service.site = null;
+		service.order = null;
 
 		service.setSite = function(site){
 			service.site = site;
@@ -31,9 +32,28 @@
 		service.setReady = function(){
 			service.ready = true;
 		};
+		
 		service.isReady = function(){
 			return service.ready;
-		}
+		};
+		
+		service.setOrder = function(order){
+			service.order = order;
+		};
+
+		service.getOrder = function(){
+			return service.order;
+		};
+
+		service.countOrder = function(){
+			var count = 0;
+
+			if(service.order != null){
+				count += Object.keys(service.order.accommodationOrders).length;
+			}
+			
+			return count;
+		};
 	}
 
 	UserInterface.$inject = [

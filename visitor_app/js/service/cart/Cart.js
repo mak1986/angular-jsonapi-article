@@ -9,6 +9,7 @@
 		service.add = function(item, type){
 			if(!service.items[type]){
 				service.items[type] = [];
+				// createOrder();
 			}
 			service.items[type].push(item);
 			console.log(service.items);
@@ -48,6 +49,25 @@
 			}
 			console.log('in delete',service.items)
 		};
+
+		// var createOrder = function(){
+		// 	ResourceManager.create(resource)
+		// 		.then(function(newResource) {
+
+		// 			if (stayOnPage) {
+		// 				Alert.setSuccessMessage('model.' + type, "ui.stored", false);
+		// 				$location.path();
+		// 			} else {
+		// 				Alert.setSuccessMessage('model.' + type, "ui.stored", true);
+		// 				$location.path('/' + vm["type_dash"] + '/show/' + newResource.id);
+		// 			}
+
+		// 		}, function(reason) {
+		// 			Alert.setErrorMessage(false);
+		// 			$location.path();
+
+		// 		});
+		// }
 	}
 
 	Cart.$inject = [

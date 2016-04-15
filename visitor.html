@@ -51,7 +51,7 @@
 	          <ul class="nav navbar-nav navbar-right">
 		           
 		           <li class="dropdown">
-			          <a href="{{ UiController.getHref('invoice') }}"> ({{ UiController.cart.count() }}) <span class='glyphicon glyphicon-shopping-cart'></span> Book now</a>
+			          <a href="{{ UiController.getHref('invoice') }}"> ({{ UiController.ui.countOrder() }}) <span class='glyphicon glyphicon-shopping-cart'></span> Book now</a>
 			        </li>
 
 		            <li class="dropdown">
@@ -201,7 +201,7 @@
 
 		<!-- Controllers -->
 		<script src="/shared/_Controllers.js"></script>
-		<script src="/visitor_app/component/accommodation_booking/controller/AccommodationBookingController.js"></script>
+		<script src="/visitor_app/component/accommodation_booking_form/controller/AccommodationBookingFormController.js"></script>
 		<script src="/visitor_app/component/cart/controller/CartController.js"></script>
 		<script src="/visitor_app/js/controller/UiController.js"></script>
 

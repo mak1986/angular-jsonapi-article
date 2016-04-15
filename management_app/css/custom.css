@@ -44,9 +44,8 @@ form .ng-pending{
 }
 
 /* Spinner */
-.spinner {
-    width: 20px;
-    height: 20px;
+.spinner{
+    display:inline-block;
     -webkit-animation-name: spin;
     -webkit-animation-duration: 2000ms;
     -webkit-animation-iteration-count: infinite;

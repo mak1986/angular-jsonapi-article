@@ -33,16 +33,16 @@
 					<th>{{ 'ui.charges' | hookFilterMachineNameTranslate }}</th>
 					<th>{{ 'ui.action' | hookFilterMachineNameTranslate }}</th>
 				</tr>
-				<tr ng-repeat="item in CartController.getItems('accommodation')">
+				<tr ng-repeat="(id, accommodationOrder) in UiController.ui.order.accommodationOrders">
 					<td>{{ $index + 1 }}</td>
-					<td>{{ item.formatName() }}</td>
-					<td>{{ item.from }}</td>
-					<td>{{ item.to }}</td>
-					<td>{{ item.duration }} {{ 'ui.nights' | hookFilterMachineNameTranslate }}</td>
+					<td>{{ accommodationOrder.accommodation | hookFilterByFieldValue: 'name' | hookFilterContentTranslate }}</td>
+					<td>{{ accommodationOrder.from }}</td>
+					<td>{{ accommodationOrder.to }}</td>
+					<td>... {{ 'ui.nights' | hookFilterMachineNameTranslate }}</td>
 					<td>
-						{{ item.accommodation.price }} X {{ item.duration }} {{ 'ui.nights' | hookFilterMachineNameTranslate }} = {{ item.duration * item.accommodation.price }}
+						{{ accommodationOrder.accommodation | hookFilterByFieldValue: 'price' }} X ... {{ 'ui.nights' | hookFilterMachineNameTranslate }} = ...
 					</td>
-					<td><a class="text-danger" href="" ng-click="CartController.delete(item, 'accommodation')"><span class="glyphicon glyphicon-remove"></span></a></td>
+					<td><a class="text-danger" href="" ng-click="CartController.delete(accommodationOrder, 'accommodation')"><span class="glyphicon glyphicon-remove"></span></a></td>
 				</tr>
 				<tr>
 					<td></td>
