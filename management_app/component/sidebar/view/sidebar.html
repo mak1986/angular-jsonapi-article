@@ -88,7 +88,7 @@
       ng-hide="feature.hide_from_menu"
       ng-repeat="(id, feature) in SidebarController.getMenu() | orderObjectBy: 'weight'">
     
-      <a ng-href="{{ SidebarController.submenuCount(feature.backendRoutes) == 1 ? (feature.backendRoutes | hookFilterByFieldValue: 'route') : '' }}" 
+      <a ng-href="{{ SidebarController.submenuCount(feature.backendRoutes) == 1 ? SidebarController.getFirstHref(feature) : '' }}" 
         ng-click="SidebarController.selectMainMenu(feature.id)">
 
         <i class="fa {{ feature.icon }}"></i> 

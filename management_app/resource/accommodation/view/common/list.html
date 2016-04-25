@@ -47,9 +47,7 @@
 						
 						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
-						<th>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.square_area' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th ng-bind-html="('label.square_area' | hookFilterMachineNameTranslate | hookFilterTitle)"></th>
 
 						<th>{{ 'label.price' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
@@ -78,8 +76,6 @@
 						<td>{{ $index + 1 }}</td>
 						
 						<td>{{ accommodation.name | hookFilterContentTranslate: AccommodationController.displayLanguage }}</td>
-
-						<td>{{ accommodation.description | hookFilterContentTranslate: AccommodationController.displayLanguage }}</td>
 
 						<td>{{ accommodation.square_area }}</td>
 

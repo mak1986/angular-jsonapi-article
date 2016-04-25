@@ -1,7 +1,7 @@
 <div>
 	<div class="row">
 		<div class="col-md-12">
-			<h1>{{ 'ui.invoice' | hookFilterMachineNameTranslate}} </h1>
+			<h1>{{ 'ui.receipt' | hookFilterMachineNameTranslate}} </h1>
 		</div>
 	</div>
 
@@ -24,10 +24,4 @@
 	
 	<div class="row" 
 		ng-include="UiController.getComponentView('accommodation_booking_form','order_detail')"></div>
-	
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<a class="btn btn-primary" href="{{ UiController.ui.getHref('payment') }}">{{ 'ui.continue' | hookFilterMachineNameTranslate }}</a>
-		</div>
-	</div>
 </div>

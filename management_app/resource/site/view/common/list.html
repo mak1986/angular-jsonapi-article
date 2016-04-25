@@ -51,19 +51,9 @@
 
 						<th>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
-						<th>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
 						<th>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
-						<th>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
 						<th>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
 						<th class="table-action-column-width">{{ 'ui.actions' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 					
@@ -83,19 +73,9 @@
 
 						<td>{{ site.subdomain }}</td>
 
-						<td>{{ site.address | hookFilterContentTranslate: SiteController.displayLanguage }}</td>
-
 						<td>{{ site.telephone }}</td>
 
-						<td>{{ site.fax }}</td>
-
 						<td>{{ site.email }}</td>
-
-						<td>{{ site.facebook_link }}</td>
-
-						<td>{{ site.twitter_link }}</td>
-
-						<td>{{ site.tripadvisor_link }}</td>
 
 						<td hook-action-button-list 
 							hook-action-button-list-bind-resource="site" 

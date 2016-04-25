@@ -67,6 +67,14 @@
 			}
 
 		};
+		vm.getFirstHref = function(feature){
+			for(var id in feature.backendRoutes){
+				if(feature.backendRoutes[id].is_menu){
+					return feature.backendRoutes[id].route;
+				}
+			}
+			return null;
+		};
 
 		var getGroup = function(machineName) {
 			var groups = ResourceManager.readFromStorage('group');

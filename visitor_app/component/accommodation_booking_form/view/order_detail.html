@@ -1,0 +1,34 @@
+<div class="col-md-12" 
+	ng-controller="AccommodationBookingDetailController as AccommodationBookingDetailController"
+	ng-init="AccommodationBookingDetailController.accommodationOrders = UiController.ui.order.accommodationOrders">
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>{{ 'ui.accommodation' | hookFilterMachineNameTranslate }}</th>
+			<th>{{ 'ui.check_in' | hookFilterMachineNameTranslate }}</th>
+			<th>{{ 'ui.check_out' | hookFilterMachineNameTranslate }}</th>
+			<th>{{ 'ui.duration' | hookFilterMachineNameTranslate }}</th>
+			<th>{{ 'ui.charges' | hookFilterMachineNameTranslate }}</th>
+			<th>{{ 'ui.action' | hookFilterMachineNameTranslate }}</th>
+		</tr>
+		<tr ng-repeat="(id, accommodationOrder) in AccommodationBookingDetailController.accommodationOrders">
+			<td>{{ $index + 1 }}</td>
+			<td>{{ accommodationOrder.accommodation | hookFilterByFieldValue: 'name' | hookFilterContentTranslate }}</td>
+			<td>{{ accommodationOrder.from }}</td>
+			<td>{{ accommodationOrder.to }}</td>
+			<td>{{ accommodationOrder.to | amDifference: accommodationOrder.from : 'days' }} {{ 'ui.nights' | hookFilterMachineNameTranslate }}</td>
+			<td>
+				{{ accommodationOrder.accommodation | hookFilterByFieldValue: 'price' }} X {{  accommodationOrder.to | amDifference: accommodationOrder.from : 'days' }} {{ 'ui.nights' | hookFilterMachineNameTranslate }} = 	{{AccommodationBookingDetailController.getLinePrice(accommodationOrder) }}				</td>
+			<td><a class="text-danger" href="" ng-click="CartController.delete(accommodationOrder, 'accommodation')"><span class="glyphicon glyphicon-remove"></span></a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<th>{{ 'ui.total_price' }}</th>
+			<td>{{ AccommodationBookingDetailController.getTotalPrice() }}</td>
+			<td></td>
+		</tr>
+	</table>
+</div>

@@ -4,8 +4,10 @@
 
 	angular.module('HookApp', [
 		'ngRoute',
+		'ngSanitize',
 		'ngMaterial',
 		'ngMessages',
+		'ui.calendar',
 		'_Authentication', //Service
 		'_Rest', //Service
 		'_DataConverter', //Service

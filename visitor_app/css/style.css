@@ -1,7 +1,19 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
-
+/* navbar */
+div.navbar-collapse.collapse {
+    display: block;
+    overflow: hidden;
+    max-height: 0px;
+    -webkit-transition: max-height .3s ease;
+    -moz-transition: max-height .3s ease;
+    -o-transition: max-height .3s ease;
+    transition: max-height .3s ease;
+}
+div.navbar-collapse.collapse.in {
+    max-height: 2000px;
+}
 
 /* Spinner */
 .spinner {
@@ -43,5 +55,17 @@
     }
     to {
         transform:rotate(360deg);
+    }
+}
+
+/* dl dt dd */
+@media (min-width: 768px) {
+    .dl-horizontal dt {
+        width:90px;
+        white-space: normal;
+        margin-bottom: 5px;
+    }
+    .dl-horizontal dd {
+        margin-left:110px;
     }
 }

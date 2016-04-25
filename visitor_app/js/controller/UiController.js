@@ -7,10 +7,6 @@
 		vm.ui = UserInterface;
 		vm.cart = Cart;
 
-		vm.getHref = function(location){
-			return '#/' + vm.ui.getLanguage() + '/' + location;
-		};
-		
 		vm.getSections = function(){
 			if($routeParams.page){
 				for(var id in vm.ui.site.pages){

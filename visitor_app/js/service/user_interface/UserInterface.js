@@ -54,6 +54,10 @@
 			
 			return count;
 		};
+
+		service.getHref = function(location){
+			return '#/' + service.getLanguage() + '/' + location;
+		};
 	}
 
 	UserInterface.$inject = [

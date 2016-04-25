@@ -141,7 +141,11 @@
 				return storage.get(type)[id];
 			}
 		}
-
+		
+		// this.deleteFromStorage = function(resource) {
+		// 	return storage.delete(resource);
+		// }
+		
 		this.shallowCopy = function(resource) {
 			var obj = {};
 			var attr;

@@ -45,35 +45,9 @@
 				
 						<th class="table-index-column-width">#</th>
 						
-						<th>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th>{{ 'ui.order_detail' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
-						<th>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-
-						<th>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th>{{ 'ui.quest_detail' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 
 						<th class="table-action-column-width">{{ 'ui.actions' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 					
@@ -87,35 +61,17 @@
 						
 						<td>{{ $index + 1 }}</td>
 						
-						<td>{{ payment.first_name }}</td>
+						<td>
+							<div ng-repeat="(id, accommodationOrder) in  payment.order | hookFilterByFieldValue: 'accommodationOrders'"> 
+								Name: {{ accommodationOrder.accommodation | hookFilterByFieldValue: 'name' }}
+							</div>
+						</td>
 
-						<td>{{ payment.last_name }}</td>
-
-						<td>{{ payment.cardholder_name }}</td>
-
-						<td>{{ payment.billing_address_line_1 }}</td>
-
-						<td>{{ payment.billing_address_line_2 }}</td>
-
-						<td>{{ payment.city }}</td>
-
-						<td>{{ payment.country }}</td>
-
-						<td>{{ payment.postal_code }}</td>
-
-						<td>{{ payment.credit_card_number }}</td>
-
-						<td>{{ payment.cvc }}</td>
-
-						<td>{{ payment.exp_month }}</td>
-
-						<td>{{ payment.exp_year }}</td>
-
-						<td>{{ payment.email }}</td>
-
-						<td>{{ payment.phone_area_code }}</td>
-
-						<td>{{ payment.phone_number }}</td>
+						<td>
+							<strong>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</strong> {{ payment.first_name }} {{ payment.last_name }}<br>
+							<strong>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</strong> {{ payment.email }}<br>
+							<strong>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</strong> {{ payment.phone_area_code }} {{ payment.phone_number }}
+						</td>
 
 						<td hook-action-button-list 
 							hook-action-button-list-bind-resource="payment" 

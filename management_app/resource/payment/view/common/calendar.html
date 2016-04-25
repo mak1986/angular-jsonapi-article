@@ -1,0 +1,22 @@
+<!-- Main model: payment -->
+
+<div class="box">
+	
+	<div class="box-header with-border">
+		
+		<h3 class="box-title">{{ 'ui.reservations' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+	
+	</div><!-- /.box-header -->
+
+	<div ng-if="PaymentController.calendarRefresh" class="box-body">
+
+		<div  ui-calendar="PaymentController.uiConfig.calendar" ng-model="PaymentController.eventSources" calendar="myCalendar"></div>
+	
+	</div><!-- /.box-body -->
+
+
+	<div class="box-footer">
+	</div><!-- /.box-footer -->
+
+
+</div><!-- /.box -->

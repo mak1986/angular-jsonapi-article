@@ -44,7 +44,7 @@
 				<dt>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
 				<dd>{{ AccommodationController.accommodation.description | hookFilterContentTranslate: AccommodationController.displayLanguage }}</dd>
 				
-				<dt>{{ 'label.square_area' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
+				<dt ng-bind-html="'label.square_area' | hookFilterMachineNameTranslate | hookFilterTitle"></dt>
 				<dd>{{ AccommodationController.accommodation.square_area }}</dd>
 				
 				<dt>{{ 'label.price' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
@@ -74,7 +74,8 @@
 	
 		<!-- Main model: accommodation, Relationship alias: parent, Relationship model: accommodation -->
 		
-		<div class="box-header with-border">
+		<div class="box-header with-border"
+			ng-if="AccommodationController.accommodation.parent.length > 0">
 			
 			<h3 class="box-title">{{ 'label.parent' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 			
@@ -82,7 +83,8 @@
 		
 		</div><!-- /.box-header -->
 		
-		<div class="box-body">
+		<div class="box-body"
+			ng-if="AccommodationController.accommodation.parent.length > 0">
 			
 			<dl><!-- class="dl-horizontal" -->
 				
@@ -118,54 +120,6 @@
 					<span class="fa" 
 						ng-class="AccommodationController.accommodation.accommodation | hookFilterByFieldValue: 'is_parent' ? 'fa-check':'fa-close'"></span>
 				</dd>
-				
-			</dl>
-		
-		</div><!-- /.box-body -->
-
-		<!-- Main model: accommodation, Relationship alias: site, Relationship model: site -->
-		
-		<div class="box-header with-border">
-			
-			<h3 class="box-title">{{ 'label.site' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
-			
-			<div class="box-tools"></div>
-		
-		</div><!-- /.box-header -->
-		
-		<div class="box-body">
-			
-			<dl><!-- class="dl-horizontal" -->
-				
-				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: AccommodationController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'domain' }}</dd>
-				
-				<dt>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'subdomain' }}</dd>
-				
-				<dt>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'address' | hookFilterContentTranslate: AccommodationController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'telephone' }}</dd>
-				
-				<dt>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'fax' }}</dd>
-				
-				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'email' }}</dd>
-				
-				<dt>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'facebook_link' }}</dd>
-				
-				<dt>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'twitter_link' }}</dd>
-				
-				<dt>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ AccommodationController.accommodation.site | hookFilterByFieldValue: 'tripadvisor_link' }}</dd>
 				
 			</dl>
 		
@@ -316,57 +270,7 @@
 
 		</div><!-- /.box-body -->
 
-		<!-- Main model: accommodation, Relationship alias: accommodationOrders, Relationship model: accommodation__order -->
-
-		<div class="box-header with-border">
-			
-			<h3 class="box-title">{{ 'label.accommodation_orders' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
-			
-			<div class="box-tools"></div>
 		
-		</div><!-- /.box-header -->
-		
-		<div class="box-body">
-
-			<table class="table no-border table-hover"
-				id="table-group"> 
-				
-				<thead>
-					
-					<tr>
-				
-						<th class="table-index-column-width">#</th>
-						
-						<th>{{ 'label.from' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-						
-						<th>{{ 'label.to' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-						
-						<th>{{ 'label.extra_bed_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
-						
-					</tr>
-				
-				</thead>
-				
-				<tbody>
-					
-					<tr ng-repeat="(id, accommodationOrder) in AccommodationController.accommodation.accommodationOrders">
-						
-						<td>{{ $index + 1 }}</td>
-						
-						<td>{{ accommodationOrder.from }}</td>
-						
-						<td>{{ accommodationOrder.to }}</td>
-						
-						<td>{{ accommodationOrder.extra_bed_quantity }}</td>
-						
-		
-					</tr>
-				
-				</tbody>
-			
-			</table>
-
-		</div><!-- /.box-body -->
 
 
 	<div class="box-footer">

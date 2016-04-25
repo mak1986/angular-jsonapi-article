@@ -15,34 +15,35 @@
 	  	
 	  	<link rel="stylesheet" href="/visitor_app/css/style.css">
 	  	<link rel="stylesheet" href="/visitor_app/css/sticky-footer-navbar.css">
-	
+
 	</head>
 
 	<body ng-cloak>
+
 		<!-- Fixed navbar -->
 	    <nav class="navbar navbar-inverse navbar-fixed-top"
 	    ng-if="UiController.ui.isReady()">
 	      <div class="container">
 	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	          <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
 	            <span class="sr-only">Toggle navigation</span>
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="{{ UiController.getHref('home') }}">{{ UiController.ui.site.name | hookFilterContentTranslate  | hookFilterTitle }}</a>
+	          <a class="navbar-brand" href="{{ UiController.ui.getHref('home') }}">{{ UiController.ui.site.name | hookFilterContentTranslate  | hookFilterTitle }}</a>
 	        </div>
-	        <div id="navbar" class="collapse navbar-collapse">
+	        <div id="navbar" class="collapse navbar-collapse" ng-class="{'in': !navCollapsed}">
 	          <ul class="nav navbar-nav">
 	          	<li ng-if="UiController.mainMenuHasHome()">
-	          		<a href="{{ UiController.getHref('home') }}">{{ 'ui.home' | hookFilterMachineNameTranslate }}</a>
+	          		<a href="{{ UiController.ui.getHref('home') }}">{{ 'ui.home' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</a>
 	          	</li>
 	           	<li>
-	          		<a href="{{ UiController.getHref('accommodations') }}">{{ 'ui.accommodation' | hookFilterMachineNameTranslate }}</a>
+	          		<a href="{{ UiController.ui.getHref('accommodations') }}">{{ 'ui.accommodations' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</a>
 	          	</li>
 	            <li ng-if="page.is_main_menu && page.name !== 'home'" 
 	            	ng-repeat="(id, page) in UiController.ui.site.pages | orderObjectBy: 'weight'">
-	            	<a href="{{ UiController.getHref(page.name) }}">{{ page.meta_title | hookFilterContentTranslate }}</a>
+	            	<a href="{{ UiController.ui.getHref(page.name) }}">{{ page.meta_title | hookFilterContentTranslate }}</a>
 	            </li>
 	          </ul>
 
@@ -50,20 +51,20 @@
 
 	          <ul class="nav navbar-nav navbar-right">
 		           
-		           <li class="dropdown">
-			          <a href="{{ UiController.getHref('invoice') }}"> ({{ UiController.ui.countOrder() }}) <span class='glyphicon glyphicon-shopping-cart'></span> Book now</a>
+		           <li>
+			          <a href="{{ UiController.ui.getHref('invoice') }}"> ({{ UiController.ui.countOrder() }}) <span class='glyphicon glyphicon-shopping-cart'></span> {{ 'ui.book_now' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</a>
 			        </li>
 
-		            <li class="dropdown">
+		            <li uib-dropdown>
 			          
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			          <a href="#" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">
 			          
 			          	<span class="flag-icon flag-icon-{{ UiController.ui.getFlagByIso2Code(UiController.ui.getLanguage()) }}"></span> 
 			          	<span class="caret"></span>
 			          
 			          </a>
 			          
-			          <ul class="dropdown-menu">
+			          <ul class="dropdown-menu" uib-dropdown-menu>
 			          
 			            <li ng-if="language.iso_2_code != UiController.ui.getLanguage()" ng-click="UiController.ui.setLanguage(language.iso_2_code)"
 			            	ng-repeat="(id, language) in UiController.ui.site.publishedLanguages">
@@ -109,7 +110,7 @@
         				<p class="text-muted"><strong>{{ 'ui.help' | hookFilterMachineNameTranslate | hookFilterTitle }}:</strong><br>
 							<span ng-if="page.is_footer_menu" 
         						ng-repeat="(id, page) in UiController.ui.site.pages">
-	        					<a href="{{ UiController.getHref(page.name) }}">
+	        					<a href="{{ UiController.ui.getHref(page.name) }}">
 	        						{{ page.meta_title | hookFilterContentTranslate }}
 	        					</a><br>
         					</span>
@@ -151,11 +152,16 @@
 	    </footer>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 
-		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<!--<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
 		<script src="/bower_components/angular/angular.js"></script>
 		<script src="/bower_components/angular-route/angular-route.js"></script>
+		<script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+		<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+		<script src="/bower_components/moment/moment.js"></script>
+		<script src="/bower_components/angular-moment/angular-moment.min.js"></script>
+		<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 		<script src="/visitor_app/js/app.js"></script>
 		<script src="/visitor_app/js/route.js"></script>
 
@@ -201,7 +207,9 @@
 
 		<!-- Controllers -->
 		<script src="/shared/_Controllers.js"></script>
+		<script src="/visitor_app/component/payment/controller/PaymentController.js"></script>
 		<script src="/visitor_app/component/accommodation_booking_form/controller/AccommodationBookingFormController.js"></script>
+		<script src="/visitor_app/component/accommodation_booking_form/controller/AccommodationBookingDetailController.js"></script>
 		<script src="/visitor_app/component/cart/controller/CartController.js"></script>
 		<script src="/visitor_app/js/controller/UiController.js"></script>
 

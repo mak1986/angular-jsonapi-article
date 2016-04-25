@@ -6,59 +6,70 @@
 	</div>
 
 
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-	  </ol>
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	    <div class="item active">
-	      <img src="http://www.thecontinenthotel.com/wp-content/uploads/TCH@Executive-RoomOcean-Theme.jpg" alt="...">
-	      <div class="carousel-caption"><!-- description here --></div>
-	    </div>
-	    <div class="item">
-	      <img src="http://www.themresort.com/media/gallery/images/HOTEL-ROOMS/M-Resort-Hotel-Room-Loft-2.jpg" alt="...">
-	      <div class="carousel-caption"><!-- description here --></div>
-	    </div>
-		<div class="item">
-	      <img src="http://www.wegoplaces.me/wp-content/uploads/2015/01/Sea-bedroom-tray.jpg" alt="...">
-	      <div class="carousel-caption"><!-- description here --></div>
-	    </div>
+<div >
+  <div>
+    <uib-carousel active="0" interval="2000">
+      <uib-slide ng-repeat="slide in [
+      	{id:0,image:'https://s7d9.scene7.com/is/image/kohlerhospitality/OldCourseRoom_938?$1024x480$',text:'bla 1'},
+      	{id:1,image:'http://s7d9.scene7.com/is/image/kohlerhospitality/aab19077_938?$1024x480$',text:'bla 2'},
+      	{id:2,image:'http://www.westcordhotels.nl/wp-content/uploads/2016/01/xvirtual-tour-large-double-room-tuin-fashion-hotel-amsterdam-1024x480.jpg.pagespeed.ic.1ik8bK9EWS.jpg',text:'bla 3'}
+      	] track by slide.id" index="slide.id">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{slide.id}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </uib-slide>
+    </uib-carousel>
+  </div>
+</div>
 
-	    <!-- description here -->
-	  </div>
-
-	  <!-- Controls -->
-	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	    <span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	    <span class="sr-only">Next</span>
-	  </a>
-	</div>
 
 	<div class="row">
 		<div class="col-md-3">
-			<h2>Information</h2>
-			<p> 
-				Name: {{ accommodation.name | hookFilterContentTranslate }}<br>
-				Luxury: {{ accommodation.luxuryTitle | hookFilterByFieldValue: 'name' }}<br>
-				<span ng-repeat="(id, room) in accommodation.rooms">
-						Room type: {{ room.room_type }}<br>
-						Bed(s): {{ room.bed_combination | hookFilterContentTranslate }}<br> 
-					</span>
-				Square area (meters): {{ accommodation.square_area}}<br>
-				{{ 'ui.price' | hookFilterMachineNameTranslate }}: {{ accommodation.price }} 
-			</p>
+			<h2>{{ 'ui.details' | hookFilterMachineNameTranslate | hookFilterTitle }}</h2>
+			<dl  class="dl-horizontal"> 
+				<dt>
+					{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterCapitalize }}: 
+				</dt>
+				<dd>
+					{{ accommodation.name | hookFilterContentTranslate }}
+				</dd>
+				<dt>
+					{{ 'label.luxury' | hookFilterMachineNameTranslate | hookFilterCapitalize }}: 
+				</dt>
+				<dd>
+					{{ accommodation.luxuryTitle | hookFilterByFieldValue: 'name' }}
+				</dd>
+
+				<dt ng-repeat-start="(id, room) in accommodation.rooms">
+					{{'label.kind' | hookFilterMachineNameTranslate | hookFilterCapitalize }}:
+				</dt>
+				<dd> 
+					{{ room.room_type }}
+				</dd>
+				<dt>
+					{{ 'label.bed_s' | hookFilterMachineNameTranslate | hookFilterCapitalize }}:
+				</dt>
+				<dd ng-repeat-end> 
+					{{ room.bed_combination | hookFilterContentTranslate }}
+				</dd>
+				<dt ng-bind-html="('label.square_area' | hookFilterMachineNameTranslate | hookFilterCapitalize)+':'">
+				</dt>
+				<dd> 
+					{{ accommodation.square_area}}
+				</dd>
+				<dt>
+					{{ 'label.price' | hookFilterMachineNameTranslate }}:
+				</dt>
+				<dd>
+					{{ accommodation.price }}
+				</dd> 
+			</dl>
 		</div>
 		<div class="col-md-6">
-			<h2>About</h2>
+			<h2>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</h2>
 			<p>{{ accommodation.description | hookFilterContentTranslate }}</p>
 		</div>
 		<div class="col-md-3">
@@ -98,4 +109,3 @@
     </div>
   </div>
 </div> -->
-

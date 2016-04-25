@@ -4,6 +4,9 @@
 
 	angular.module('VisitorApp', [
 		'ngRoute',
+		'ngSanitize',
+		'ui.bootstrap',
+		'angularMoment',
 		// '_Authentication', //Service
 		'_Rest', //Service
 		'_DataConverter', //Service
@@ -18,6 +21,7 @@
 		// '_Directive', //Directive
 	]);
 
+	//gular.module('VisitorApp').constant('moment');
 
 
 	// Manual Bootstrap
@@ -60,10 +64,11 @@
 		.run(function(CONFIG, ResourceManager, UserInterface){
 			// Retrieve all data from server
 			var count = 0;
-			var modelsCount = Object.keys(CONFIG.models).length-2;
+			// must refactor simulate restricted resources.
+			var modelsCount = Object.keys(CONFIG.models).length-3;
 			var type;
 			for (type in CONFIG.models) {
-				if(type!='order' && type!='accommodation__order'){
+				if(type!='order' && type!='accommodation__order' && type!='payment'){
 					ResourceManager.read(type).then(function(data) {
 						//console.log("get a model success.")
 						count++;

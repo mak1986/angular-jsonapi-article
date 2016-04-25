@@ -8,7 +8,7 @@
 <div class="col-sm-12 col-md-6"
 	ng-repeat="(id, accommodation) in UiController.ui.site.accommodations">
     <div class="thumbnail">
-      <a href="{{UiController.getHref('accommodation/'+accommodation.id)}}"><img class="img-responsive" src="http://www.thecontinenthotel.com/wp-content/uploads/TCH@Executive-RoomOcean-Theme.jpg" alt="..."></a>
+      <a href="{{UiController.ui.getHref('accommodation/'+accommodation.id)}}"><img class="img-responsive" src="http://www.thecontinenthotel.com/wp-content/uploads/TCH@Executive-RoomOcean-Theme.jpg" alt="..."></a>
       <div class="caption">
         <p> 
 			Name: {{ accommodation.name | hookFilterContentTranslate }}<br>
@@ -19,7 +19,6 @@
 				</span>
 			{{ 'ui.price' | hookFilterMachineNameTranslate }}: {{ accommodation.price }} 
 		</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>

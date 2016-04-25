@@ -15,6 +15,9 @@
 			$routeProvider.when('/:language/payment', {
 				templateUrl: '/visitor_app/template/payment.html'
 			});
+			$routeProvider.when('/:language/receipt', {
+				templateUrl: '/visitor_app/template/receipt.html'
+			});
 			$routeProvider.when('/:language/accommodations', {
 				templateUrl: '/visitor_app/template/accommodations.html'
 			});

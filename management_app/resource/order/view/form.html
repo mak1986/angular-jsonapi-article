@@ -47,15 +47,15 @@
 								<label>
 									<input type="radio" 
 										ng-value="true"
-										ng-model="OrderController.machineNameTranslation.paid"
-										ng-checked="OrderController.machineNameTranslation.paid">
+										ng-model="OrderController.order.paid"
+										ng-checked="OrderController.order.paid">
 									{{ 'ui.yes' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
 								</label>
 								<label>
 									<input type="radio" 
 										ng-value="false"
-										ng-model="OrderController.machineNameTranslation.paid"
-										ng-checked="!OrderController.machineNameTranslation.paid">
+										ng-model="OrderController.order.paid"
+										ng-checked="!OrderController.order.paid">
 									{{ 'ui.no' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
 								</label>
 							</div>
@@ -77,7 +77,7 @@
 							<select id="select-order-site" 
 									class="form-control" 
 									name="site"
-									ng-model="OrderController.machineNameTranslation.site"
+									ng-model="OrderController.order.site"
 									ng-options="site.id as (site.name | hookFilterContentTranslate) for site in SiteController.sites track by site.id"></select>
 						
 						</div><!-- /.form-group -->
@@ -96,7 +96,7 @@
 							<select id="select-order-payment" 
 									class="form-control" 
 									name="payment"
-									ng-model="OrderController.machineNameTranslation.payment"
+									ng-model="OrderController.order.payment"
 									ng-options="payment.id as (payment.name | hookFilterContentTranslate) for payment in PaymentController.payments track by payment.id"></select>
 						
 						</div><!-- /.form-group -->

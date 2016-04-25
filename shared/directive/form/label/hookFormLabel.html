@@ -1,6 +1,7 @@
-<span ng-if="flag" class="flag-icon flag-icon-{{ flag }}"></span>
+<span ng-if="flag" class="flag-icon flag-icon-{{ flag }}"
+	></span>
 
-{{ ('label.'+field) | hookFilterMachineNameTranslate | hookFilterTitle }}
+<span ng-bind-html="('label.'+field) | hookFilterMachineNameTranslate | hookFilterTitle"></span>
 
 <span ng-if="required=='true'" class="text-red">*</span>
 

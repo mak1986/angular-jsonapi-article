@@ -1,6 +1,59 @@
-<div class="row">
+<div class="row" ng-controller="PaymentController as PaymentController">
  	
- 	<div class="col-md-12" 
- 		ng-include="HookController.getCommonView('payment', 'list')"></div><!-- /.col -->
+ 	
+ 	<div class="col-md-9" 
+ 		ng-include="HookController.getCommonView('payment', 'calendar')"></div>
+ 		<!-- /.col -->
+	
+	<div class="col-md-3">
+		
+		<div class="box">
+	
+			<div class="box-header with-border">
+				
+				<h3 class="box-title">{{ 'ui.filters' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			
+			</div><!-- /.box-header -->
+			
+			<form name="form"
+				role="form"
+				novalidate>
+
+				<div class="box-body">
+			
+						
+					<div class="form-group">
+
+						<label ng-click="">
+							<input type="checkbox" 
+								ng-model="PaymentController.filter.accommodationName"
+								ng-change="PaymentController.filterCalendar()">
+						       {{ 'ui.accommodation_name'  | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+						</label><br/>
+
+						<label>
+							<input type="checkbox" 
+								ng-model="PaymentController.filter.guestName"
+								ng-change="PaymentController.filterCalendar()"
+								>
+							{{ 'ui.guest_name' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+						</label><br/>
+
+						
+			
+					</div><!-- /.form-group -->
+
+				</div><!-- /.box-body -->
+
+			</form>
+			
+
+
+		
+			<div class="box-footer">
+			</div><!-- /.box-footer -->
+
+		</div><!-- /.box -->
+	</div>
 
 </div><!-- /.row -->

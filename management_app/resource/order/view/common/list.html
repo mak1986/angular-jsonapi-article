@@ -55,16 +55,16 @@
 				
 				<tbody>
 					
-					<tr ng-repeat="(id, machineNameTranslation) in OrderController.machineNameTranslations">
+					<tr ng-repeat="(id, order) in OrderController.orders">
 						
 						<td>{{ $index + 1 }}</td>
 						
 						<td class="text-center" 
-							ng-class="machineNameTranslation.paid ? 'text-success':'text-danger'">
-							<span class="fa" ng-class="machineNameTranslation.paid ? 'fa-check':'fa-close'"></span></td>
+							ng-class="order.paid ? 'text-success':'text-danger'">
+							<span class="fa" ng-class="order.paid ? 'fa-check':'fa-close'"></span></td>
 
 						<td hook-action-button-list 
-							hook-action-button-list-bind-resource="machineNameTranslation" 
+							hook-action-button-list-bind-resource="order" 
 							hook-action-button-list-bind-controller="OrderController"></td>
 					
 					</tr>

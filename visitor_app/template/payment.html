@@ -1,116 +1,272 @@
 <div>
-	<div class="row">
-		<div class="col-md-12">
-			<h1>{{ 'ui.payment' | hookFilterMachineNameTranslate}} </h1>
-		</div>
-	</div>
 
-	<div class="row">
+	<div class="row" 
+		ng-controller="PaymentController as PaymentController">
+
 		<div class="col-md-6 col-md-offset-3">
-			<form class="form-horizontal">
-			  
-			  <div class="form-group">
-			    <label for="first-name" class="col-sm-4 control-label">{{ 'label.first_name' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="first-name" placeholder="{{ 'label.first_name' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="last-name" class="col-sm-4 control-label">{{ 'label.last_name' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="last-name" placeholder="{{ 'label.last_name' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="cardholder-name" class="col-sm-4 control-label">{{ 'label.cardholder_name' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="cardholder-name" placeholder="{{ 'label.cardholder_name' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="email" class="col-sm-4 control-label">{{ 'label.email' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="email" class="form-control" id="email" placeholder="{{ 'label.email' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="billing-address-line-1" class="col-sm-4 control-label">{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="billing-address-line-1" placeholder="{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <div class="col-sm-8 col-md-offset-4">
-			      <input type="text" class="form-control" id="billing-address-line-2" placeholder="{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="city" class="col-sm-4 control-label">{{ 'label.city' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="city" placeholder="{{ 'label.city' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="postal-code" class="col-sm-4 control-label">{{ 'label.postal_code' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="postal-code" placeholder="{{ 'label.postal_code' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="payment-methods" class="col-sm-4 control-label">{{ 'label.payment_methods' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <img  height="30px" src="{{ UiController.getComponentImage('cart', 'cards', 'png') }}" alt="Payment methods">
-			    </div>
-			  </div>
+			
+			<form class="form-horizontal" 
+				name="PaymentController.form" 
+				ng-submit="PaymentController.pay()">
+				
+				<h2>{{ 'ui.guest_detail' | hookFilterMachineNameTranslate}} </h2>
+				
+				<hr>
+				
+				<div class="form-group">
 
-			  <div class="form-group">
-			    <label for="credit-card-number" class="col-sm-4 control-label">{{ 'label.credit_card_number' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-8">
-			      <input type="text" class="form-control" id="credit-card-number" placeholder="{{ 'label.credit_card_number' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
+					<label for="first-name" 
+						class="col-sm-4 control-label">
+							{{ 'label.first_name' | hookFilterMachineNameTranslate }}
+					</label>
 
-			  <div class="form-group">
-			  	<label for="exp-month" class="col-sm-4 control-label">{{ 'label.exp_month' | hookFilterMachineNameTranslate }}</label>
-			  	<div class="col-sm-2">
-			      <input type="text" class="form-control" id="exp-month" placeholder="{{ 'label.exp_month' | hookFilterMachineNameTranslate }}">
-			    </div>
-			   	<label for="exp-year" class="col-sm-3 control-label">{{ 'label.exp_year' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" id="exp-year" placeholder="{{ 'label.exp_year' | hookFilterMachineNameTranslate }}">
-			    </div>
-			  </div>
+					<div class="col-sm-8"> 
+						<input class="form-control"
+							name="first_name" 
+							placeholder="{{ 'label.first_name' | hookFilterMachineNameTranslate }}"
+							type="text" 
+							ng-model="PaymentController.payment.first_name">
+					</div>
+
+				</div>
+
+				<div class="form-group">
+
+					<label for="last-name" 
+						class="col-sm-4 control-label">
+							{{ 'label.last_name' | hookFilterMachineNameTranslate }}
+					</label>
+
+					<div class="col-sm-8">
+						<input class="form-control"  
+							name="last_name" 
+							placeholder="{{ 'label.last_name' | hookFilterMachineNameTranslate }}"
+							type="text"
+							ng-model="PaymentController.payment.last_name"> 
+					</div>
+
+				</div>
+
+				<div class="form-group">
+
+					<label for="email" 
+						class="col-sm-4 control-label">
+						{{ 'label.email' | hookFilterMachineNameTranslate }}
+					</label>
+
+					<div class="col-sm-8">
+						<input class="form-control"
+							name="email" 
+							type="email" 
+					  		placeholder="{{ 'label.email' | hookFilterMachineNameTranslate }}"
+							ng-model="PaymentController.payment.email"> 
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<label for="phone-area-code" 
+						class="col-sm-4 control-label">
+						{{ 'label.phone_area_code' | hookFilterMachineNameTranslate }}
+					</label>
+
+					<div class="col-sm-2">
+						<input class="form-control" 
+							name="phone_area_code" 
+							placeholder="{{ 'label.phone_area_code' | hookFilterMachineNameTranslate }}"
+							type="text" 
+							ng-model="PaymentController.payment.phone_area_code"> 
+					</div>
+
+					<div class="col-sm-6">
+						<input class="form-control"
+							name="phone_number" 
+							type="text" 
+							placeholder="{{ 'label.phone_number' | hookFilterMachineNameTranslate }}"
+							ng-model="PaymentController.payment.phone_number"> 
+					</div>
+
+				</div>
+				
+				<br>
+				
+				<h2>{{ 'ui.payment_detail' | hookFilterMachineNameTranslate}} </h2>
+				
+				<hr>
+				
+				<div class="form-group">
+				    
+				    <label for="cardholder-name" 
+				    	class="col-sm-4 control-label">
+				    		{{ 'label.cardholder_name' | hookFilterMachineNameTranslate }}
+				    </label>
+				    
+				    <div class="col-sm-8">
+				    	<input class="form-control"
+				      		name="cardholder_name"  
+				      		placeholder="{{ 'label.cardholder_name' | hookFilterMachineNameTranslate }}"
+				      		type="text" 
+							ng-model="PaymentController.payment.cardholder_name"> 
+				    </div>
+				
+				</div>
+				
+				<div class="form-group">
+			    	
+			    	<label for="billing-address-line-1" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    
+			    	<div class="col-sm-8">
+			      		<input class="form-control" 
+			      			name="billing_address_line_1" 			      			
+			      			placeholder="{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate }}"
+			      			type="text"
+							ng-model="PaymentController.payment.billing_address_line_1">
+			    	</div>
+				
+				</div>
+			  
+			  	<div class="form-group">
+			    	
+			    	<div class="col-sm-8 col-md-offset-4">
+			    		<input class="form-control" 
+			    			name="billing_address_line_2" 
+			    			placeholder="{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate }}"
+							type="text" 
+			    			ng-model="PaymentController.payment.billing_address_line_2">
+			    	</div>
+				
+				</div>
+			  
+				<div class="form-group">
+			    	
+			    	<label for="city" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.city' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    
+				    <div class="col-sm-8">
+				    	<input class="form-control" 
+				    		name="city" 
+				    		placeholder="{{ 'label.city' | hookFilterMachineNameTranslate }}"
+				    		type="text" 
+			    			ng-model="PaymentController.payment.city">
+				    </div>
+				  	
+				</div>
+			  
+			  	<div class="form-group">
+
+			    	<label for="postal-code" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.postal_code' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    
+			    	<div class="col-sm-8">
+			      		<input class="form-control" 
+			      			name="postal_code" 
+			      			placeholder="{{ 'label.postal_code' | hookFilterMachineNameTranslate }}"
+			      			type="text"
+			    			ng-model="PaymentController.payment.postal_code">
+			    	</div>
+			  
+			  	</div>
+			  
+			  	<div class="form-group">
+			    	
+			    	<label for="payment-methods" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.payment_methods' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    
+			    	<div class="col-sm-8">
+			      		<img  height="30px"
+			      			src="{{ UiController.getComponentImage('cart', 'cards', 'png') }}" 
+			      			alt="Payment methods">
+			    	</div>
+
+				</div>
+
+			  	<div class="form-group">
+			    	
+			    	<label for="credit-card-number" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.credit_card_number' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    	
+			    	<div class="col-sm-8">
+			    		<input class="form-control"
+			    			name="credit_card_number" 			    			 
+			    			placeholder="{{ 'label.credit_card_number' | hookFilterMachineNameTranslate }}"
+			    			type="text" 
+			    			ng-model="PaymentController.payment.credit_card_number">
+			    	</div>
+			  	
+			  	</div>
+
+			  	<div class="form-group">
+			  		
+			  		<label for="exp-month" 
+			  			class="col-sm-4 control-label">
+			  			{{ 'label.exp_month' | hookFilterMachineNameTranslate }}
+			  		</label>
+			  	
+			  		<div class="col-sm-2">
+			      		<input class="form-control"
+			      			name="exp_month" 			      			 
+			      			placeholder="{{ 'label.exp_month' | hookFilterMachineNameTranslate }}"
+			      			type="text" 
+			    			ng-model="PaymentController.payment.exp_month">
+			    	</div>
+			   	
+			   		<label for="exp-year" 
+			   			class="col-sm-3 control-label">
+			   			{{ 'label.exp_year' | hookFilterMachineNameTranslate }}
+			   		</label>
+			    	
+			    	<div class="col-sm-2">
+						<input class="form-control"
+							name="exp_year" 							 
+							placeholder="{{ 'label.exp_year' | hookFilterMachineNameTranslate }}"
+							type="text" 
+			    			ng-model="PaymentController.payment.exp_year">
+			    	</div>
+			  
+			  	</div>
 			 
-			  <div class="form-group">
-			    <label for="cvc" class="col-sm-4 control-label">{{ 'label.cvc' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-3">
-			      <input type="text" class="form-control" id="cvc" placeholder="{{ 'label.cvc' | hookFilterMachineNameTranslate }}">
-			    </div>
-  			  </div>
-			  
-			  <div class="form-group">
-			    <label for="phone-area-code" class="col-sm-4 control-label">{{ 'label.phone_area_code' | hookFilterMachineNameTranslate }}</label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" id="phone-area-code" placeholder="{{ 'label.phone_area_code' | hookFilterMachineNameTranslate }}">
-			    </div>
-			    <div class="col-sm-6">
-			      <input type="text" class="form-control" id="phone-number" placeholder="{{ 'label.phone_number' | hookFilterMachineNameTranslate }}">
-			    </div>
-  			  </div>
+				<div class="form-group">
+			    	
+			    	<label for="cvc" 
+			    		class="col-sm-4 control-label">
+			    		{{ 'label.cvc' | hookFilterMachineNameTranslate }}
+			    	</label>
+			    	
+			    	<div class="col-sm-3">
+			    		<input class="form-control"
+			    			name="cvc" 
+			    			placeholder="{{ 'label.cvc' | hookFilterMachineNameTranslate }}"
+			    			type="text"
+			    			ng-model="PaymentController.payment.cvc">
+			    	</div>
+
+  				</div>
+				
+				<div class="col-md-12 text-center">
+					
+					<button type="submit" 
+						class="btn btn-primary">{{ 'ui.complete_payment' | hookFilterMachineNameTranslate }}</button>
+				
+				</div>
+			
 			</form>
+		
 		</div>
+	
 	</div>
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<a class="btn btn-primary" href="">{{ 'ui.complete_payment' | hookFilterMachineNameTranslate }}</a>
-		</div>
-	</div>
+
 </div>

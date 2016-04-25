@@ -39,55 +39,7 @@
 			<dl><!-- class="dl-horizontal" -->
 				
 				<dt>{{ 'label.paid' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd ng-class="machineNameTranslation.paid ? 'text-success':'text-danger'"><span class="fa" ng-class="OrderController.machineNameTranslation.paid ? 'fa-check':'fa-close'"></span></dd>
-				
-			</dl>
-		
-		</div><!-- /.box-body -->
-	
-		<!-- Main model: order, Relationship alias: site, Relationship model: site -->
-		
-		<div class="box-header with-border">
-			
-			<h3 class="box-title">{{ 'label.site' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
-			
-			<div class="box-tools"></div>
-		
-		</div><!-- /.box-header -->
-		
-		<div class="box-body">
-			
-			<dl><!-- class="dl-horizontal" -->
-				
-				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: OrderController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.domain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'domain' }}</dd>
-				
-				<dt>{{ 'label.subdomain' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'subdomain' }}</dd>
-				
-				<dt>{{ 'label.address' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'address' | hookFilterContentTranslate: OrderController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.telephone' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'telephone' }}</dd>
-				
-				<dt>{{ 'label.fax' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'fax' }}</dd>
-				
-				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'email' }}</dd>
-				
-				<dt>{{ 'label.facebook_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'facebook_link' }}</dd>
-				
-				<dt>{{ 'label.twitter_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'twitter_link' }}</dd>
-				
-				<dt>{{ 'label.tripadvisor_link' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.site | hookFilterByFieldValue: 'tripadvisor_link' }}</dd>
+				<dd ng-class="order.paid ? 'text-success':'text-danger'"><span class="fa" ng-class="OrderController.order.paid ? 'fa-check':'fa-close'"></span></dd>
 				
 			</dl>
 		
@@ -97,7 +49,7 @@
 		
 		<div class="box-header with-border">
 			
-			<h3 class="box-title">{{ 'label.payment' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
+			<h3 class="box-title">{{ 'ui.guest_detail' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
 			
 			<div class="box-tools"></div>
 		
@@ -108,49 +60,34 @@
 			<dl><!-- class="dl-horizontal" -->
 				
 				<dt>{{ 'label.first_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'first_name' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'first_name' }}</dd>
 				
 				<dt>{{ 'label.last_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'last_name' }}</dd>
-				
-				<dt>{{ 'label.cardholder_name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'cardholder_name' }}</dd>
-				
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'last_name' }}</dd>
+					
 				<dt>{{ 'label.billing_address_line_1' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'billing_address_line_1' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'billing_address_line_1' }}</dd>
 				
 				<dt>{{ 'label.billing_address_line_2' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'billing_address_line_2' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'billing_address_line_2' }}</dd>
 				
 				<dt>{{ 'label.city' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'city' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'city' }}</dd>
 				
 				<dt>{{ 'label.country' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'country' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'country' }}</dd>
 				
 				<dt>{{ 'label.postal_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'postal_code' }}</dd>
-				
-				<dt>{{ 'label.credit_card_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'credit_card_number' }}</dd>
-				
-				<dt>{{ 'label.cvc' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'cvc' }}</dd>
-				
-				<dt>{{ 'label.exp_month' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'exp_month' }}</dd>
-				
-				<dt>{{ 'label.exp_year' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'exp_year' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'postal_code' }}</dd>
 				
 				<dt>{{ 'label.email' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'email' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'email' }}</dd>
 				
 				<dt>{{ 'label.phone_area_code' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'phone_area_code' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'phone_area_code' }}</dd>
 				
 				<dt>{{ 'label.phone_number' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ OrderController.machineNameTranslation.payment | hookFilterByFieldValue: 'phone_number' }}</dd>
+				<dd>{{ OrderController.order.payment | hookFilterByFieldValue: 'phone_number' }}</dd>
 				
 			</dl>
 		
@@ -177,11 +114,12 @@
 				
 						<th class="table-index-column-width">#</th>
 						
-						<th>{{ 'label.from' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+
+						<th>{{ 'label.check_in' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
-						<th>{{ 'label.to' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
+						<th>{{ 'label.check_out' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
-						<th>{{ 'label.extra_bed_quantity' | hookFilterMachineNameTranslate | hookFilterTitle }}</th>
 						
 					</tr>
 				
@@ -193,11 +131,12 @@
 						
 						<td>{{ $index + 1 }}</td>
 						
+						<td>{{ accommodationOrder.accommodation | hookFilterByFieldValue: 'name' | hookFilterContentTranslate : OrderController.displayLanguage}}</td>
+
 						<td>{{ accommodationOrder.from }}</td>
 						
 						<td>{{ accommodationOrder.to }}</td>
 						
-						<td>{{ accommodationOrder.extra_bed_quantity }}</td>
 						
 		
 					</tr>

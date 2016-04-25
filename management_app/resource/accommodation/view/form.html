@@ -415,7 +415,7 @@
 							<label for="checkbox-accommodation-room"
 								hook-form-label
 								hook-form-label-bind-form="form"
-								hook-form-label-bind-field="rooms"
+								hook-form-label-bind-field="room_kind"
 								hook-form-label-bind-required="false"></label>
 							
 							<div class="checkbox"
@@ -425,7 +425,7 @@
 									
 									<input id="checkbox-accommodation-room-{{ room.id }}" 
 										type="checkbox"
-										ng-model="AccommodationController.accommodation.rooms[room.id]">{{ room.name | hookFilterContentTranslate }}
+										ng-model="AccommodationController.accommodation.rooms[room.id]">{{ room.room_type }} {{ room.bed_combination | hookFilterContentTranslate | hookFilterCapitalize }}
 								
 								</label>
 							
@@ -434,35 +434,6 @@
 						</div><!-- /.form-group -->
 						
 
-						<!-- Main model: accommodation, Relationship alias: accommodationOrders, Relationship model: accommodation__order -->
-
-						<div class="form-group" 
-							ng-controller="AccommodationOrderController as AccommodationOrderController" >
-							
-							<label for="checkbox-accommodation-accommodation-order"
-								hook-form-label
-								hook-form-label-bind-form="form"
-								hook-form-label-bind-field="accommodation_orders"
-								hook-form-label-bind-required="false"></label>
-							
-							<div class="checkbox"
-								ng-repeat="accommodationOrder in AccommodationOrderController.accommodationOrders">
-								
-								<label for="checkbox-accommodation-accommodation-order-{{ accommodationOrder.id }}">
-									
-									<input id="checkbox-accommodation-accommodation-order-{{ accommodationOrder.id }}" 
-										type="checkbox"
-										ng-model="AccommodationController.accommodation.accommodationOrders[accommodationOrder.id]">{{ accommodationOrder.name | hookFilterContentTranslate }}
-								
-								</label>
-							
-							</div><!-- /.checkbox -->
-
-						</div><!-- /.form-group -->
-						
-
-	
-					
 					</div><!-- ./box-body -->
 
 					<div class="box-footer" 
