@@ -7,19 +7,11 @@
 
 
 
-<div >
+<div ng-init="images = UiController.getAccommodationImages(accommodation)">
   <div>
-    <uib-carousel active="0" interval="2000">
-      <uib-slide ng-repeat="slide in [
-      	{id:0,image:'https://s7d9.scene7.com/is/image/kohlerhospitality/OldCourseRoom_938?$1024x480$',text:'bla 1'},
-      	{id:1,image:'http://s7d9.scene7.com/is/image/kohlerhospitality/aab19077_938?$1024x480$',text:'bla 2'},
-      	{id:2,image:'http://www.westcordhotels.nl/wp-content/uploads/2016/01/xvirtual-tour-large-double-room-tuin-fashion-hotel-amsterdam-1024x480.jpg.pagespeed.ic.1ik8bK9EWS.jpg',text:'bla 3'}
-      	] track by slide.id" index="slide.id">
+    <uib-carousel active="0" interval="3000">
+      <uib-slide ng-repeat="slide in images track by $index" index="$index">
         <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{slide.id}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
       </uib-slide>
     </uib-carousel>
   </div>

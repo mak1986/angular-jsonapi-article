@@ -70,7 +70,7 @@
 									class="form-control" 
 									name="machineName"
 									ng-model="MachineNameTranslationController.machineNameTranslation.machineName"
-									ng-options="machineName.id as (machineName.name | hookFilterContentTranslate) for machineName in MachineNameController.machineNames track by machineName.id"></select>
+									ng-options="machineName.id as (machineName.name) for machineName in MachineNameController.machineNames track by machineName.id"></select>
 						
 						</div><!-- /.form-group -->
 

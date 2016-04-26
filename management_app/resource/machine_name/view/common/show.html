@@ -45,71 +45,7 @@
 		
 		</div><!-- /.box-body -->
 	
-		<!-- Main model: machine_name, Relationship alias: group, Relationship model: group -->
 		
-		<div class="box-header with-border">
-			
-			<h3 class="box-title">{{ 'label.group' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
-			
-			<div class="box-tools"></div>
-		
-		</div><!-- /.box-header -->
-		
-		<div class="box-body">
-			
-			<dl><!-- class="dl-horizontal" -->
-				
-				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.group | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.group | hookFilterByFieldValue: 'weight' }}</dd>
-				
-			</dl>
-		
-		</div><!-- /.box-body -->
-
-		<!-- Main model: machine_name, Relationship alias: feature, Relationship model: feature -->
-		
-		<div class="box-header with-border">
-			
-			<h3 class="box-title">{{ 'label.feature' | hookFilterMachineNameTranslate | hookFilterTitle }}</h3>
-			
-			<div class="box-tools"></div>
-		
-		</div><!-- /.box-header -->
-		
-		<div class="box-body">
-			
-			<dl><!-- class="dl-horizontal" -->
-				
-				<dt>{{ 'label.icon' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'icon' }}</dd>
-				
-				<dt>{{ 'label.name' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'name' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.description' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'description' | hookFilterContentTranslate: MachineNameController.displayLanguage }}</dd>
-				
-				<dt>{{ 'label.hide_from_menu' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>
-					<span class="fa" 
-						ng-class="MachineNameController.machineName.feature | hookFilterByFieldValue: 'hide_from_menu' ? 'fa-check':'fa-close'"></span>
-				</dd>
-				
-				<dt>{{ 'label.owner' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>
-					<span class="fa" 
-						ng-class="MachineNameController.machineName.feature | hookFilterByFieldValue: 'owner' ? 'fa-check':'fa-close'"></span>
-				</dd>
-				
-				<dt>{{ 'label.weight' | hookFilterMachineNameTranslate | hookFilterTitle }}</dt>
-				<dd>{{ MachineNameController.machineName.feature | hookFilterByFieldValue: 'weight' }}</dd>
-				
-			</dl>
-		
-		</div><!-- /.box-body -->
 
 		<!-- Main model: machine_name, Relationship alias: translations, Relationship model: machine_name_translation -->
 

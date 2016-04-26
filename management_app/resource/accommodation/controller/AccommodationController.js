@@ -1,9 +1,10 @@
 (function() {
 	'use strict';
 
-	function AccommodationController($routeParams, CONFIG, CrudUtility, ResourceManager) {
+	function AccommodationController($routeParams, $q, CONFIG, CrudUtility, ResourceManager) {
 
 		var vm = CrudUtility.init(this, 'accommodation');
+		vm.images;
 
 		this.list = function() {
 			CrudUtility.list(vm, vm["type"]);
@@ -18,13 +19,55 @@
 		};
 
 		this.store = function(resource) {
-			CrudUtility.store(vm, vm["type"], resource);
+			vm.intertImages(resource).then(function(){
+				CrudUtility.store(vm, vm["type"], resource);
+			});
 		};
 
 		this.update = function(resource) {
-			CrudUtility.update(vm, vm["type"], resource);
+			console.log(vm.images);
+			var promises = [];
+			for (var id in resource.images) {
+				promises.push(ResourceManager.delete(ResourceManager.readFromStorage('image')[id])
+					.then(function() {
+						console.log('image id:' + id + 'deleted');
+					}, function(reason) {
+						console.log(reason);
+					}));
+			}
+			$q.all(promises).then(function() {
+				vm.insertImages(resource).then(function(){
+					CrudUtility.update(vm, vm["type"], resource);
+				});
+			});
+
 		};
-		
+
+		this.insertImages = function(resource) {
+			var index;
+			var imageIds = {};
+			var promises = [];
+
+			for (index in vm.images) {
+				if (vm.images[index].selected) {
+					promises.push(ResourceManager.create({
+							name: vm.images[index].name,
+							primary: vm.images[index].primary,
+							type: 'image'
+						})
+						.then(function(newImage) {
+							imageIds[newImage.id] = true;
+						}, function(reason) {
+							console.log(reason);
+						}));
+
+				}
+			}
+			return $q.all(promises).then(function() {
+				resource.images = imageIds;	
+			});
+		};
+
 		this.destroy = function(resource) {
 			CrudUtility.destroy(vm, vm["type"], resource);
 		};
@@ -33,6 +76,7 @@
 
 	AccommodationController.$inject = [
 		'$routeParams',
+		'$q',
 		'CONFIG',
 		'CrudUtility',
 		'ResourceManager'

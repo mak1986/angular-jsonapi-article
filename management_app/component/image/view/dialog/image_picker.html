@@ -1,0 +1,81 @@
+<md-dialog ng-init="ImageDialogController.init()"> 
+	
+	<md-toolbar> 
+		<div class="md-toolbar-tools"><h3>{{ "ui.image_picker" | hookFilterMachineNameTranslate | hookFilterTitle }}</h3></div>
+	</md-toolbar> 
+	
+	<md-dialog-content> 
+
+	<div layout="row" ng-repeat="row in ImageDialogController.images">
+		
+		<md-card flex="33" 
+			ng-repeat="image in row"
+			ng-mouseover="over=true"
+			ng-mouseleave="over=false"
+			ng-class="image.selected ? 'bg-green':''">
+		
+			<img ng-src="{{image.src}}" class="md-card-image" alt="image caption">
+		
+			<md-card-actions layout="row" layout-align="end center">
+		 		
+				<md-button class="md-raised"
+					ng-click="ImageDialogController.makePrimary(image)"
+					ng-show="!image.primary && image.selected && over">
+					{{'ui.make_primary' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+				</md-button>
+				
+				<md-button class="md-raised"
+					ng-click="ImageDialogController.removeFromPrimary(image)"
+					ng-show="image.primary">
+				
+					<span ng-show="!over">
+						<i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i> 
+		 				{{ 'ui.primary_image'| hookFilterMachineNameTranslate | hookFilterCapitalize }}
+		 			</span>
+		 			
+		 			<span ng-show="over">
+						<i class="glyphicon glyphicon-remove-circle" aria-hidden="true"></i>
+						{{'ui.remove_primary' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+					</span>
+				
+				</md-button>
+
+				<md-button class="md-raised"
+					ng-click="ImageDialogController.select(image)"
+					ng-show="!image.selected">
+					{{'ui.select' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+				</md-button>
+				
+				<md-button class="md-raised"
+					ng-click="ImageDialogController.deselect(image)"
+					ng-show="image.selected">
+				
+					<span ng-show="!over">
+						<i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i> 
+		 				{{ 'ui.selected'| hookFilterMachineNameTranslate | hookFilterCapitalize }}
+		 			</span>
+		 			
+		 			<span ng-show="over">
+						<i class="glyphicon glyphicon-remove-circle" aria-hidden="true"></i>
+						{{'ui.deselect' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+					</span>
+				
+				</md-button>
+				
+				
+		 	</md-card-actions>
+	
+		</md-card>
+	
+	</div>
+		<!-- <div class="row">
+			<div class="col-md-4" 
+				ng-repeat="id in [1,2,3,4,5,6,7,8,9,10]">
+				<img flex="33" src="http://localhost:3000/images/1/accommodation_1.jpg">
+			</div>
+		</div> -->
+	</md-dialog-content> 
+	<md-dialog-actions> 
+		<md-button class="md-raised" ng-click="ImageDialogController.close()">{{ 'ui.close' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</md-button> 
+	</md-dialog-actions> 
+</md-dialog>

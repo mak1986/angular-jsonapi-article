@@ -308,25 +308,23 @@
 	<div ng-controller="SectionController as SectionController" 
 		ng-init="SectionController.setCurrentPage(PageController.page)">
 			
-			<!-- Existing sections -->
-			<div class="row"
-				ng-init="section = SectionController.makeCopy(originSection);mode = 'show'"
-				ng-repeat="(id, originSection) in PageController.pages[PageController.page.id].sections | orderObjectBy: 'weight'"
-				ng-include="'management_app/resource/section/view/section.html'"></div>
+		<!-- Existing sections -->
+		<div class="row"
+			ng-init="section = SectionController.makeCopy(originSection);mode = 'show'"
+			ng-repeat="(id, originSection) in PageController.pages[PageController.page.id].sections | orderObjectBy: 'weight'"
+			ng-include="'management_app/resource/section/view/section.html'"></div>
 
-			<!-- New sections -->
-			<div class="row"
-				ng-init="mode='form'"
-				ng-repeat="(id, section) in SectionController.new_sections"
-				ng-include="'management_app/resource/section/view/section.html'"></div>
+		<!-- New sections -->
+		<div class="row"
+			ng-init="mode='form'"
+			ng-repeat="(id, section) in SectionController.new_sections"
+			ng-include="'management_app/resource/section/view/section.html'"></div>
 
-			<div class="row">
-				<div class="col-md-12">
-					<button class="btn btn-success" 
-						ng-click="SectionController.showAlert($event)"><i class="fa fa-plus-circle"></i> {{ 'ui.add_section' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
-				</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-success" 
+					ng-click="SectionController.showAlert($event)"><i class="fa fa-plus-circle"></i> {{ 'ui.add_section' | hookFilterMachineNameTranslate | hookFilterTitle }}</button>
 			</div>
-
 		</div>
 
 	</div>

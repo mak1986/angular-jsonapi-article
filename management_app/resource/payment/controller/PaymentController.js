@@ -93,7 +93,6 @@
 			}
 			//console.log(vm.eventSources['events']);
 		};
-		this.setEvents();
 
 		/* config object */
 		this.uiConfig = {

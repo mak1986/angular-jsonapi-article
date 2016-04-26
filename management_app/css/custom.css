@@ -85,3 +85,18 @@ form .ng-pending{
         transform:rotate(360deg);
     }
 }
+
+/* angular material */
+.md-dialog-container {
+    z-index: 810;
+}
+/*  
+prevent the dialog to get pushed above screen 
+fix later
+*/
+body{
+    top:0 !important;
+}
+.md-card-image{
+    min-width: 0; min-height: 0;
+}

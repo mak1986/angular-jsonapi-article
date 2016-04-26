@@ -86,7 +86,7 @@
 
 
 		this.showAlert = function(event) {
-			var parentElement = angular.element(document.querySelector('#popupContainer'));
+			var parentElement = angular.element(document.querySelector('body'));
 			var useFullScreen = $mdMedia('xs') || $mdMedia('sm');
 			$mdDialog.show({
 				parent: parentElement,

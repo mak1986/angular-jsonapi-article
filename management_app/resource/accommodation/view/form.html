@@ -322,25 +322,6 @@
 						
 						</div><!-- /.form-group -->
 
-						<!-- Main model: accommodation, Relationship alias: site, Relationship model: site -->
-
-						<div class="form-group" 
-							ng-controller="SiteController as SiteController" >
-							
-							<label for="select-accommodation-site"
-								hook-form-label
-								hook-form-label-bind-form="form"
-								hook-form-label-bind-field="site"
-								hook-form-label-bind-required="true"></label>
-							
-							<select id="select-accommodation-site" 
-									class="form-control" 
-									name="site"
-									ng-model="AccommodationController.accommodation.site"
-									ng-options="site.id as (site.name | hookFilterContentTranslate) for site in SiteController.sites track by site.id"></select>
-						
-						</div><!-- /.form-group -->
-
 						<!-- Main model: accommodation, Relationship alias: luxuryTitle, Relationship model: accommodation_luxury_title -->
 
 						<div class="form-group" 
@@ -434,6 +415,49 @@
 						</div><!-- /.form-group -->
 						
 
+						<!-- Images -->
+
+						<div class="form-group" 
+							ng-controller="ImageController as ImageController" 
+							ng-init="ImageController.setImages(AccommodationController.accommodation.images);AccommodationController.images = ImageController.images">
+							
+							<label>
+								{{ 'ui.primary_image' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+							</label>
+							<div class="row">
+    							
+    							<div class="col-md-6">
+    								
+    								<img ng-if="ImageController.primaryImage" class="img-responsive" ng-src="{{ ImageController.primaryImage.src }}">
+    							
+    							</div>
+
+							</div>
+							<label>
+								{{ 'ui.selected_images' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+							</label>
+
+							<div class="row">
+    							
+    							<div class="col-md-6"
+    								ng-if="image.selected" 
+    								ng-repeat="image in ImageController.images">
+    								
+    								<img class="img-responsive" ng-src="{{ image.src }}">
+    								<br>
+    							</div>
+
+							</div>
+
+							<button class="btn btn-success" 
+								ng-click="ImageController.showImagePicker($event)">
+								{{ 'ui.image_picker' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+							</button>
+							
+						</div><!-- /.form-group -->
+
+
+
 					</div><!-- ./box-body -->
 
 					<div class="box-footer" 
@@ -456,3 +480,4 @@
 		hook-translation-view-bind-get-enabled-languages="HookController.ui.getEnabledLanguages()"></div><!-- /.col -->
 
 </div><!-- /.row -->
+

@@ -41,6 +41,7 @@
 		}
 	)
 
+
 	angular.module('HookApp').constant('BASEURL', 'http://localhost:8080/app/#/');
 
 	// Provider configurations
