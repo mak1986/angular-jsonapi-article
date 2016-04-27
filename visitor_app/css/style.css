@@ -61,11 +61,30 @@ div.navbar-collapse.collapse.in {
 /* dl dt dd */
 @media (min-width: 768px) {
     .dl-horizontal dt {
-        width:90px;
+        width:110px;
         white-space: normal;
         margin-bottom: 5px;
     }
     .dl-horizontal dd {
-        margin-left:110px;
+        margin-left:130px;
     }
+}
+
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+  }
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #section-to-print .hide-on-print{
+    visibility: hidden !important; 
+  }
 }

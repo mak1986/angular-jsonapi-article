@@ -9,27 +9,46 @@
 	
 	</button> 
 	
-	<h4 class="modal-title" id="myModalLabel">{{ 'ui.booking_process' | hookFilterMachineNameTranslate }}</h4> 
+	<h4 class="modal-title" id="myModalLabel">{{ 'ui.booking_process' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</h4> 
+	
 </div> 
 <div class="modal-body">
-	<div ng-if="AccommodationBookingModalController.isLoading()" class="row">
+	<div class="row">
 		<div class="col-md-12">
-			<span class="spinner">
-				<i class="glyphicon glyphicon-refresh"></i>
-			</span> 
-			{{ 'ui.loading' | hookFilterMachineNameTranslate }}
+			 
+			<h3 class="text-center"
+				ng-show="AccommodationBookingModalController.isLoading()"  >
+				<span class="spinner">
+					<i class="glyphicon glyphicon-refresh"></i>
+				</span>
+				{{ 'ui.loading' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+			</h3>
+			
+			<h3 class="text-center"
+				ng-show="!AccommodationBookingModalController.isLoading() &&  AccommodationBookingModalController.isAvailable()">
+				<i class="glyphicon glyphicon-ok-circle"></i>
+				{{ 'ui.accommodation_available' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+			</h3>
+			
+			<h3 class="text-center"
+				ng-show="!AccommodationBookingModalController.isLoading() &&  !AccommodationBookingModalController.isAvailable()">
+				<i class="glyphicon glyphicon-remove-circle"></i>
+				{{ 'ui.accommodation_not_available' | hookFilterMachineNameTranslate | hookFilterCapitalize }}
+			</h3>
+			<br><br>
 		</div>
-		<br>
+		
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<button type="button" 
 				class="btn btn-primary btn-lg btn-block"
-				ng-click="AccommodationBookingModalController.close()">{{ 'ui.continue_browsing' | hookFilterMachineNameTranslate }}</button>
+				ng-click="AccommodationBookingModalController.close()">{{ 'ui.continue_browsing' | hookFilterMachineNameTranslate | hookFilterCapitalize  }}</button>
 		</div>
 		<div class="col-md-6">
 			<button class="btn btn-success btn-lg btn-block"
-				ng-click="AccommodationBookingModalController.completeBooking()">{{ 'ui.complete_booking' | hookFilterMachineNameTranslate }}</a>
+				ng-click="AccommodationBookingModalController.completeBooking()"
+				ng-show="AccommodationBookingModalController.isAvailable()">{{ 'ui.complete_booking' | hookFilterMachineNameTranslate | hookFilterCapitalize  }}</a>
 		</div>
 	</div>
 </div> 

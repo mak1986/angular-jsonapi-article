@@ -7,6 +7,7 @@
 		vm.accommodation = null;
 		vm.extra_bed_quantity = null;
 		vm.loading = false;
+		vm.available = false;
 
 		vm.book = function() {
 
@@ -20,9 +21,6 @@
 
 			} else {
 
-				var orders = ResourceManager.readFromStorage('order');
-				var order = orders[Object.keys(orders)[0]];
-
 				createAccommodationOrder();
 
 			}
@@ -35,22 +33,28 @@
 			$uibModal.open({
 				'templateUrl': 'visitor_app/component/accommodation_booking_form/view/modal.html',
 				'controller': ['$location', '$uibModalInstance', 'parent', 'UserInterface', function($location, $uibModalInstance, parent, UserInterface) {
-					var vm = this;
+					var vmModal = this;
 
-					vm.isLoading = function() {
+					vmModal.isLoading = function() {
 						return parent.loading;
 					};
+					vmModal.isAvailable = function(){
+						return parent.available;
+					}
 
-					vm.close = function() {
+					vmModal.close = function() {
 						$uibModalInstance.close();
 					};
 
-					vm.completeBooking = function() {
+					vmModal.completeBooking = function() {
 						$uibModalInstance.close();
 						$uibModalInstance.closed.then(function() {
 							$location.path(UserInterface.getLanguage() + '/invoice');
 						});
 					};
+					$uibModalInstance.closed.then(function() {
+						vm.available = false;
+					});
 
 				}],
 				'controllerAs': 'AccommodationBookingModalController',
@@ -86,6 +90,14 @@
 		};
 
 		var createAccommodationOrder = function(callBackSuccess, callBackError) {
+			
+			if (!isAvailable()) {
+				vm.loading = false;
+				vm.available = false;
+				return;
+			}
+			vm.available = true;
+
 			var accommodationOrder = {
 				'type': 'accommodation__order',
 				'from': vm.from.toISOString().substring(0, 10),
@@ -109,6 +121,43 @@
 					//callBackError();
 
 				});
+		};
+
+		// havn't check for paid order
+		var isAvailable = function() {
+			var newFrom = new Date(vm.from.toISOString().substring(0, 10));
+			var newTo = new Date(vm.to.toISOString().substring(0, 10));
+			var existingFrom;
+			var existingTo;
+
+			var orders = ResourceManager.readFromStorage('order');
+			var orderId;
+
+			var accommodationOrders;
+			var accommodationOrder;
+			var accommodationOrderId;
+
+			var accommodation;
+
+			for (orderId in orders) {
+				accommodationOrders = orders[orderId].accommodationOrders
+				for (accommodationOrderId in accommodationOrders) {
+
+					accommodationOrder = accommodationOrders[accommodationOrderId];
+					accommodation = $filter('hookFilterByFirstRelationship')(accommodationOrder.accommodation);
+
+					if (accommodation.id == vm.accommodation.id) {
+						existingFrom = new Date(accommodationOrder.from);
+						existingTo = new Date(accommodationOrder.to);
+
+						if (newFrom < existingTo && existingFrom < newTo) {
+							return false;
+						}
+					}
+				}
+			}
+
+			return true;
 		};
 
 		var isBooking = function() {

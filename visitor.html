@@ -51,7 +51,7 @@
 
 	          <ul class="nav navbar-nav navbar-right">
 		           
-		           <li>
+		           <li ng-show="UiController.ui.countOrder() > 0">
 			          <a href="{{ UiController.ui.getHref('invoice') }}"> ({{ UiController.ui.countOrder() }}) <span class='glyphicon glyphicon-shopping-cart'></span> {{ 'ui.book_now' | hookFilterMachineNameTranslate | hookFilterCapitalize }}</a>
 			        </li>
 
@@ -169,6 +169,8 @@
 		<!-- Filters -->
 		<script src="/shared/filter/_Filter.js"></script>
 		<script src="/shared/filter/hookFilterByFieldValue.js"></script>
+		<script src="/shared/filter/hookFilterVat.js"></script>
+		<script src="/shared/filter/hookFilterByFirstRelationship.js"></script>
 		<script src="/shared/filter/hookFilterByGroupId.js"></script>
 		<script src="/shared/filter/hookFilterByCurrentSite.js"></script>
 		<script src="/shared/filter/hookFilterCapitalize.js"></script>
@@ -208,6 +210,7 @@
 		<!-- Controllers -->
 		<script src="/shared/_Controllers.js"></script>
 		<script src="/visitor_app/component/payment/controller/PaymentController.js"></script>
+		<script src="/visitor_app/component/receipt/controller/ReceiptController.js"></script>
 		<script src="/visitor_app/component/accommodation_booking_form/controller/AccommodationBookingFormController.js"></script>
 		<script src="/visitor_app/component/accommodation_booking_form/controller/AccommodationBookingDetailController.js"></script>
 		<script src="/visitor_app/component/cart/controller/CartController.js"></script>

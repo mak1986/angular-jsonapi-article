@@ -61,32 +61,32 @@
 		}]);
 
 	angular.module('VisitorApp')
-		.run(function(CONFIG, ResourceManager, UserInterface){
+		.run(function(CONFIG, ResourceManager, UserInterface) {
 			// Retrieve all data from server
 			var count = 0;
 			// must refactor simulate restricted resources.
-			var modelsCount = Object.keys(CONFIG.models).length-3;
+			var modelsCount = Object.keys(CONFIG.models).length;
 			var type;
 			for (type in CONFIG.models) {
-				if(type!='order' && type!='accommodation__order' && type!='payment'){
-					ResourceManager.read(type).then(function(data) {
-						//console.log("get a model success.")
-						count++;
 
-						if (count == modelsCount) {
-							// service.isLoggedIn = true;
-							// service.setup();
-							UserInterface.setSite(ResourceManager.readFromStorage('site')[CONFIG.site.id]);
-							UserInterface.setReady();
-							//console.log(vm.ui.site);
-							console.log("all models retrieved.");
-							console.log(UserInterface.site);
-						}
+				ResourceManager.read(type).then(function(data) {
+					//console.log("get a model success.")
+					count++;
 
-					}, function(errorData) {
-						console.log("get a model fail.", errorData);
-					});
-				}
+					if (count == modelsCount) {
+						// service.isLoggedIn = true;
+						// service.setup();
+						UserInterface.setSite(ResourceManager.readFromStorage('site')[CONFIG.site.id]);
+						UserInterface.setReady();
+						//console.log(vm.ui.site);
+						console.log("all models retrieved.");
+						console.log(UserInterface.site);
+					}
+
+				}, function(errorData) {
+					console.log("get a model fail.", errorData);
+				});
+
 			}
 		});
 })();

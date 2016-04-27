@@ -15,6 +15,9 @@
 		//       	];
 		// };
 
+		vm.getDate = function(){
+			return new Date();
+		};
 
 		vm.getAccommodationImages = function(accommodation) {
 			var images = [];

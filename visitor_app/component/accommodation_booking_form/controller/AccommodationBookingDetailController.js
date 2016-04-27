@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function AccommodationBookingDetailController($filter) {
+	function AccommodationBookingDetailController($location, $filter, ResourceManager, UserInterface) {
 
 		var vm = this;
 		vm.accommodationOrders = null;
@@ -25,11 +25,25 @@
 
 			return total;
 		};
+		vm.delete = function(accommodationOrder){
+			ResourceManager.delete(accommodationOrder).then(function(){
+				if(Object.keys(UserInterface.getOrder().accommodationOrders).length==0){
+					$location.path('/'+UserInterface.getLanguage()+'/accommodations');
+				}
+				console.log('delete success');
+
+			},function(){
+				console.log('delete error');
+			});
+		}
 
 	}
 
 	AccommodationBookingDetailController.$inject = [
-		'$filter'
+		'$location',
+		'$filter',
+		'ResourceManager',
+		'UserInterface'
 	];
 
 	angular
