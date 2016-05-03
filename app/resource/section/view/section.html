@@ -1,0 +1,70 @@
+<div class="col-md-8">	
+	
+	<div class="box">
+		
+		<div class="box-header with-border">
+
+			<h3 class="box-title">
+				{{ 'model.section' | hookFilterMachineNameTranslate | hookFilterTitle }}
+			</h3>
+			
+			<div class="box-tools" 
+				ng-init="SectionController.setMode(section, mode)">
+				
+				<!-- Edit button -->
+				<a class="btn btn-sm btn-warning" 
+					href="" 
+					ng-click="SectionController.setMode(section,'form')"
+					ng-show="SectionController.getMode(section) == 'show'">{{ 'ui.edit' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
+
+				<!-- Show button -->
+				<a class="btn btn-sm btn-primary" 
+					href="" 
+					ng-click="SectionController.setMode(section, 'show')"
+					ng-show="SectionController.getMode(section) == 'form'">{{ 'ui.show' | hookFilterMachineNameTranslate | hookFilterTitle }}</a>
+				
+			</div>
+
+		</div><!-- /.box-header -->
+
+		<div class="nav-tabs-custom">
+
+	        <ul class="nav nav-tabs" ng-init="SectionController.setLanguage(section, HookController.ui.getLanguage())">
+	         
+	          <li ng-class="{ 'active': SectionController.getLanguage(section) == language.iso_2_code }"
+	          	ng-repeat="(id, language) in HookController.ui.getEnabledLanguages()">
+	          
+	          	<a href="" ng-click="SectionController.setLanguage(section, language.iso_2_code)">
+	          	
+	          		<span class="flag-icon flag-icon-{{ language.flag }}"></span> 
+	          	
+	          		{{ language.name | hookFilterContentTranslate }}
+	          	
+	          	</a>
+	         
+	          </li>
+	        
+	        </ul>
+
+			<div class="box-body" 
+				hook-section
+				hook-section-bind-model="section"
+				hook-section-bind-language="SectionController.getLanguage(section)"
+				hook-section-bind-template="HookController.getSectionView((section.kind | hookFilterByFieldValue: 'name'))"
+				ng-show="SectionController.getMode(section) == 'show'"></div>
+
+			<div ng-include="'app/resource/section/view/form/' + (section.kind | hookFilterByFieldValue: 'name') + '.html'"
+				ng-show="SectionController.getMode(section) == 'form'"></div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="col-md-4"
+	hook-translation-view
+	hook-translation-view-bind-model="section"
+	hook-translation-view-bind-get-language="HookController.ui.getLanguage()"
+	hook-translation-view-bind-get-enabled-languages="HookController.ui.getEnabledLanguages()"
+	ng-show="SectionController.getMode(section) == 'form'"></div><!-- /.col -->
